@@ -1063,7 +1063,7 @@
     cfBtn.innerHTML = 'Sending… <span class="arrow">⋯</span>';
     cfError.style.display = 'none';
     try {
-      const res = await fetch('https://formspree.io/office@caseychinese.org', {
+      const res = await fetch('https://formspree.io/office@casechinese.org', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: new FormData(contactForm)
@@ -1075,7 +1075,7 @@
         throw new Error();
       }
     } catch {
-      cfError.textContent = 'Something went wrong — please email us directly at office@caseychinese.org';
+      cfError.textContent = 'Something went wrong — please email us directly at office@casechinese.org';
       cfError.style.display = 'block';
       cfBtn.disabled = false;
       cfBtn.innerHTML = 'Try again <span class="arrow">→</span>';
