@@ -1077,7 +1077,6 @@
           <label for="cf-message">Message · 留言</label>
           <textarea id="cf-message" name="message" required placeholder="How can we help?"></textarea>
         </div>
-        <div id="cf-error" style="display:none; color:var(--red-deep); font-size:13px; margin-bottom:10px;"></div>
         <button type="submit" class="btn btn-primary" id="cf-btn">Send message <span class="arrow">→</span></button>
       </form>
     </div>
@@ -1114,39 +1113,27 @@
     probe.src = url;
   });
 
-  // contact form
+  // contact form — mailto approach (no server needed, works on static hosting)
   const contactForm = document.getElementById('contactForm');
   const cfBtn = document.getElementById('cf-btn');
   const cfError = document.getElementById('cf-error');
-  contactForm.addEventListener('submit', async (e) => {
+  contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    const name    = document.getElementById('cf-name').value.trim();
+    const email   = document.getElementById('cf-email').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+    const subject = encodeURIComponent('Website enquiry — Casey Chinese School');
+    const body    = encodeURIComponent(
+      'Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message
+    );
+    window.location.href =
+      'mailto:office@caseychinese.org?subject=' + subject + '&body=' + body;
+    cfBtn.innerHTML = 'Opening your email app… <span class="arrow">✓</span>';
     cfBtn.disabled = true;
-    cfBtn.innerHTML = 'Sending… <span class="arrow">⋯</span>';
-    cfError.style.display = 'none';
-    try {
-      const res = await fetch('https://formsubmit.co/ajax/office@caseychinese.org', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          name: document.getElementById('cf-name').value,
-          email: document.getElementById('cf-email').value,
-          message: document.getElementById('cf-message').value,
-          _subject: 'Website enquiry — Casey Chinese School'
-        })
-      });
-      const data = await res.json();
-      if (res.ok && data.success !== 'false') {
-        cfBtn.innerHTML = 'Sent — 谢谢! <span class="arrow">✓</span>';
-        contactForm.reset();
-      } else {
-        throw new Error();
-      }
-    } catch {
-      cfError.textContent = 'Something went wrong — please email us directly at office@caseychinese.org';
-      cfError.style.display = 'block';
+    setTimeout(() => {
+      cfBtn.innerHTML = 'Send message <span class="arrow">→</span>';
       cfBtn.disabled = false;
-      cfBtn.innerHTML = 'Try again <span class="arrow">→</span>';
-    }
+    }, 4000);
   });
 
   // mobile nav
