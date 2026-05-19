@@ -175,6 +175,20 @@
   .hero-ctas {
     display: flex; gap: 14px; flex-wrap: wrap;
   }
+  .trial-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    padding: 8px 16px;
+    background: var(--red-tint);
+    border: 1px solid var(--red-soft);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--red-deep);
+  }
+  .trial-note .zh-sans { font-size: 12px; color: var(--ink-soft); }
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 14px 26px;
@@ -732,6 +746,11 @@
       <div class="hero-ctas">
         <a href="#contact" class="btn btn-primary">Enrol Now <span class="arrow">→</span></a>
         <a href="#programs" class="btn btn-ghost">View Programs</a>
+      </div>
+      <div class="trial-note">
+        <span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+        Free trial lesson for all new students
+        <span class="zh-sans">· 新生可免费试课一次</span>
       </div>
       <dl class="hero-meta">
         <div>
