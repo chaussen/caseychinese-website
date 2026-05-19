@@ -75,24 +75,17 @@
   .nav.scrolled { border-bottom-color: var(--line); }
   .nav-inner {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 0;
+    padding: 10px 0;
   }
   .brand {
     display: block;
     text-decoration: none;
-    overflow: hidden;
-    /* clip the blank margins baked into the logo image */
-    height: 52px;
     line-height: 0;
   }
   .brand-logo {
-    /* render larger than the clip window so whitespace is hidden */
-    height: 80px;
+    height: 44px;
     width: auto;
     display: block;
-    margin-top: -14px;   /* crop top whitespace */
-    margin-bottom: -14px; /* crop bottom whitespace */
-    margin-right: -12px; /* crop right whitespace */
   }
   .nav-links {
     display: flex; gap: 32px; align-items: center;
@@ -342,6 +335,10 @@
     color: var(--ink-soft);
     line-height: 1.6;
     max-width: 540px;
+  }
+  #join .section-head .lede {
+    line-height: 1.95;
+    font-size: 16.5px;
   }
   .lede .zh-note, .program .zh-note, .event-body .zh-note {
     display: block;
