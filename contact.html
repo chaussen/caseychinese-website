@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | 联系我们 — Casey Chinese School</title>
+  <meta name="description" content="Contact Casey Chinese School by email or WeChat. 通过电子邮件或微信联系Casey中文学校。" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Casey Chinese School<br>Casey中文学校</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home<span class="zh">主页</span></a></li>
+    <li><a href="about.html">About<span class="zh">关于我们</span></a></li>
+    <li><a href="classes.html">Classes<span class="zh">课程</span></a></li>
+    <li><a href="enrolment.html">Enrolment<span class="zh">报名</span></a></li>
+    <li><a href="contact.html" class="active">Contact<span class="zh">联系我们</span></a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero hero-xs">
+  <div class="photo-placeholder">[Photo]</div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Contact Us | 联系我们</h1>
+  </div>
+</section>
+
+<!-- Contact Details -->
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <h2>Get in Touch | 联系方式</h2>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <a href="mailto:office@caseychinese.org" style="color:var(--red);font-weight:600;font-size:1rem;">office@caseychinese.org</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <p style="margin:0;">Casey Area, Melbourne, Victoria</p>
+            <p class="zh" style="margin:0;">维多利亚州墨尔本凯西地区</p>
+          </div>
+        </div>
+        <div class="notice" style="margin-top:1.5rem;">
+          <p>We aim to respond to all enquiries within 2 business days.</p>
+          <p class="zh">我们将在2个工作日内回复所有咨询。</p>
+        </div>
+      </div>
+      <div class="wechat-qr">
+        <h2>WeChat | 微信</h2>
+        <img src="images/qr-code.png" alt="WeChat QR Code" />
+        <p>Scan to connect on WeChat | 扫码添加微信</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Full Width Photo -->
+<div class="full-photo">
+  <div class="photo-placeholder">[School Community Photo]</div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Casey Chinese School<br>Casey中文学校</div>
+      <p class="footer-tagline">Nurturing language and culture since 1970<br>自1970年传承语言与文化</p>
+    </div>
+    <div>
+      <h4>Quick Links | 快速链接</h4>
+      <a href="index.html">Home | 主页</a>
+      <a href="about.html">About | 关于我们</a>
+      <a href="classes.html">Classes | 课程</a>
+      <a href="enrolment.html">Enrolment | 报名</a>
+      <a href="contact.html">Contact | 联系我们</a>
+    </div>
+    <div>
+      <h4>Contact | 联系方式</h4>
+      <a href="mailto:office@caseychinese.org">office@caseychinese.org</a>
+      <p style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin-top:0.5rem;">WeChat available — contact us for QR code<br>微信联系请索取二维码</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Casey Chinese School | Casey中文学校</div>
+</footer>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const nav = document.getElementById('nav-links');
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('open');
+    nav.classList.toggle('open');
+  });
+</script>
+</body>
+</html>
