@@ -327,6 +327,15 @@
     line-height: 1.6;
     max-width: 540px;
   }
+  .lede .zh-note, .program .zh-note, .event-body .zh-note {
+    display: block;
+    font-family: var(--zh);
+    font-size: 13.5px;
+    color: var(--ink-mute);
+    margin-top: 8px;
+    line-height: 1.7;
+  }
+  #contact .lede .zh-note { color: rgba(255, 248, 245, 0.45); }
 
   /* ───── ABOUT ───── */
   #about { background: var(--paper); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
@@ -581,6 +590,12 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .contact-info .val-name {
+    font-size: 13px;
+    color: rgba(255, 248, 245, 0.55);
+    margin-bottom: 6px;
+    font-family: var(--sans);
+  }
   .contact-info a.val { text-decoration-skip-ink: none; }
   .contact-info a.val:hover { color: var(--red-soft); }
 
@@ -759,6 +774,7 @@
         Casey Foundation Chinese School is a parent-founded, volunteer-run weekend
         school serving the Casey community. We offer approachable, joyful Mandarin
         instruction grounded in Chinese culture.
+        <span class="zh-note">凯西中文学校是一所由家长创立、志愿者运营的周末学校，植根于Casey社区，提供轻松愉快、融入中华文化的普通话教学。</span>
       </p>
     </div>
 
@@ -812,6 +828,7 @@
       <p class="lede">
         Whether your child is starting their first words or refining their essays,
         we have a level that meets them where they are. Placement is friendly and flexible.
+        <span class="zh-note">无论您的孩子是初学中文还是已有基础，我们都有合适的班级。分班灵活亲切，欢迎咨询。</span>
       </p>
     </div>
 
@@ -824,6 +841,7 @@
           An introduction to Mandarin through songs, stories, and guided play.
           Students build foundational tones, vocabulary, and a love of the language
           from their very first lesson.
+          <span class="zh-note">通过歌谣、故事与游戏，轻松迈入中文世界，培养语感与学习兴趣。</span>
         </p>
         <div class="meta">
           <span><span class="ic"></span>Prep – Gr 3</span>
@@ -838,6 +856,7 @@
           Building reading, writing, and spoken fluency through structured literacy,
           character recognition, and conversational practice paired with cultural
           workshops each term.
+          <span class="zh-note">系统学习汉字读写与日常会话，每学期结合文化主题活动，全面提升语言能力。</span>
         </p>
         <div class="meta">
           <span><span class="ic"></span>Gr 4 – 8</span>
@@ -852,6 +871,7 @@
           Advanced reading, essay writing, and conversation for older students.
           Builds the skills and confidence needed for VCE Chinese and lifelong
           language fluency.
+          <span class="zh-note">深化阅读、写作与口语，为VCE中文及终身流利表达打好基础。</span>
         </p>
         <div class="meta">
           <span><span class="ic"></span>Gr 9 – VCE</span>
@@ -874,6 +894,7 @@
       <p class="lede">
         Our calendar is shaped by the rhythm of the Chinese year — festivals,
         performances, and family gatherings that bring our community together.
+        <span class="zh-note">我们的活动随中国传统节日而行——节庆、演出与家庭聚会，凝聚社区温情。</span>
       </p>
     </div>
 
@@ -886,7 +907,7 @@
         <div class="event-body">
           <h4>Dragon Boat Festival Celebration</h4>
           <div class="zh-title-sm">端午节庆祝活动</div>
-          <p>Family zongzi-making, storytelling, and a community potluck after class.</p>
+          <p>Family zongzi-making, storytelling, and a community potluck after class.<span class="zh-note">家庭包粽子、故事分享及课后社区聚餐。</span></p>
         </div>
         <span class="event-tag">All ages</span>
       </article>
@@ -897,8 +918,8 @@
         </div>
         <div class="event-body">
           <h4>Mid-Autumn Festival Night</h4>
-          <div class="zh-title-sm">中秋晚会</div>
-          <p>Evening performance with mooncakes, poetry recitals, and a lantern walk.</p>
+          <div class="zh-title-sm">中秋活动</div>
+          <p>Evening performance with mooncakes, poetry recitals, and a lantern walk.<span class="zh-note">月饼品尝、诗词朗诵与花灯游行。</span></p>
         </div>
         <span class="event-tag">Community</span>
       </article>
@@ -919,6 +940,7 @@
         We are a volunteer-run school and are always looking for caring Mandarin speakers
         to join our teaching team. No formal teaching qualification required — just fluency,
         patience, and a love of working with children.
+        <span class="zh-note">我们长期招募热心的中文教师志愿者。无需正式教学资质，只需普通话流利、有耐心、喜爱与孩子相处即可。</span>
       </p>
     </div>
     <a href="#contact" class="btn btn-primary">Get in touch <span class="arrow">→</span></a>
@@ -937,6 +959,7 @@
       <p class="lede">
         A glimpse into a typical season — calligraphy class, the Lunar New Year
         performance, our spring picnic. Drop new photos into the gallery anytime.
+        <span class="zh-note">每个学期的精彩瞬间——书法课、春节表演与郊游活动。</span>
       </p>
     </div>
 
@@ -1004,15 +1027,12 @@
       <p class="lede">
         Drop in for an open class, send us a note, or sign up for our seasonal
         newsletter. We'd love to meet your family.
+        <span class="zh-note">欢迎旁听课程、给我们留言，或订阅学校简讯。期待与您全家相识。</span>
       </p>
     </div>
 
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="row">
-          <div class="lbl">Contact · 联系人</div>
-          <div class="val">John Ni</div>
-        </div>
         <div class="row">
           <div class="lbl">Address · 地址</div>
           <div class="val">
@@ -1034,7 +1054,10 @@
         </div>
         <div class="row">
           <div class="lbl">Phone · 电话</div>
-          <a class="val" href="tel:+61401076448">+61 401 076 448</a>
+          <div>
+            <div class="val-name">John Ni</div>
+            <a class="val" href="tel:+61401076448">+61 401 076 448</a>
+          </div>
         </div>
       </div>
 
@@ -1101,12 +1124,18 @@
     cfBtn.innerHTML = 'Sending… <span class="arrow">⋯</span>';
     cfError.style.display = 'none';
     try {
-      const res = await fetch('https://formspree.io/office@caseychinese.org', {
+      const res = await fetch('https://formsubmit.co/ajax/office@caseychinese.org', {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(contactForm)
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: document.getElementById('cf-name').value,
+          email: document.getElementById('cf-email').value,
+          message: document.getElementById('cf-message').value,
+          _subject: 'Website enquiry — Casey Chinese School'
+        })
       });
-      if (res.ok) {
+      const data = await res.json();
+      if (res.ok && data.success !== 'false') {
         cfBtn.innerHTML = 'Sent — 谢谢! <span class="arrow">✓</span>';
         contactForm.reset();
       } else {
