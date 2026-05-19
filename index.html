@@ -515,13 +515,28 @@
     gap: 12px;
   }
   .gallery .photo { border-radius: 4px; }
-  .g1 { grid-column: span 5; grid-row: span 2; }
-  .g2 { grid-column: span 4; grid-row: span 2; }
-  .g3 { grid-column: span 3; grid-row: span 1; }
-  .g4 { grid-column: span 3; grid-row: span 1; }
-  .g5 { grid-column: span 4; grid-row: span 1; }
-  .g6 { grid-column: span 4; grid-row: span 1; }
-  .g7 { grid-column: span 4; grid-row: span 1; }
+
+  /* Band A – featured trio (rows 1–3) */
+  .g1  { grid-column: span 5; grid-row: span 3; } /* first.jpg — large feature */
+  .g2  { grid-column: span 3; grid-row: span 3; } /* portrait */
+  .g3  { grid-column: span 4; grid-row: span 3; } /* portrait */
+
+  /* Band B – mixed pairs (rows 4–5) */
+  .g4  { grid-column: span 3; grid-row: span 2; }
+  .g5  { grid-column: span 3; grid-row: span 2; }
+  .g6  { grid-column: span 3; grid-row: span 2; }
+  .g7  { grid-column: span 3; grid-row: span 2; }
+
+  /* Band C – compact row (rows 6–7) */
+  .g8  { grid-column: span 3; grid-row: span 2; }
+  .g9  { grid-column: span 3; grid-row: span 2; }
+  .g10 { grid-column: span 3; grid-row: span 2; }
+  .g11 { grid-column: span 3; grid-row: span 2; }
+
+  /* Band D – future placeholders (row 8) */
+  .g12 { grid-column: span 4; grid-row: span 1; }
+  .g13 { grid-column: span 4; grid-row: span 1; }
+  .g14 { grid-column: span 4; grid-row: span 1; }
 
   /* ───── CONTACT ───── */
   #contact { background: var(--ink); color: var(--bg); padding: 100px 0 60px; }
@@ -656,9 +671,11 @@
     .event { grid-template-columns: 80px 1fr; gap: 20px; }
     .event-tag { grid-column: 2; justify-self: start; }
     .gallery { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 100px; }
-    .g1 { grid-column: span 6; grid-row: span 2; }
-    .g2 { grid-column: span 6; grid-row: span 2; }
-    .g3, .g4, .g5, .g6, .g7 { grid-column: span 3; grid-row: span 1; }
+    .g1  { grid-column: span 6; grid-row: span 2; }
+    .g2, .g3 { grid-column: span 3; grid-row: span 2; }
+    .g4, .g5, .g6, .g7,
+    .g8, .g9, .g10, .g11 { grid-column: span 3; grid-row: span 1; }
+    .g12, .g13, .g14 { grid-column: span 2; grid-row: span 1; }
   }
 </style>
 </head>
@@ -930,33 +947,65 @@
     </div>
 
     <div class="gallery">
+      <!-- Band A: featured trio -->
       <div class="photo g1">
-        <img alt="" data-src="images/gallery-1.jpg" />
-        <div class="ph-fallback">images/gallery-1.jpg<br /><span style="opacity:.7">large · 1000 × 700</span></div>
+        <img alt="Students at Casey Chinese School" data-src="images/gallery-1.jpg" />
+        <div class="ph-fallback">images/gallery-1.jpg</div>
       </div>
       <div class="photo g2">
         <img alt="" data-src="images/gallery-2.jpg" />
-        <div class="ph-fallback">images/gallery-2.jpg<br /><span style="opacity:.7">800 × 700</span></div>
+        <div class="ph-fallback">images/gallery-2.jpg</div>
       </div>
       <div class="photo g3">
         <img alt="" data-src="images/gallery-3.jpg" />
-        <div class="ph-fallback">images/gallery-3.jpg<br /><span style="opacity:.7">600 × 400</span></div>
+        <div class="ph-fallback">images/gallery-3.jpg</div>
       </div>
+      <!-- Band B -->
       <div class="photo g4">
         <img alt="" data-src="images/gallery-4.jpg" />
-        <div class="ph-fallback">images/gallery-4.jpg<br /><span style="opacity:.7">600 × 400</span></div>
+        <div class="ph-fallback">images/gallery-4.jpg</div>
       </div>
       <div class="photo g5">
         <img alt="" data-src="images/gallery-5.jpg" />
-        <div class="ph-fallback">images/gallery-5.jpg<br /><span style="opacity:.7">800 × 400</span></div>
+        <div class="ph-fallback">images/gallery-5.jpg</div>
       </div>
       <div class="photo g6">
         <img alt="" data-src="images/gallery-6.jpg" />
-        <div class="ph-fallback">images/gallery-6.jpg<br /><span style="opacity:.7">800 × 400</span></div>
+        <div class="ph-fallback">images/gallery-6.jpg</div>
       </div>
       <div class="photo g7">
         <img alt="" data-src="images/gallery-7.jpg" />
-        <div class="ph-fallback">images/gallery-7.jpg<br /><span style="opacity:.7">800 × 400</span></div>
+        <div class="ph-fallback">images/gallery-7.jpg</div>
+      </div>
+      <!-- Band C -->
+      <div class="photo g8">
+        <img alt="" data-src="images/gallery-8.jpg" />
+        <div class="ph-fallback">images/gallery-8.jpg</div>
+      </div>
+      <div class="photo g9">
+        <img alt="" data-src="images/gallery-9.jpg" />
+        <div class="ph-fallback">images/gallery-9.jpg</div>
+      </div>
+      <div class="photo g10">
+        <img alt="" data-src="images/gallery-10.jpg" />
+        <div class="ph-fallback">images/gallery-10.jpg</div>
+      </div>
+      <div class="photo g11">
+        <img alt="" data-src="images/gallery-11.jpg" />
+        <div class="ph-fallback">images/gallery-11.jpg</div>
+      </div>
+      <!-- Band D: future photos — drop gallery-12.jpg / 13 / 14 to fill these -->
+      <div class="photo g12">
+        <img alt="" data-src="images/gallery-12.jpg" />
+        <div class="ph-fallback">images/gallery-12.jpg<br /><span style="opacity:.7">future photo</span></div>
+      </div>
+      <div class="photo g13">
+        <img alt="" data-src="images/gallery-13.jpg" />
+        <div class="ph-fallback">images/gallery-13.jpg<br /><span style="opacity:.7">future photo</span></div>
+      </div>
+      <div class="photo g14">
+        <img alt="" data-src="images/gallery-14.jpg" />
+        <div class="ph-fallback">images/gallery-14.jpg<br /><span style="opacity:.7">future photo</span></div>
       </div>
     </div>
   </div>
