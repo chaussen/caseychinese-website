@@ -615,6 +615,29 @@
   .contact-info a.val { text-decoration-skip-ink: none; }
   .contact-info a.val:hover { color: var(--red-soft); }
 
+  .wechat-qr {
+    width: 128px;
+    height: 128px;
+    border-radius: 6px;
+    display: block;
+    object-fit: cover;
+  }
+  .wechat-placeholder {
+    width: 128px;
+    height: 128px;
+    border-radius: 6px;
+    border: 1.5px dashed rgba(255, 248, 245, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: rgba(255, 248, 245, 0.35);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+  .wechat-placeholder svg { opacity: 0.4; }
+
   .contact-card {
     background: var(--paper);
     border-radius: 6px;
@@ -1080,6 +1103,17 @@
           <div>
             <div class="val-name">John Ni</div>
             <a class="val" href="tel:+61401076448">+61 401 076 448</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="lbl">WeChat · 微信</div>
+          <!-- Replace wechat-placeholder with: <img src="images/wechat-qr.png" alt="WeChat QR code" class="wechat-qr" /> -->
+          <div class="wechat-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.5 8C7.36 8 4 11.02 4 14.75c0 1.97 1.01 3.74 2.6 4.97L5.75 22l2.8-1.4c.95.27 1.97.42 3.02.42.23 0 .46-.01.69-.03A5.6 5.6 0 0 1 12 19.5c0-3.31 3.13-6 7-6 .23 0 .46.01.69.03C18.9 11.18 15.5 8 11.5 8Zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" fill="currentColor"/>
+              <path d="M19 15c-3.31 0-6 2.24-6 5s2.69 5 6 5c.9 0 1.75-.19 2.51-.52L24 26l-.88-2.63C24.24 22.42 25 21.27 25 20c0-2.76-2.69-5-6-5Zm-1.5 3.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" fill="currentColor"/>
+            </svg>
+            <span>QR code<br />coming soon</span>
           </div>
         </div>
       </div>
