@@ -533,10 +533,8 @@
   .g10 { grid-column: span 3; grid-row: span 2; }
   .g11 { grid-column: span 3; grid-row: span 2; }
 
-  /* Band D – future placeholders (row 8) */
-  .g12 { grid-column: span 4; grid-row: span 1; }
-  .g13 { grid-column: span 4; grid-row: span 1; }
-  .g14 { grid-column: span 4; grid-row: span 1; }
+  /* Show full portrait photos instead of cropping */
+  .gallery .g7 img, .gallery .g11 img { object-fit: contain; }
 
   /* ───── CONTACT ───── */
   #contact { background: var(--ink); color: var(--bg); padding: 100px 0 60px; }
@@ -583,6 +581,7 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .contact-info a.val { text-decoration-skip-ink: none; }
   .contact-info a.val:hover { color: var(--red-soft); }
 
   .contact-card {
@@ -675,7 +674,6 @@
     .g2, .g3 { grid-column: span 3; grid-row: span 2; }
     .g4, .g5, .g6, .g7,
     .g8, .g9, .g10, .g11 { grid-column: span 3; grid-row: span 1; }
-    .g12, .g13, .g14 { grid-column: span 2; grid-row: span 1; }
   }
 </style>
 </head>
@@ -694,6 +692,7 @@
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
       <a href="#events">Events</a>
+      <a href="#join">Join Us</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
       <a href="#contact" class="nav-cta">Enroll <span class="arrow">→</span></a>
@@ -722,7 +721,7 @@
       <dl class="hero-meta">
         <div>
           <dt>Class Day</dt>
-          <dd>Saturdays · 2:15pm – 5:00pm <span class="zh">每周六下午 · 学期内</span></dd>
+          <dd>Saturdays · School terms <span class="zh">每周六（学期内）</span></dd>
         </div>
         <div>
           <dt>Levels</dt>
@@ -828,7 +827,7 @@
         </p>
         <div class="meta">
           <span><span class="ic"></span>Prep – Gr 3</span>
-          <span><span class="ic"></span>2:15 – 5:00pm</span>
+          <span><span class="ic"></span>Saturdays</span>
         </div>
       </article>
       <article class="program">
@@ -842,7 +841,7 @@
         </p>
         <div class="meta">
           <span><span class="ic"></span>Gr 4 – 8</span>
-          <span><span class="ic"></span>2:15 – 5:00pm</span>
+          <span><span class="ic"></span>Saturdays</span>
         </div>
       </article>
       <article class="program">
@@ -856,7 +855,7 @@
         </p>
         <div class="meta">
           <span><span class="ic"></span>Gr 9 – VCE</span>
-          <span><span class="ic"></span>2:15 – 5:00pm</span>
+          <span><span class="ic"></span>Saturdays</span>
         </div>
       </article>
     </div>
@@ -893,30 +892,6 @@
       </article>
       <article class="event">
         <div class="event-date">
-          <div class="day">23</div>
-          <div class="month">Aug</div>
-        </div>
-        <div class="event-body">
-          <h4>Fall Enrollment Open House</h4>
-          <div class="zh-title-sm">秋季开放日</div>
-          <p>Meet teachers, tour the classrooms, and learn about placement for the year.</p>
-        </div>
-        <span class="event-tag">New families</span>
-      </article>
-      <article class="event">
-        <div class="event-date">
-          <div class="day">07</div>
-          <div class="month">Sep</div>
-        </div>
-        <div class="event-body">
-          <h4>First Day of Classes</h4>
-          <div class="zh-title-sm">秋季开学日</div>
-          <p>Welcome ceremony, classroom introductions, and a parent coffee hour.</p>
-        </div>
-        <span class="event-tag">Returning</span>
-      </article>
-      <article class="event">
-        <div class="event-date">
           <div class="day">04</div>
           <div class="month">Oct</div>
         </div>
@@ -928,6 +903,25 @@
         <span class="event-tag">Community</span>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ───── JOIN US ───── -->
+<section id="join" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Join Our Team</div>
+        <h2>Teach with <em>us</em>.</h2>
+        <div class="zh-title">加入我们</div>
+      </div>
+      <p class="lede">
+        We are a volunteer-run school and are always looking for caring Mandarin speakers
+        to join our teaching team. No formal teaching qualification required — just fluency,
+        patience, and a love of working with children.
+      </p>
+    </div>
+    <a href="#contact" class="btn btn-primary">Get in touch <span class="arrow">→</span></a>
   </div>
 </section>
 
@@ -994,19 +988,6 @@
         <img alt="" data-src="images/gallery-11.jpg" />
         <div class="ph-fallback">images/gallery-11.jpg</div>
       </div>
-      <!-- Band D: future photos — drop gallery-12.jpg / 13 / 14 to fill these -->
-      <div class="photo g12">
-        <img alt="" data-src="images/gallery-12.jpg" />
-        <div class="ph-fallback">images/gallery-12.jpg<br /><span style="opacity:.7">future photo</span></div>
-      </div>
-      <div class="photo g13">
-        <img alt="" data-src="images/gallery-13.jpg" />
-        <div class="ph-fallback">images/gallery-13.jpg<br /><span style="opacity:.7">future photo</span></div>
-      </div>
-      <div class="photo g14">
-        <img alt="" data-src="images/gallery-14.jpg" />
-        <div class="ph-fallback">images/gallery-14.jpg<br /><span style="opacity:.7">future photo</span></div>
-      </div>
     </div>
   </div>
 </section>
@@ -1029,6 +1010,10 @@
     <div class="contact-grid">
       <div class="contact-info">
         <div class="row">
+          <div class="lbl">Contact · 联系人</div>
+          <div class="val">John Ni</div>
+        </div>
+        <div class="row">
           <div class="lbl">Address · 地址</div>
           <div class="val">
             4a Malcolm Court<br />
@@ -1039,8 +1024,8 @@
         <div class="row">
           <div class="lbl">Class Schedule · 上课时间</div>
           <div class="val">
-            Saturdays · 2:15 – 5:00pm<br />
-            <span class="zh-sans">每周六下午两点一刻至五点（学期内）</span>
+            Saturdays · School terms<br />
+            <span class="zh-sans">每周六（学期内）</span>
           </div>
         </div>
         <div class="row">
