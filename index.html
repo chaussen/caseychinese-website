@@ -76,23 +76,18 @@
     padding: 18px 0;
   }
   .brand {
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center;
     text-decoration: none;
   }
-  .brand-mark {
-    width: 38px; height: 38px;
-    border-radius: 10px;
-    background: var(--red);
-    display: grid; place-items: center;
-    color: white;
-    font-family: var(--zh);
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 1;
+  .brand-logo {
+    height: 44px;
+    width: auto;
+    display: block;
+    /* Crop excess white space: logo has wide padding on right */
+    object-fit: cover;
+    object-position: left center;
+    max-width: 220px;
   }
-  .brand-text { line-height: 1.2; }
-  .brand-text .en { font-weight: 600; font-size: 14px; letter-spacing: .01em; }
-  .brand-text .zh { font-size: 13px; color: var(--ink-soft); }
   .nav-links {
     display: flex; gap: 32px; align-items: center;
   }
@@ -371,20 +366,19 @@
   }
   .stat:nth-child(2n) { border-right: none; }
   .stat:nth-last-child(-n+2) { border-bottom: none; }
-  .stat .num {
-    font-family: var(--serif);
-    font-size: 52px;
+  .stat .ic-zh {
+    font-family: var(--zh);
+    font-size: 36px;
     line-height: 1;
     color: var(--red-deep);
-    letter-spacing: -0.02em;
   }
   .stat .lbl {
     margin-top: 10px;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--ink);
   }
-  .stat .lbl .zh { color: var(--ink-soft); display: block; font-size: 12px; }
+  .stat .lbl .zh { color: var(--ink-soft); display: block; font-size: 12px; font-weight: 400; }
 
   /* ───── PROGRAMS ───── */
   .programs {
@@ -670,11 +664,7 @@
 <nav class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="brand">
-      <div class="brand-mark">凱</div>
-      <div class="brand-text">
-        <div class="en">Casey Foundation Chinese School</div>
-        <div class="zh">Casey 中文学校</div>
-      </div>
+      <img src="images/logo.png" alt="Casey Foundation Chinese School · Casey 中文学校" class="brand-logo" />
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -696,7 +686,7 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow"><span class="dot"></span>Saturday Chinese School · est. 2008</div>
+      <div class="eyebrow"><span class="dot"></span>Saturday Chinese School · Narre Warren, Victoria</div>
       <h1 class="hero-en">Nurturing<br /><em>language</em> &amp; culture.</h1>
       <div class="hero-zh">传承语言与文化</div>
       <p class="hero-tagline">
@@ -711,11 +701,11 @@
       <dl class="hero-meta">
         <div>
           <dt>Class Day</dt>
-          <dd>Saturdays · 9:30am – 12:00pm <span class="zh">每周六</span></dd>
+          <dd>Saturdays · 2:15pm – 5:00pm <span class="zh">每周六下午 · 学期内</span></dd>
         </div>
         <div>
-          <dt>Ages</dt>
-          <dd>Pre-K through Grade 10 <span class="zh">学前班至十年级</span></dd>
+          <dt>Levels</dt>
+          <dd>Prep through VCE <span class="zh">幼儿班至高中毕业班</span></dd>
         </div>
       </dl>
     </div>
@@ -730,7 +720,7 @@
         </div>
       </div>
       <div class="hero-stamp">
-        <span><span class="big">18</span>years<br />in community</span>
+        <span><span class="big">学</span>Learn<br />Chinese</span>
       </div>
     </div>
   </div>
@@ -747,7 +737,7 @@
       </div>
       <p class="lede">
         Casey Foundation Chinese School is a parent-founded, volunteer-run weekend
-        school. For nearly two decades we have offered approachable, joyful Mandarin
+        school serving the Casey community. We offer approachable, joyful Mandarin
         instruction grounded in Chinese culture.
       </p>
     </div>
@@ -770,20 +760,20 @@
       </div>
       <dl class="stats">
         <div class="stat">
-          <div class="num">180+</div>
-          <div class="lbl">Students enrolled<span class="zh">在校学生</span></div>
+          <div class="ic-zh">家</div>
+          <div class="lbl">Welcoming community<span class="zh">温馨学习环境</span></div>
         </div>
         <div class="stat">
-          <div class="num">12</div>
-          <div class="lbl">Class levels offered<span class="zh">课程级别</span></div>
+          <div class="ic-zh">师</div>
+          <div class="lbl">Qualified teachers<span class="zh">专业中文教师</span></div>
         </div>
         <div class="stat">
-          <div class="num">22</div>
-          <div class="lbl">Volunteer teachers<span class="zh">志愿教师</span></div>
+          <div class="ic-zh">文</div>
+          <div class="lbl">Structured curriculum<span class="zh">系统课程体系</span></div>
         </div>
         <div class="stat">
-          <div class="num">18</div>
-          <div class="lbl">Years in community<span class="zh">服务年限</span></div>
+          <div class="ic-zh">传</div>
+          <div class="lbl">Cultural heritage<span class="zh">文化传承与认同</span></div>
         </div>
       </dl>
     </div>
@@ -808,41 +798,44 @@
     <div class="programs">
       <article class="program">
         <div class="level">01</div>
-        <h3>Little Sprouts</h3>
-        <div class="zh-name">幼苗班 · Pre-K to K</div>
+        <h3>Beginning Level</h3>
+        <div class="zh-name">初级班 · Prep – Grade 3</div>
         <p>
-          Songs, stories, and play introduce young learners to Mandarin sounds and
-          characters. No prior experience needed — just curiosity.
+          An introduction to Mandarin through songs, stories, and guided play.
+          Students build foundational tones, vocabulary, and a love of the language
+          from their very first lesson.
         </p>
         <div class="meta">
-          <span><span class="ic"></span>Ages 4–6</span>
-          <span><span class="ic"></span>9:30–11:00am</span>
+          <span><span class="ic"></span>Prep – Gr 3</span>
+          <span><span class="ic"></span>2:15 – 5:00pm</span>
         </div>
       </article>
       <article class="program">
         <div class="level">02</div>
-        <h3>Foundations</h3>
-        <div class="zh-name">基础班 · Grades 1–5</div>
+        <h3>Intermediate Level</h3>
+        <div class="zh-name">中级班 · Grades 4 – 8</div>
         <p>
-          Core literacy: pinyin, character recognition, reading fluency, and conversational
-          Mandarin paired with cultural workshops every month.
+          Building reading, writing, and spoken fluency through structured literacy,
+          character recognition, and conversational practice paired with cultural
+          workshops each term.
         </p>
         <div class="meta">
-          <span><span class="ic"></span>Ages 6–10</span>
-          <span><span class="ic"></span>9:30am–12:00pm</span>
+          <span><span class="ic"></span>Gr 4 – 8</span>
+          <span><span class="ic"></span>2:15 – 5:00pm</span>
         </div>
       </article>
       <article class="program">
         <div class="level">03</div>
-        <h3>Heritage &amp; Beyond</h3>
-        <div class="zh-name">高年级班 · Grades 6–10</div>
+        <h3>Advanced Level</h3>
+        <div class="zh-name">高级班 · Grades 9 – VCE</div>
         <p>
-          Advanced reading, essay writing, and conversation. Prepares students for
-          AP Chinese and lifelong fluency. Cultural electives encouraged.
+          Advanced reading, essay writing, and conversation for older students.
+          Builds the skills and confidence needed for VCE Chinese and lifelong
+          language fluency.
         </p>
         <div class="meta">
-          <span><span class="ic"></span>Ages 11+</span>
-          <span><span class="ic"></span>9:30am–12:00pm</span>
+          <span><span class="ic"></span>Gr 9 – VCE</span>
+          <span><span class="ic"></span>2:15 – 5:00pm</span>
         </div>
       </article>
     </div>
@@ -985,25 +978,25 @@
         <div class="row">
           <div class="lbl">Address · 地址</div>
           <div class="val">
-            Casey Community Center<br />
-            1200 Community Way<br />
-            <span class="zh-sans">凯西社区中心 · 美国</span>
+            4a Malcolm Court<br />
+            Narre Warren, Victoria 3805<br />
+            <span class="zh-sans">维多利亚州 Narre Warren</span>
           </div>
         </div>
         <div class="row">
           <div class="lbl">Class Schedule · 上课时间</div>
           <div class="val">
-            Saturdays · 9:30 – 12:00<br />
-            <span class="zh-sans">每周六上午九点半至十二点</span>
+            Saturdays · 2:15 – 5:00pm<br />
+            <span class="zh-sans">每周六下午两点一刻至五点（学期内）</span>
           </div>
         </div>
         <div class="row">
           <div class="lbl">Email</div>
-          <a class="val" href="/cdn-cgi/l/email-protection#a3cbc6cfcfcce3c0c2d0c6dac0cbcacdc6d0c6d0c0cbcccccf8dccd1c4"><span class="__cf_email__" data-cfemail="59313c353536193a382a3c203a3130373c2a3c2a3a3136363577362b3e">[email&#160;protected]</span></a>
+          <a class="val" href="mailto:office@casechinese.org">office@casechinese.org</a>
         </div>
         <div class="row">
           <div class="lbl">Phone · 电话</div>
-          <a class="val" href="tel:+10000000000">(000) 000-0000</a>
+          <a class="val" href="tel:+61401076448">+61 401 076 448</a>
         </div>
       </div>
 
@@ -1038,7 +1031,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // sticky nav border
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
