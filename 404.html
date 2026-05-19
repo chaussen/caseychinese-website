@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Page not found · Casey中文学校</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --red: #F08379;
+    --red-deep: #C84B3F;
+    --red-soft: #F8C5BF;
+    --red-tint: #FCE6E2;
+    --bg: #FFF8F5;
+    --bg-warm: #FBEFE9;
+    --paper: #FFFFFF;
+    --ink: #26201E;
+    --ink-soft: #5C504B;
+    --ink-mute: #8E7F79;
+    --line: #EFDDD5;
+    --sans: 'Manrope', system-ui, -apple-system, sans-serif;
+    --serif: 'Newsreader', 'Times New Roman', serif;
+    --zh: 'Noto Serif SC', 'Songti SC', serif;
+    --zh-sans: 'Noto Sans SC', system-ui, sans-serif;
+    --max: 1240px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.55;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+  /* Nav */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,248,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    height: 64px;
+  }
+  .brand {
+    display: block;
+    overflow: hidden;
+    height: 52px;
+    flex-shrink: 0;
+  }
+  .brand-logo {
+    height: 80px;
+    margin-top: -14px;
+    margin-left: -8px;
+    display: block;
+  }
+
+  /* Main content */
+  .page {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 32px;
+  }
+  .page-inner {
+    max-width: 560px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--red-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .eyebrow .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  .four-oh-four {
+    font-family: var(--serif);
+    font-size: clamp(96px, 20vw, 160px);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--red-soft);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    user-select: none;
+  }
+
+  .heading {
+    font-family: var(--serif);
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .heading em { font-style: italic; color: var(--red-deep); }
+
+  .zh-sub {
+    display: block;
+    font-family: var(--zh);
+    font-size: 14px;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+
+  .body-text {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 40px;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--sans);
+    transition: transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease;
+    border: 1.5px solid transparent;
+  }
+  .btn-primary { background: var(--red); color: white; }
+  .btn-primary:hover { background: var(--red-deep); transform: translateY(-1px); }
+  .btn-ghost { border-color: var(--ink); color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: white; }
+  .btn .arrow { transition: transform .2s ease; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* Footer */
+  .foot {
+    border-top: 1px solid var(--line);
+    padding: 24px 0;
+    font-size: 12.5px;
+    color: var(--ink-mute);
+  }
+  .foot-inner {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .foot a { color: var(--ink-mute); text-decoration: underline; }
+  .foot a:hover { color: var(--red-deep); }
+
+  @media (max-width: 600px) {
+    .foot-inner { flex-direction: column; gap: 6px; text-align: center; }
+    .page { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand">
+      <img src="images/logo.png" alt="Casey Foundation Chinese School · Casey 中文学校" class="brand-logo" />
+    </a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="page-inner">
+    <div class="eyebrow"><span class="dot"></span> Page not found</div>
+    <div class="four-oh-four">404</div>
+    <h1 class="heading">This page seems to have <em>wandered off</em></h1>
+    <span class="zh-sub">这个页面好像走丢了</span>
+    <p class="body-text">
+      The link may be broken, or the page may have moved.<br />
+      Head back to the homepage and we'll get you sorted.
+    </p>
+    <div class="btn-row">
+      <a href="/" class="btn btn-primary">Back to home <span class="arrow">→</span></a>
+      <a href="/#contact" class="btn btn-ghost">Contact us</a>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <div>© 2026 Casey Foundation Chinese School · Casey 中文学校</div>
+    <div>维多利亚州注册社团法人 · Incorporated Association in Victoria</div>
+  </div>
+</footer>
+
+</body>
+</html>
