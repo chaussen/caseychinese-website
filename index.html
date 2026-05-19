@@ -686,7 +686,7 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow"><span class="dot"></span>Saturday Chinese School · Narre Warren, Victoria</div>
+      <div class="eyebrow"><span class="dot"></span>Saturday Chinese School · Casey, Victoria</div>
       <h1 class="hero-en">Nurturing<br /><em>language</em> &amp; culture.</h1>
       <div class="hero-zh">传承语言与文化</div>
       <p class="hero-tagline">
@@ -1000,22 +1000,24 @@
         </div>
       </div>
 
-      <form class="contact-card" onsubmit="event.preventDefault(); this.querySelector('.btn-primary').innerHTML = 'Sent — 谢谢! <span class=arrow>✓</span>';">
+      <form class="contact-card" id="contactForm">
+        <input type="hidden" name="_subject" value="Website enquiry — Casey Chinese School" />
         <h3>Send a note</h3>
         <div class="zh-sub">给我们留言</div>
         <div class="form-row">
-          <label>Name · 姓名</label>
-          <input type="text" required placeholder="Your name" />
+          <label for="cf-name">Name · 姓名</label>
+          <input id="cf-name" type="text" name="name" required placeholder="Your name" />
         </div>
         <div class="form-row">
-          <label>Email · 邮箱</label>
-          <input type="email" required placeholder="you@example.com" />
+          <label for="cf-email">Email · 邮箱</label>
+          <input id="cf-email" type="email" name="_replyto" required placeholder="you@example.com" />
         </div>
         <div class="form-row">
-          <label>Message · 留言</label>
-          <textarea required placeholder="How can we help?"></textarea>
+          <label for="cf-message">Message · 留言</label>
+          <textarea id="cf-message" name="message" required placeholder="How can we help?"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Send message <span class="arrow">→</span></button>
+        <div id="cf-error" style="display:none; color:var(--red-deep); font-size:13px; margin-bottom:10px;"></div>
+        <button type="submit" class="btn btn-primary" id="cf-btn">Send message <span class="arrow">→</span></button>
       </form>
     </div>
   </div>
@@ -1049,6 +1051,35 @@
       img.classList.add('loaded');
     };
     probe.src = url;
+  });
+
+  // contact form
+  const contactForm = document.getElementById('contactForm');
+  const cfBtn = document.getElementById('cf-btn');
+  const cfError = document.getElementById('cf-error');
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    cfBtn.disabled = true;
+    cfBtn.innerHTML = 'Sending… <span class="arrow">⋯</span>';
+    cfError.style.display = 'none';
+    try {
+      const res = await fetch('https://formspree.io/office@caseychinese.org', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(contactForm)
+      });
+      if (res.ok) {
+        cfBtn.innerHTML = 'Sent — 谢谢! <span class="arrow">✓</span>';
+        contactForm.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      cfError.textContent = 'Something went wrong — please email us directly at office@caseychinese.org';
+      cfError.style.display = 'block';
+      cfBtn.disabled = false;
+      cfBtn.innerHTML = 'Try again <span class="arrow">→</span>';
+    }
   });
 
   // mobile nav
