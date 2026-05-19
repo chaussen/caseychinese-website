@@ -76,17 +76,21 @@
     padding: 18px 0;
   }
   .brand {
-    display: flex; align-items: center;
+    display: block;
     text-decoration: none;
+    overflow: hidden;
+    /* clip the blank margins baked into the logo image */
+    height: 52px;
+    line-height: 0;
   }
   .brand-logo {
-    height: 44px;
+    /* render larger than the clip window so whitespace is hidden */
+    height: 80px;
     width: auto;
     display: block;
-    /* Crop excess white space: logo has wide padding on right */
-    object-fit: cover;
-    object-position: left center;
-    max-width: 220px;
+    margin-top: -14px;   /* crop top whitespace */
+    margin-bottom: -14px; /* crop bottom whitespace */
+    margin-right: -12px; /* crop right whitespace */
   }
   .nav-links {
     display: flex; gap: 32px; align-items: center;
