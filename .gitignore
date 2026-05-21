@@ -1,0 +1,14 @@
+# Claude Code
+.claude/
+
+# Internal docs
+init.md
+prompts.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
