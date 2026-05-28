@@ -2,6 +2,23 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ── Skip navigation ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 10px 20px;
+  background: var(--red-dark);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 0 0 6px 0;
+  transition: top 0.15s;
+}
+.skip-link:focus { top: 0; outline: 3px solid var(--gold); outline-offset: 2px; }
+
 :root {
   --red: #C41E3A;
   --red-light: #E8435A;
@@ -96,6 +113,7 @@ nav {
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.hamburger:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; border-radius: 4px; }
 
 /* ── Footer ── */
 footer {
@@ -115,8 +133,8 @@ footer {
 
 .footer-grid h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; opacity: 0.8; }
 
-.footer-grid a { color: #fff; text-decoration: none; display: block; margin-bottom: 0.35rem; font-size: 0.9rem; opacity: 0.85; }
-.footer-grid a:hover { opacity: 1; text-decoration: underline; }
+.footer-grid a { color: #fff; text-decoration: underline; text-underline-offset: 3px; display: block; margin-bottom: 0.35rem; font-size: 0.9rem; opacity: 0.85; }
+.footer-grid a:hover { opacity: 1; }
 
 .footer-logo { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
 .footer-tagline { font-size: 0.85rem; opacity: 0.8; }

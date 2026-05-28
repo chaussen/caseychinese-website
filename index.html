@@ -207,7 +207,7 @@
     border-radius: 999px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--red-deep);
+    color: var(--ink);
   }
   .trial-note .zh-sans { font-size: 12px; color: var(--ink-soft); }
   .btn {
@@ -221,10 +221,10 @@
     border: 1.5px solid transparent;
   }
   .btn-primary {
-    background: var(--red);
+    background: var(--red-deep);
     color: white;
   }
-  .btn-primary:hover { background: var(--red-deep); transform: translateY(-1px); }
+  .btn-primary:hover { background: #9A3027; transform: translateY(-1px); }
   .btn-ghost {
     border-color: var(--ink);
     color: var(--ink);
@@ -246,7 +246,7 @@
   .hero-meta dt {
     font-size: 11px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.14em;
-    color: var(--ink-mute);
+    color: var(--ink-soft);
     margin-bottom: 6px;
   }
   .hero-meta dd {
@@ -477,7 +477,7 @@
   .program .meta {
     display: flex; gap: 18px;
     font-size: 12px;
-    color: var(--ink-mute);
+    color: var(--ink-soft);
     padding-top: 18px;
     border-top: 1px solid var(--line-soft);
   }
@@ -545,7 +545,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: var(--red-deep);
+    color: var(--ink);
     background: var(--red-tint);
     padding: 6px 12px;
     border-radius: 999px;
@@ -691,7 +691,7 @@
   .contact-card textarea {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--ink-mute);
     border-radius: 4px;
     background: var(--bg);
     font-family: var(--sans);
@@ -701,8 +701,9 @@
   }
   .contact-card input:focus,
   .contact-card textarea:focus {
-    outline: none;
-    border-color: var(--red);
+    outline: 2px solid var(--red-deep);
+    outline-offset: 2px;
+    border-color: var(--red-deep);
     background: var(--paper);
   }
   .contact-card textarea { resize: vertical; min-height: 90px; }
@@ -721,6 +722,16 @@
   }
   .foot a { color: var(--red-soft); text-decoration: none; }
   .foot a:hover { color: var(--bg); }
+
+  /* ───── SKIP LINK ───── */
+  .skip-link {
+    position: absolute; top: -100%; left: 0; z-index: 9999;
+    padding: 10px 20px; background: var(--ink); color: var(--bg);
+    font-weight: 700; font-size: 14px; text-decoration: none;
+    border-radius: 0 0 6px 0;
+  }
+  .skip-link:focus { top: 0; outline: 3px solid var(--red-soft); outline-offset: 2px; }
+  .nav-toggle:focus-visible { outline: 2px solid var(--red-deep); outline-offset: 4px; border-radius: 4px; }
 
   /* ───── RESPONSIVE ───── */
   @media (max-width: 920px) {
@@ -753,6 +764,8 @@
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous"
   src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0">
@@ -764,7 +777,7 @@
     <a href="#top" class="brand">
       <img src="images/logo.png" alt="Casey Foundation Chinese School · Casey 中文学校" class="brand-logo" />
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="navLinks">
@@ -782,7 +795,7 @@
 <a id="top"></a>
 
 <!-- ───── HERO ───── -->
-<header class="hero">
+<header class="hero" id="main-content">
   <div class="wrap hero-grid">
     <div>
       <div class="eyebrow"><span class="dot"></span>Saturday Chinese School · Casey, Victoria</div>
@@ -873,20 +886,20 @@
       </div>
       <dl class="stats">
         <div class="stat">
-          <div class="ic-zh">家</div>
-          <div class="lbl">Welcoming community<span class="zh">温馨融洽的学习环境</span></div>
+          <dt class="ic-zh" aria-hidden="true">家</dt>
+          <dd class="lbl">Welcoming community<span class="zh">温馨融洽的学习环境</span></dd>
         </div>
         <div class="stat">
-          <div class="ic-zh">师</div>
-          <div class="lbl">Experienced teachers<span class="zh">经验丰富的母语教师</span></div>
+          <dt class="ic-zh" aria-hidden="true">师</dt>
+          <dd class="lbl">Experienced teachers<span class="zh">经验丰富的母语教师</span></dd>
         </div>
         <div class="stat">
-          <div class="ic-zh">文</div>
-          <div class="lbl">Structured curriculum<span class="zh">系统规范的课程体系</span></div>
+          <dt class="ic-zh" aria-hidden="true">文</dt>
+          <dd class="lbl">Structured curriculum<span class="zh">系统规范的课程体系</span></dd>
         </div>
         <div class="stat">
-          <div class="ic-zh">传</div>
-          <div class="lbl">Cultural identity<span class="zh">传承文化，建立身份认同</span></div>
+          <dt class="ic-zh" aria-hidden="true">传</dt>
+          <dd class="lbl">Cultural identity<span class="zh">传承文化，建立身份认同</span></dd>
         </div>
       </dl>
     </div>
@@ -1225,8 +1238,18 @@
   // mobile nav
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // a11y: language tags on Chinese text; aria-hidden on decorative dot bullets
+  document.querySelectorAll('.zh, .zh-sans, .zh-para, .zh-title, .zh-title-sm, .zh-name, .zh-note, .zh-sub').forEach(el => el.setAttribute('lang', 'zh-Hans'));
+  document.querySelectorAll('.dot').forEach(el => el.setAttribute('aria-hidden', 'true'));
 </script>
 </body>
 </html>
