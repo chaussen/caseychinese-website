@@ -760,6 +760,14 @@
     .g4, .g5, .g6, .g7,
     .g8, .g9, .g10, .g11 { grid-column: span 3; grid-row: span 1; }
   }
+
+  /* ───── FAQ ───── */
+  .faq-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .faq-item { padding: 32px 0; border-bottom: 1px solid var(--line); }
+  .faq-item h4 { font-size: 17px; font-weight: 600; margin: 0 0 4px; color: var(--ink); }
+  .faq-item .faq-q-zh { font-family: var(--zh); font-size: 14px; color: var(--ink-soft); margin: 0 0 14px; }
+  .faq-item .faq-ans { margin: 0; font-size: 14.5px; color: var(--ink-soft); line-height: 1.65; max-width: 680px; }
+  .faq-item .faq-a-zh { display: block; font-family: var(--zh); font-size: 13.5px; color: var(--ink-mute); margin-top: 8px; line-height: 1.7; }
 </style>
 </head>
 <body>
@@ -783,6 +791,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
+      <a href="#faq">FAQ</a>
       <a href="#events">Events</a>
       <a href="#join">Join Us</a>
       <a href="#gallery">Gallery</a>
@@ -825,7 +834,7 @@
       <dl class="hero-meta">
         <div>
           <dt>Class Day</dt>
-          <dd>Saturdays · School terms <span class="zh">每周六（学期内）</span></dd>
+          <dd>Saturdays · 9.00 AM – 5.00 PM · School terms <span class="zh">每周六 · 九点到五点 · 学期内</span></dd>
         </div>
         <div>
           <dt>Years</dt>
@@ -917,8 +926,11 @@
       </div>
       <p class="lede">
         Whether your child is starting their first words or refining their essays,
-        we have a level that meets them where they are. Placement is friendly and flexible.
-        <span class="zh-note">无论您的孩子是初学中文还是已有基础，我们都有合适的班级。分班灵活亲切，欢迎咨询。</span>
+        we have a level that meets them where they are. Placement is based on your child's
+        Chinese ability — not their school year. A Year 7 student new to Chinese will typically
+        start in the Beginning level, and that is completely normal. We assess every new student
+        individually during their free trial.
+        <span class="zh-note">[CN: 分班依据孩子的中文能力——而非学校年级。一位刚开始学中文的七年级学生，通常会从启蒙班开始，这完全正常。我们会在免费试课期间对每位新生进行个别评估。]</span>
       </p>
     </div>
 
@@ -968,6 +980,58 @@
           <span><span class="ic"></span>Saturdays</span>
         </div>
       </article>
+    </div>
+
+    <p style="margin-top:28px;font-size:14.5px;color:var(--ink-soft);line-height:1.6;max-width:680px;">
+      Tuition: A$580 per half-year · A$880 per full year. For families enrolling multiple children, please get in touch.
+      <span class="zh-note">学费：半年 $580 · 全年 $880。多名子女就读的家庭欢迎联系咨询。</span>
+    </p>
+  </div>
+</section>
+
+<!-- ───── FAQ ───── -->
+<section id="faq" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Common Questions</div>
+        <h2>Questions we hear <em>often</em>.</h2>
+        <div class="zh-title">常见问题</div>
+      </div>
+      <p class="lede">
+        A few questions we hear often from families getting in touch for the first time.
+        <span class="zh-note">[CN: 以下是首次联系我们的家庭最常提出的几个问题。]</span>
+      </p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>My child has never learned Chinese before. Which class is right for them?</h4>
+        <div class="faq-q-zh">[CN: 我的孩子从未学过中文，适合上哪个班？]</div>
+        <p class="faq-ans">
+          Start with the Beginning level, regardless of your child's school year. We use the free
+          trial to confirm the best fit and can move students between levels at any time.
+          <span class="faq-a-zh">[CN: 无论孩子就读哪个年级，请从启蒙班开始。我们会在免费试课期间确认最合适的班级，并可随时根据孩子的情况进行调整。]</span>
+        </p>
+      </div>
+      <div class="faq-item">
+        <h4>I have two children at different levels. Can they both attend?</h4>
+        <div class="faq-q-zh">[CN: 我有两个孩子，程度不同，他们都可以来上课吗？]</div>
+        <p class="faq-ans">
+          Yes. Many of our families have children across multiple levels. Both children can attend
+          on the same Saturday.
+          <span class="faq-a-zh">[CN: 可以。我们许多家庭都有就读不同班级的孩子，两位孩子可以在同一个周六一起上课。]</span>
+        </p>
+      </div>
+      <div class="faq-item">
+        <h4>Is there homework or assessment?</h4>
+        <div class="faq-q-zh">[CN: 有家庭作业或考试吗？]</div>
+        <p class="faq-ans">
+          We set light weekly practice to reinforce what is covered in class. There are no formal
+          tests or report cards — progress is discussed informally with parents as needed.
+          <span class="faq-a-zh">[CN: 我们会布置少量每周练习，以巩固课堂所学内容。不设正式考试或成绩单——如有需要，老师会与家长非正式地沟通孩子的学习进展。]</span>
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -1139,8 +1203,8 @@
         <div class="row">
           <div class="lbl">Class Schedule · 上课时间</div>
           <div class="val">
-            Saturdays · School terms<br />
-            <span class="zh-sans">每周六（学期内）</span>
+            Saturdays · 9.00 AM – 5.00 PM · School terms<br />
+            <span class="zh-sans">每周六 · 九点到五点 · 学期内</span>
           </div>
         </div>
         <div class="row">
