@@ -834,6 +834,20 @@
   }
   .fee-sub { font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
   .fee-note { margin-top: 28px; font-size: 16px; color: var(--ink-soft); max-width: 540px; }
+
+  /* ───── ENROLMENT ───── */
+  #enrolment { background: var(--paper); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .vsn-callout {
+    margin-top: 32px; padding: 22px 26px;
+    background: var(--red-tint); border: 1px solid var(--red-soft);
+    border-radius: 6px; max-width: 600px;
+  }
+  .vsn-callout .vsn-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--red-deep); margin-bottom: 12px;
+  }
+  .vsn-callout p { margin: 0; font-size: 15.5px; color: var(--ink); line-height: 1.65; }
+  .vsn-callout .zh-note { display: block; font-family: var(--zh); font-size: 14px; color: var(--ink-soft); margin-top: 10px; line-height: 1.75; }
   @media (max-width: 500px) {
     .term-grid { grid-template-columns: 1fr; }
     .fee-options { grid-template-columns: 1fr; }
@@ -862,13 +876,14 @@
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
       <a href="#fees">Fees</a>
+      <a href="#enrolment">Enrolment</a>
       <a href="#faq">FAQ</a>
       <a href="#schedule">Schedule</a>
       <a href="#events">Events</a>
       <a href="#join">Join Us</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
-      <a href="#contact" class="nav-cta">Enrol <span class="arrow">→</span></a>
+      <a href="#enrolment" class="nav-cta">Enrol <span class="arrow">→</span></a>
     </div>
   </div>
 </nav>
@@ -1087,6 +1102,38 @@
       Families enrolling multiple children are welcome to get in touch.
       <span class="zh-note">多名子女就读的家庭欢迎联系我们咨询。</span>
     </p>
+  </div>
+</section>
+
+<!-- ───── ENROLMENT ───── -->
+<section id="enrolment" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Enrolment</div>
+        <h2>Ready to <em>join</em>?</h2>
+        <div class="zh-title">报名</div>
+      </div>
+      <p class="lede">
+        Download the 2026 enrolment form, fill it in, and return it by email or in person on a Saturday.
+        <span class="zh-note">下载2026年报名表，填写后通过电子邮件或周六当面提交。</span>
+      </p>
+    </div>
+
+    <a href="enrolment-form-2026.pdf" download="Casey-Chinese-School-Enrolment-Form-2026.pdf" class="btn btn-primary">
+      Download Enrolment Form <span class="arrow">↓</span>
+    </a>
+
+    <div class="vsn-callout">
+      <div class="vsn-label">VSN · Victorian Student Number · 维州学生编号</div>
+      <p>
+        The form asks for your child's <strong>VSN</strong> — a 9-digit number assigned to every
+        student enrolled in a Victorian school (required for Years 1–12). You can find it on
+        <strong>Compass</strong>, your day school's parent portal, or ask the school office to
+        provide it directly.
+      </p>
+      <span class="zh-note">报名表需填写孩子的维州学生编号（VSN），即每位维州在校学生的9位专属编号，1至12年级学生必须填写。可在日校Compass家长平台上查找，或直接向日校办公室索取。</span>
+    </div>
   </div>
 </section>
 
