@@ -61,8 +61,8 @@
     color: var(--ink);
     background: var(--bg);
     -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.55;
+    font-size: 17px;
+    line-height: 1.6;
   }
   a { color: inherit; }
   img { display: block; max-width: 100%; }
@@ -186,8 +186,8 @@
     margin-bottom: 32px;
   }
   .hero-tagline {
-    font-size: 18px;
-    line-height: 1.55;
+    font-size: 19px;
+    line-height: 1.6;
     color: var(--ink-soft);
     max-width: 460px;
     margin-bottom: 40px;
@@ -357,16 +357,16 @@
     font-weight: 500;
   }
   .section-head .lede {
-    font-size: 17px;
+    font-size: 18.5px;
     color: var(--ink-soft);
-    line-height: 1.6;
+    line-height: 1.65;
     max-width: 540px;
   }
   #join .section-head { align-items: start; }
   .lede .zh-note, .program .zh-note, .event-body .zh-note {
     display: block;
     font-family: var(--zh);
-    font-size: 13.5px;
+    font-size: 14.5px;
     color: var(--ink-mute);
     margin-top: 8px;
     line-height: 1.7;
@@ -382,14 +382,14 @@
     align-items: start;
   }
   .about-body p {
-    font-size: 17px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.75;
     color: var(--ink);
     margin: 0 0 20px;
   }
   .about-body p.lead {
     font-family: var(--serif);
-    font-size: 22px;
+    font-size: 24px;
     line-height: 1.45;
     color: var(--ink);
     margin-bottom: 28px;
@@ -468,8 +468,8 @@
     margin-bottom: 18px;
   }
   .program p {
-    font-size: 14.5px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--ink-soft);
     margin: 0 0 24px;
     flex-grow: 1;
@@ -537,7 +537,7 @@
   .event-body p {
     margin: 0;
     color: var(--ink-soft);
-    font-size: 14.5px;
+    font-size: 16px;
     max-width: 540px;
   }
   .event-tag {
@@ -765,10 +765,10 @@
   /* ───── FAQ ───── */
   .faq-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
   .faq-item { padding: 32px 0; border-bottom: 1px solid var(--line); }
-  .faq-item h4 { font-size: 17px; font-weight: 600; margin: 0 0 4px; color: var(--ink); }
-  .faq-item .faq-q-zh { font-family: var(--zh); font-size: 14px; color: var(--ink-soft); margin: 0 0 14px; }
-  .faq-item .faq-ans { margin: 0; font-size: 14.5px; color: var(--ink-soft); line-height: 1.65; max-width: 680px; }
-  .faq-item .faq-a-zh { display: block; font-family: var(--zh); font-size: 13.5px; color: var(--ink-mute); margin-top: 8px; line-height: 1.7; }
+  .faq-item h4 { font-size: 18px; font-weight: 600; margin: 0 0 4px; color: var(--ink); }
+  .faq-item .faq-q-zh { font-family: var(--zh); font-size: 15px; color: var(--ink-soft); margin: 0 0 14px; }
+  .faq-item .faq-ans { margin: 0; font-size: 16px; color: var(--ink-soft); line-height: 1.65; max-width: 680px; }
+  .faq-item .faq-a-zh { display: block; font-family: var(--zh); font-size: 14.5px; color: var(--ink-mute); margin-top: 8px; line-height: 1.75; }
 
   /* ───── SCHEDULE ───── */
   #schedule { background: var(--paper); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
@@ -807,9 +807,36 @@
     padding: 3px 7px; border-radius: 3px; white-space: nowrap;
     font-variant-numeric: tabular-nums;
   }
-  .term-note { font-size: 12.5px; color: var(--ink-mute); text-align: right; margin: 0; }
+  /* ───── FEES ───── */
+  #fees { background: var(--bg-warm); }
+  .fee-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 640px;
+    margin-bottom: 28px;
+  }
+  .fee-option {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: clamp(28px, 4vw, 44px);
+  }
+  .fee-option.featured { border-color: var(--red-soft); box-shadow: 0 0 0 1px var(--red-soft); }
+  .fee-period {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--red-deep); margin-bottom: 16px;
+  }
+  .fee-amount {
+    font-family: var(--serif);
+    font-size: clamp(44px, 5.5vw, 60px);
+    font-weight: 400; color: var(--ink); line-height: 1; margin-bottom: 10px;
+  }
+  .fee-sub { font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+  .fee-note { margin-top: 28px; font-size: 16px; color: var(--ink-soft); max-width: 540px; }
   @media (max-width: 500px) {
     .term-grid { grid-template-columns: 1fr; }
+    .fee-options { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -834,6 +861,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
+      <a href="#fees">Fees</a>
       <a href="#faq">FAQ</a>
       <a href="#schedule">Schedule</a>
       <a href="#events">Events</a>
@@ -1026,9 +1054,38 @@
       </article>
     </div>
 
-    <p style="margin-top:28px;font-size:14.5px;color:var(--ink-soft);line-height:1.6;max-width:680px;">
-      2026 Tuition: A$580 per half-year · A$880 per full year. For families enrolling multiple children, please get in touch.
-      <span class="zh-note">2026年学费：半年 $580 · 全年 $880。多名子女就读的家庭欢迎联系咨询。</span>
+  </div>
+</section>
+
+<!-- ───── FEES ───── -->
+<section id="fees" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Tuition</div>
+        <h2>Simple, <em>clear</em> pricing.</h2>
+        <div class="zh-title">2026年学费</div>
+      </div>
+      <p class="lede">
+        One fee covers all your child's classes for the term — no hidden charges or extras.
+        <span class="zh-note">学费包含整个学期的全部课程，无其他费用。</span>
+      </p>
+    </div>
+    <div class="fee-options">
+      <div class="fee-option">
+        <div class="fee-period">Half-Year · 半年</div>
+        <div class="fee-amount">A$580</div>
+        <p class="fee-sub">Per student · two terms<br /><span class="zh" style="font-size:13px;font-weight:400;color:var(--ink-mute);">每位学生 · 两个学期</span></p>
+      </div>
+      <div class="fee-option featured">
+        <div class="fee-period">Full Year · 全年</div>
+        <div class="fee-amount">A$880</div>
+        <p class="fee-sub">Per student · all four terms<br /><span class="zh" style="font-size:13px;font-weight:400;color:var(--ink-mute);">每位学生 · 全年四个学期</span></p>
+      </div>
+    </div>
+    <p class="fee-note">
+      Families enrolling multiple children are welcome to get in touch.
+      <span class="zh-note">多名子女就读的家庭欢迎联系我们咨询。</span>
     </p>
   </div>
 </section>
@@ -1051,29 +1108,31 @@
     <div class="faq-list">
       <div class="faq-item">
         <h4>My child has never learned Chinese before. Which class is right for them?</h4>
-        <div class="faq-q-zh">[CN: 我的孩子从未学过中文，适合上哪个班？]</div>
+        <div class="faq-q-zh">我的孩子从未学过中文，适合上哪个班？</div>
         <p class="faq-ans">
-          Start with the Beginning level, regardless of your child's school year. We use the free
-          trial to confirm the best fit and can move students between levels at any time.
-          <span class="faq-a-zh">可以先从启蒙班试课，培养兴趣</span>
+          Students without any Chinese background start from the Beginning level (启蒙班),
+          regardless of their school year. It is a relaxed, fun environment — the focus is on
+          building confidence and a genuine love of the language. We confirm the right level
+          during the free trial, and students can move between levels at any time.
+          <span class="faq-a-zh">没有中文基础的孩子，建议从启蒙班开始，先在轻松有趣的环境里培养语感和兴趣。我们会在免费试课期间确认最合适的班级，之后也可以随时根据孩子的进度调整。</span>
         </p>
       </div>
       <div class="faq-item">
         <h4>I have two children at different levels. Can they both attend?</h4>
-        <div class="faq-q-zh">[CN: 我有两个孩子，程度不同，他们都可以来上课吗？]</div>
+        <div class="faq-q-zh">我有两个孩子，程度不同，他们都可以来上课吗？</div>
         <p class="faq-ans">
           Yes. Many of our families have children across multiple levels. Both children can attend
           on the same Saturday.
-          <span class="faq-a-zh">[CN: 可以。我们许多家庭都有就读不同班级的孩子，两位孩子可以在同一个周六一起上课。]</span>
+          <span class="faq-a-zh">可以。我们许多家庭都有就读不同班级的孩子，两位孩子可以在同一个周六一起上课。</span>
         </p>
       </div>
       <div class="faq-item">
         <h4>Is there homework or assessment?</h4>
-        <div class="faq-q-zh">[CN: 有家庭作业或考试吗？]</div>
+        <div class="faq-q-zh">有家庭作业或考试吗？</div>
         <p class="faq-ans">
           We set light weekly practice to reinforce what is covered in class. There are no formal
           tests or report cards — progress is discussed informally with parents as needed.
-          <span class="faq-a-zh">[CN: 我们会布置少量每周练习，以巩固课堂所学内容。不设正式考试或成绩单——如有需要，老师会与家长非正式地沟通孩子的学习进展。]</span>
+          <span class="faq-a-zh">每周有少量练习帮助孩子巩固所学，不会占用太多时间。没有正式考试或成绩单，老师平时会随时跟家长分享孩子的进展。</span>
         </p>
       </div>
     </div>
@@ -1090,9 +1149,8 @@
         <div class="zh-title">2026年上课日期</div>
       </div>
       <p class="lede">
-        Classes run every Saturday during school terms. Our Casey campus follows its own
-        term calendar — starting a week or two after the Victorian school term opens.
-        <span class="zh-note">每学期内每周六上课。Casey校区有独立的学期日历，通常比维多利亚州学期晚一至两周开始。</span>
+        Every Saturday during the school term. Check the dates below to plan your year ahead.
+        <span class="zh-note">每学期每周六上课，请参考以下日期安排您的全年计划。</span>
       </p>
     </div>
 
@@ -1136,7 +1194,6 @@
         </div>
       </div>
     </div>
-    <p class="term-note">34 Saturdays across four terms · 四个学期共34个周六</p>
   </div>
 </section>
 
