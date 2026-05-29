@@ -124,6 +124,15 @@
     position: relative;
     padding: 4px 0;
   }
+  .nav-links a .zh-nav {
+    display: block;
+    font-family: var(--zh-sans);
+    font-size: 9.5px;
+    color: var(--ink-mute);
+    line-height: 1;
+    margin-top: 2px;
+    font-weight: 400;
+  }
   .nav-links a::after {
     content: '';
     position: absolute; left: 0; right: 100%; bottom: -2px;
@@ -873,17 +882,17 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#programs">Programs</a>
-      <a href="#fees">Fees</a>
-      <a href="#enrolment">Enrolment</a>
-      <a href="#faq">FAQ</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#events">Events</a>
-      <a href="#join">Join Us</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-      <a href="#enrolment" class="nav-cta">Enrol <span class="arrow">→</span></a>
+      <a href="#about">About<span class="zh-nav">关于我们</span></a>
+      <a href="#programs">Programs<span class="zh-nav">课程</span></a>
+      <a href="#fees">Fees<span class="zh-nav">学费</span></a>
+      <a href="#enrolment">Enrolment<span class="zh-nav">报名</span></a>
+      <a href="#faq">FAQ<span class="zh-nav">常见问题</span></a>
+      <a href="#schedule">Schedule<span class="zh-nav">上课日期</span></a>
+      <a href="#events">Events<span class="zh-nav">活动</span></a>
+      <a href="#join">Join Us<span class="zh-nav">加入我们</span></a>
+      <a href="#gallery">Gallery<span class="zh-nav">相册</span></a>
+      <a href="#contact">Contact<span class="zh-nav">联系我们</span></a>
+      <a href="#enrolment" class="nav-cta">Enrol · 报名 <span class="arrow">→</span></a>
     </div>
   </div>
 </nav>
@@ -903,8 +912,8 @@
         <span class="zh">每周六，与家人和朋友一起学中文、感受中华文化。</span>
       </p>
       <div class="hero-ctas">
-        <a href="#enrolment" class="btn btn-primary">Enrol Now <span class="arrow">→</span></a>
-        <a href="#programs" class="btn btn-ghost">View Programs</a>
+        <a href="#enrolment" class="btn btn-primary">Enrol Now · 立即报名 <span class="arrow">→</span></a>
+        <a href="#programs" class="btn btn-ghost">View Programs · 浏览课程</a>
       </div>
       <div class="trial-note">
         <span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
@@ -1121,7 +1130,7 @@
     </div>
 
     <a href="enrolment-form-2026.pdf" download="Casey-Chinese-School-Enrolment-Form-2026.pdf" class="btn btn-primary">
-      Download Enrolment Form <span class="arrow">↓</span>
+      Download Form · 下载报名表 <span class="arrow">↓</span>
     </a>
 
     <div class="vsn-callout">
@@ -1308,7 +1317,7 @@
         <span class="zh-note">我们诚邀有志于中文教育的人士加入志愿教学团队。具备教学经验，或拥有中文、教育及相关领域背景者尤为欢迎。我们最看重的，是对中文教育的热忱与对孩子的真诚关爱。</span>
       </p>
     </div>
-    <a href="#contact" class="btn btn-primary">Get in touch <span class="arrow">→</span></a>
+    <a href="#contact" class="btn btn-primary">Get in touch · 联系我们 <span class="arrow">→</span></a>
   </div>
 </section>
 
@@ -1450,7 +1459,7 @@
           <label for="cf-message">Message · 留言</label>
           <textarea id="cf-message" name="message" required placeholder="How can we help?"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" id="cf-btn">Send message <span class="arrow">→</span></button>
+        <button type="submit" class="btn btn-primary" id="cf-btn">Send message · 发送留言 <span class="arrow">→</span></button>
       </form>
     </div>
   </div>
@@ -1461,7 +1470,7 @@
   <div class="wrap foot-inner">
     <div>© 2026 Casey Foundation Chinese School · Casey 中文学校</div>
     <div>
-      维多利亚州注册社团法人 · Incorporated Association in Victoria · <a href="#contact">Volunteer with us</a>
+      维多利亚州注册社团法人 · Incorporated Association in Victoria · <a href="#contact">Volunteer with us · 教学志愿</a>
     </div>
   </div>
 </footer>
@@ -1504,7 +1513,7 @@
     cfBtn.innerHTML = 'Opening your email app… <span class="arrow">✓</span>';
     cfBtn.disabled = true;
     setTimeout(() => {
-      cfBtn.innerHTML = 'Send message <span class="arrow">→</span>';
+      cfBtn.innerHTML = 'Send message · 发送留言 <span class="arrow">→</span>';
       cfBtn.disabled = false;
     }, 4000);
   });
