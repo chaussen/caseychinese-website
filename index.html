@@ -759,6 +759,7 @@
     .g2, .g3 { grid-column: span 3; grid-row: span 2; }
     .g4, .g5, .g6, .g7,
     .g8, .g9, .g10, .g11 { grid-column: span 3; grid-row: span 1; }
+    .term-grid { grid-template-columns: 1fr 1fr; }
   }
 
   /* ───── FAQ ───── */
@@ -768,6 +769,48 @@
   .faq-item .faq-q-zh { font-family: var(--zh); font-size: 14px; color: var(--ink-soft); margin: 0 0 14px; }
   .faq-item .faq-ans { margin: 0; font-size: 14.5px; color: var(--ink-soft); line-height: 1.65; max-width: 680px; }
   .faq-item .faq-a-zh { display: block; font-family: var(--zh); font-size: 13.5px; color: var(--ink-mute); margin-top: 8px; line-height: 1.7; }
+
+  /* ───── SCHEDULE ───── */
+  #schedule { background: var(--paper); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .term-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .term-card { background: var(--paper); padding: clamp(20px, 2.8vw, 32px); }
+  .term-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--red-deep); margin-bottom: 14px;
+  }
+  .term-range {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.9vw, 23px);
+    font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 10px;
+  }
+  .term-count {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--red-deep); background: var(--red-tint);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 16px;
+  }
+  .term-dates {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    padding-top: 14px; border-top: 1px solid var(--line-soft);
+  }
+  .term-dates .d {
+    font-size: 11px; color: var(--ink-soft); background: var(--bg-warm);
+    padding: 3px 7px; border-radius: 3px; white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .term-note { font-size: 12.5px; color: var(--ink-mute); text-align: right; margin: 0; }
+  @media (max-width: 500px) {
+    .term-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -792,6 +835,7 @@
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
       <a href="#faq">FAQ</a>
+      <a href="#schedule">Schedule</a>
       <a href="#events">Events</a>
       <a href="#join">Join Us</a>
       <a href="#gallery">Gallery</a>
@@ -1033,6 +1077,66 @@
         </p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ───── SCHEDULE ───── -->
+<section id="schedule" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>2026 Schedule</div>
+        <h2>When we <em>meet</em>.</h2>
+        <div class="zh-title">2026年上课日期</div>
+      </div>
+      <p class="lede">
+        Classes run every Saturday during school terms. Our Casey campus follows its own
+        term calendar — starting a week or two after the Victorian school term opens.
+        <span class="zh-note">每学期内每周六上课。Casey校区有独立的学期日历，通常比维多利亚州学期晚一至两周开始。</span>
+      </p>
+    </div>
+
+    <div class="term-grid">
+      <div class="term-card">
+        <div class="term-label">Term 1 · 第一学期</div>
+        <div class="term-range">7 Feb – 28 Mar</div>
+        <div class="term-count">8 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">7 Feb</span><span class="d">14 Feb</span><span class="d">21 Feb</span><span class="d">28 Feb</span>
+          <span class="d">7 Mar</span><span class="d">14 Mar</span><span class="d">21 Mar</span><span class="d">28 Mar</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 2 · 第二学期</div>
+        <div class="term-range">2 May – 20 Jun</div>
+        <div class="term-count">8 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">2 May</span><span class="d">9 May</span><span class="d">16 May</span><span class="d">23 May</span>
+          <span class="d">30 May</span><span class="d">6 Jun</span><span class="d">13 Jun</span><span class="d">20 Jun</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 3 · 第三学期</div>
+        <div class="term-range">18 Jul – 12 Sep</div>
+        <div class="term-count">9 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">18 Jul</span><span class="d">25 Jul</span><span class="d">1 Aug</span><span class="d">8 Aug</span>
+          <span class="d">15 Aug</span><span class="d">22 Aug</span><span class="d">29 Aug</span><span class="d">5 Sep</span>
+          <span class="d">12 Sep</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 4 · 第四学期</div>
+        <div class="term-range">10 Oct – 5 Dec</div>
+        <div class="term-count">9 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">10 Oct</span><span class="d">17 Oct</span><span class="d">24 Oct</span><span class="d">31 Oct</span>
+          <span class="d">7 Nov</span><span class="d">14 Nov</span><span class="d">21 Nov</span><span class="d">28 Nov</span>
+          <span class="d">5 Dec</span>
+        </div>
+      </div>
+    </div>
+    <p class="term-note">34 Saturdays across four terms · 四个学期共34个周六</p>
   </div>
 </section>
 
