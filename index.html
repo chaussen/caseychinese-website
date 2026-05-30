@@ -61,8 +61,8 @@
     color: var(--ink);
     background: var(--bg);
     -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.55;
+    font-size: 17px;
+    line-height: 1.6;
   }
   a { color: inherit; }
   img { display: block; max-width: 100%; }
@@ -123,6 +123,15 @@
     color: var(--ink);
     position: relative;
     padding: 4px 0;
+  }
+  .nav-links a .zh-nav {
+    display: block;
+    font-family: var(--zh-sans);
+    font-size: 9.5px;
+    color: var(--ink-mute);
+    line-height: 1;
+    margin-top: 2px;
+    font-weight: 400;
   }
   .nav-links a::after {
     content: '';
@@ -186,8 +195,8 @@
     margin-bottom: 32px;
   }
   .hero-tagline {
-    font-size: 18px;
-    line-height: 1.55;
+    font-size: 19px;
+    line-height: 1.6;
     color: var(--ink-soft);
     max-width: 460px;
     margin-bottom: 40px;
@@ -357,16 +366,16 @@
     font-weight: 500;
   }
   .section-head .lede {
-    font-size: 17px;
+    font-size: 18.5px;
     color: var(--ink-soft);
-    line-height: 1.6;
+    line-height: 1.65;
     max-width: 540px;
   }
   #join .section-head { align-items: start; }
   .lede .zh-note, .program .zh-note, .event-body .zh-note {
     display: block;
     font-family: var(--zh);
-    font-size: 13.5px;
+    font-size: 14.5px;
     color: var(--ink-mute);
     margin-top: 8px;
     line-height: 1.7;
@@ -382,14 +391,14 @@
     align-items: start;
   }
   .about-body p {
-    font-size: 17px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.75;
     color: var(--ink);
     margin: 0 0 20px;
   }
   .about-body p.lead {
     font-family: var(--serif);
-    font-size: 22px;
+    font-size: 24px;
     line-height: 1.45;
     color: var(--ink);
     margin-bottom: 28px;
@@ -409,7 +418,7 @@
     overflow: hidden;
   }
   .stat {
-    padding: 32px;
+    padding: clamp(16px, 3.5vw, 32px);
     border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
@@ -427,7 +436,7 @@
     font-weight: 600;
     color: var(--ink);
   }
-  .stat .lbl .zh { color: var(--ink-soft); display: block; font-size: 12px; font-weight: 400; }
+  .stat .lbl .zh { color: var(--ink-soft); display: block; font-size: 12px; font-weight: 400; overflow-wrap: anywhere; }
 
   /* ───── PROGRAMS ───── */
   .programs {
@@ -468,8 +477,8 @@
     margin-bottom: 18px;
   }
   .program p {
-    font-size: 14.5px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--ink-soft);
     margin: 0 0 24px;
     flex-grow: 1;
@@ -537,7 +546,7 @@
   .event-body p {
     margin: 0;
     color: var(--ink-soft);
-    font-size: 14.5px;
+    font-size: 16px;
     max-width: 540px;
   }
   .event-tag {
@@ -759,8 +768,108 @@
     .g2, .g3 { grid-column: span 3; grid-row: span 2; }
     .g4, .g5, .g6, .g7,
     .g8, .g9, .g10, .g11 { grid-column: span 3; grid-row: span 1; }
+    .term-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ───── FAQ ───── */
+  .faq-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .faq-item { padding: 32px 0; border-bottom: 1px solid var(--line); }
+  .faq-item h4 { font-size: 18px; font-weight: 600; margin: 0 0 4px; color: var(--ink); }
+  .faq-item .faq-q-zh { font-family: var(--zh); font-size: 15px; color: var(--ink-soft); margin: 0 0 14px; }
+  .faq-item .faq-ans { margin: 0; font-size: 16px; color: var(--ink-soft); line-height: 1.65; max-width: 680px; }
+  .faq-item .faq-a-zh { display: block; font-family: var(--zh); font-size: 14.5px; color: var(--ink-mute); margin-top: 8px; line-height: 1.75; }
+
+  /* ───── SCHEDULE ───── */
+  #schedule { background: var(--paper); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .term-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .term-card { background: var(--paper); padding: clamp(20px, 2.8vw, 32px); }
+  .term-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--red-deep); margin-bottom: 14px;
+  }
+  .term-range {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.9vw, 23px);
+    font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 10px;
+  }
+  .term-count {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--red-deep); background: var(--red-tint);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 16px;
+  }
+  .term-dates {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    padding-top: 14px; border-top: 1px solid var(--line-soft);
+  }
+  .term-dates .d {
+    font-size: 11px; color: var(--ink-soft); background: var(--bg-warm);
+    padding: 3px 7px; border-radius: 3px; white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  /* ───── FEES ───── */
+  #fees { background: var(--bg-warm); }
+  .fee-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 640px;
+    margin-bottom: 28px;
+  }
+  .fee-option {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: clamp(28px, 4vw, 44px);
+  }
+  .fee-option.featured { border-color: var(--red-soft); box-shadow: 0 0 0 1px var(--red-soft); }
+  .fee-period {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--red-deep); margin-bottom: 16px;
+  }
+  .fee-amount {
+    font-family: var(--serif);
+    font-size: clamp(44px, 5.5vw, 60px);
+    font-weight: 400; color: var(--ink); line-height: 1; margin-bottom: 10px;
+  }
+  .fee-sub { font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+  .fee-note { margin-top: 28px; font-size: 16px; color: var(--ink-soft); max-width: 540px; }
+
+  /* ───── ENROLMENT ───── */
+  #enrolment { background: var(--paper); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .vsn-callout {
+    margin-top: 32px; padding: 22px 26px;
+    background: var(--red-tint); border: 1px solid var(--red-soft);
+    border-radius: 6px; max-width: 600px;
+  }
+  .vsn-callout .vsn-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--red-deep); margin-bottom: 12px;
+  }
+  .vsn-callout p { margin: 0; font-size: 15.5px; color: var(--ink); line-height: 1.65; }
+  .vsn-callout .zh-note { display: block; font-family: var(--zh); font-size: 14px; color: var(--ink-soft); margin-top: 10px; line-height: 1.75; }
+  @media (max-width: 500px) {
+    .term-grid { grid-template-columns: 1fr; }
+    .fee-options { grid-template-columns: 1fr; }
   }
 </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLRWEHJX8P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TLRWEHJX8P');
+  </script>
 </head>
 <body>
 
@@ -781,13 +890,17 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#programs">Programs</a>
-      <a href="#events">Events</a>
-      <a href="#join">Join Us</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="nav-cta">Enrol <span class="arrow">→</span></a>
+      <a href="#about">About<span class="zh-nav">关于我们</span></a>
+      <a href="#programs">Programs<span class="zh-nav">课程</span></a>
+      <a href="#fees">Fees<span class="zh-nav">学费</span></a>
+      <a href="#enrolment">Enrolment<span class="zh-nav">报名</span></a>
+      <a href="#faq">FAQ<span class="zh-nav">常见问题</span></a>
+      <a href="#schedule">Schedule<span class="zh-nav">上课日期</span></a>
+      <a href="#events">Events<span class="zh-nav">活动</span></a>
+      <a href="#join">Join Us<span class="zh-nav">加入我们</span></a>
+      <a href="#gallery">Gallery<span class="zh-nav">相册</span></a>
+      <a href="#contact">Contact<span class="zh-nav">联系我们</span></a>
+      <a href="#enrolment" class="nav-cta">Enrol · 报名 <span class="arrow">→</span></a>
     </div>
   </div>
 </nav>
@@ -807,8 +920,8 @@
         <span class="zh">每周六，与家人和朋友一起学中文、感受中华文化。</span>
       </p>
       <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary">Enrol Now <span class="arrow">→</span></a>
-        <a href="#programs" class="btn btn-ghost">View Programs</a>
+        <a href="#enrolment" class="btn btn-primary">Enrol Now · 立即报名 <span class="arrow">→</span></a>
+        <a href="#programs" class="btn btn-ghost">View Programs · 浏览课程</a>
       </div>
       <div class="trial-note">
         <span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
@@ -825,7 +938,7 @@
       <dl class="hero-meta">
         <div>
           <dt>Class Day</dt>
-          <dd>Saturdays · School terms <span class="zh">每周六（学期内）</span></dd>
+          <dd>Saturdays · 9.00 AM – 5.00 PM · School terms <span class="zh">每周六 · 九点到五点 · 学期内</span></dd>
         </div>
         <div>
           <dt>Years</dt>
@@ -860,11 +973,9 @@
         <div class="zh-title">关于我们</div>
       </div>
       <p class="lede">
-        Casey Foundation Chinese School is a parent-founded, volunteer-run school
-        at the heart of the Casey community. Every Saturday we bring children and
-        families together through warm, engaging Mandarin classes grounded in
-        Chinese culture.
-        <span class="zh-note">Casey中文学校扎根凯西社区，每周六为孩子们带来温暖、活泼的中文课堂，将语言教学与中华文化有机融合。</span>
+        Casey Chinese School is rooted in the Casey community. Every Saturday, children
+        learn Mandarin in a warm classroom — language and culture coming together naturally.
+        <span class="zh-note">Casey中文学校扎根凯西社区。每周六，孩子们在温馨的课堂里学中文——语言和文化自然地融在一起。</span>
       </p>
     </div>
 
@@ -917,8 +1028,11 @@
       </div>
       <p class="lede">
         Whether your child is starting their first words or refining their essays,
-        we have a level that meets them where they are. Placement is friendly and flexible.
-        <span class="zh-note">无论您的孩子是初学中文还是已有基础，我们都有合适的班级。分班灵活亲切，欢迎咨询。</span>
+        we have a level that meets them where they are. Placement is based on your child's
+        Chinese ability — not their school year. Students without any Chinese background will
+        typically start in the Beginning level, and that is completely normal. We assess every
+        new student individually during their free trial.
+        <span class="zh-note">分班依据孩子的中文能力——而非学校年级。没有任何中文基础的学生，通常会从启蒙班开始，这完全正常。我们会在免费试课期间对每位新生进行个别评估。</span>
       </p>
     </div>
 
@@ -968,6 +1082,181 @@
           <span><span class="ic"></span>Saturdays</span>
         </div>
       </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───── FEES ───── -->
+<section id="fees" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Tuition</div>
+        <h2>Simple, <em>clear</em> pricing.</h2>
+        <div class="zh-title">2026年学费</div>
+      </div>
+      <p class="lede">
+        One fee covers all your child's classes for the term — no hidden charges or extras.
+        <span class="zh-note">学费包含整个学期的全部课程，无其他费用。</span>
+      </p>
+    </div>
+    <div class="fee-options">
+      <div class="fee-option">
+        <div class="fee-period">Half-Year · 半年</div>
+        <div class="fee-amount">A$580</div>
+        <p class="fee-sub">Per student · two terms<br /><span class="zh" style="font-size:13px;font-weight:400;color:var(--ink-mute);">每位学生 · 两个学期</span></p>
+      </div>
+      <div class="fee-option featured">
+        <div class="fee-period">Full Year · 全年</div>
+        <div class="fee-amount">A$880</div>
+        <p class="fee-sub">Per student · all four terms<br /><span class="zh" style="font-size:13px;font-weight:400;color:var(--ink-mute);">每位学生 · 全年四个学期</span></p>
+      </div>
+    </div>
+    <p class="fee-note">
+      Families enrolling multiple children are welcome to get in touch.
+      <span class="zh-note">多名子女就读的家庭欢迎联系我们咨询。</span>
+    </p>
+  </div>
+</section>
+
+<!-- ───── ENROLMENT ───── -->
+<section id="enrolment" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Enrolment</div>
+        <h2>Ready to <em>join</em>?</h2>
+        <div class="zh-title">报名</div>
+      </div>
+      <p class="lede">
+        Download the 2026 enrolment form, fill it in, and return it by email or in person on a Saturday.
+        <span class="zh-note">下载2026年报名表，填写后通过电子邮件或周六当面提交。</span>
+      </p>
+    </div>
+
+    <a href="enrolment-form-2026.pdf" download="Casey-Chinese-School-Enrolment-Form-2026.pdf" class="btn btn-primary">
+      Download Form · 下载报名表 <span class="arrow">↓</span>
+    </a>
+
+    <div class="vsn-callout">
+      <div class="vsn-label">VSN · Victorian Student Number · 维州学生编号</div>
+      <p>
+        The form asks for your child's <strong>VSN</strong> — a 9-digit number assigned to every
+        student enrolled in a Victorian school (required for Years 1–12). You can find it on
+        <strong>Compass</strong>, your day school's parent portal, or ask the school office to
+        provide it directly.
+      </p>
+      <span class="zh-note">报名表需填写孩子的维州学生编号（VSN），即每位维州在校学生的9位专属编号，1至12年级学生必须填写。可在日校Compass家长平台上查找，或直接向日校办公室索取。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FAQ ───── -->
+<section id="faq" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Common Questions</div>
+        <h2>Questions we hear <em>often</em>.</h2>
+        <div class="zh-title">常见问题</div>
+      </div>
+      <p class="lede">
+        Many families have similar questions when they first get to know us. Don't worry — we hope the answers below help.
+        <span class="zh-note">很多家长刚开始认识我们，都会有类似的疑问。别担心，下面这些解答希望能帮到您</span>
+      </p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>My child has never learned Chinese before. Which class is right for them?</h4>
+        <div class="faq-q-zh">我的孩子从未学过中文，适合上哪个班？</div>
+        <p class="faq-ans">
+          Students without any Chinese background start from the Beginning level (启蒙班),
+          regardless of their school year. It is a relaxed, fun environment — the focus is on
+          building confidence and a genuine love of the language. We confirm the right level
+          during the free trial, and students can move between levels at any time.
+          <span class="faq-a-zh">没有中文基础的孩子，建议从启蒙班开始，先在轻松有趣的环境里培养语感和兴趣。我们会在免费试课期间确认最合适的班级，之后也可以随时根据孩子的进度调整。</span>
+        </p>
+      </div>
+      <div class="faq-item">
+        <h4>I have two children at different levels. Can they both attend?</h4>
+        <div class="faq-q-zh">我有两个孩子，程度不同，他们都可以来上课吗？</div>
+        <p class="faq-ans">
+          Yes. Many of our families have children across multiple levels. Both children can attend
+          on the same Saturday.
+          <span class="faq-a-zh">可以。我们许多家庭都有就读不同班级的孩子，两位孩子可以在同一个周六一起上课。</span>
+        </p>
+      </div>
+      <div class="faq-item">
+        <h4>Is there homework or assessment?</h4>
+        <div class="faq-q-zh">有家庭作业或考试吗？</div>
+        <p class="faq-ans">
+          We give children an appropriate amount of weekly practice to help reinforce what was
+          covered in class — enough to be useful, not so much that it becomes a burden. There
+          is a summative assessment every two terms. There are no formal report cards — our
+          teachers keep in touch with parents to share how each child is getting on.
+          <span class="faq-a-zh">每周会布置适量的练习，帮孩子把课堂所学记得更牢，分量适中不会造成压力。每两个学期会有一次阶段性评估，但不设正式成绩单——老师会随时跟家长沟通，分享孩子的学习情况。</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── SCHEDULE ───── -->
+<section id="schedule" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>2026 Schedule</div>
+        <h2>When we <em>meet</em>.</h2>
+        <div class="zh-title">2026年上课日期</div>
+      </div>
+      <p class="lede">
+        Every Saturday during the school term. Check the dates below to plan your year ahead.
+        <span class="zh-note">每学期每周六上课，请参考以下日期安排您的全年计划。</span>
+      </p>
+    </div>
+
+    <div class="term-grid">
+      <div class="term-card">
+        <div class="term-label">Term 1 · 第一学期</div>
+        <div class="term-range">7 Feb – 28 Mar</div>
+        <div class="term-count">8 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">7 Feb</span><span class="d">14 Feb</span><span class="d">21 Feb</span><span class="d">28 Feb</span>
+          <span class="d">7 Mar</span><span class="d">14 Mar</span><span class="d">21 Mar</span><span class="d">28 Mar</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 2 · 第二学期</div>
+        <div class="term-range">2 May – 20 Jun</div>
+        <div class="term-count">8 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">2 May</span><span class="d">9 May</span><span class="d">16 May</span><span class="d">23 May</span>
+          <span class="d">30 May</span><span class="d">6 Jun</span><span class="d">13 Jun</span><span class="d">20 Jun</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 3 · 第三学期</div>
+        <div class="term-range">18 Jul – 12 Sep</div>
+        <div class="term-count">9 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">18 Jul</span><span class="d">25 Jul</span><span class="d">1 Aug</span><span class="d">8 Aug</span>
+          <span class="d">15 Aug</span><span class="d">22 Aug</span><span class="d">29 Aug</span><span class="d">5 Sep</span>
+          <span class="d">12 Sep</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 4 · 第四学期</div>
+        <div class="term-range">10 Oct – 5 Dec</div>
+        <div class="term-count">9 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">10 Oct</span><span class="d">17 Oct</span><span class="d">24 Oct</span><span class="d">31 Oct</span>
+          <span class="d">7 Nov</span><span class="d">14 Nov</span><span class="d">21 Nov</span><span class="d">28 Nov</span>
+          <span class="d">5 Dec</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1034,7 +1323,7 @@
         <span class="zh-note">我们诚邀有志于中文教育的人士加入志愿教学团队。具备教学经验，或拥有中文、教育及相关领域背景者尤为欢迎。我们最看重的，是对中文教育的热忱与对孩子的真诚关爱。</span>
       </p>
     </div>
-    <a href="#contact" class="btn btn-primary">Get in touch <span class="arrow">→</span></a>
+    <a href="#contact" class="btn btn-primary">Get in touch · 联系我们 <span class="arrow">→</span></a>
   </div>
 </section>
 
@@ -1139,8 +1428,8 @@
         <div class="row">
           <div class="lbl">Class Schedule · 上课时间</div>
           <div class="val">
-            Saturdays · School terms<br />
-            <span class="zh-sans">每周六（学期内）</span>
+            Saturdays · 9.00 AM – 5.00 PM · School terms<br />
+            <span class="zh-sans">每周六 · 九点到五点 · 学期内</span>
           </div>
         </div>
         <div class="row">
@@ -1187,7 +1476,7 @@
           <label for="cf-message">Message · 留言</label>
           <textarea id="cf-message" name="message" required placeholder="How can we help?"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" id="cf-btn">Send message <span class="arrow">→</span></button>
+        <button type="submit" class="btn btn-primary" id="cf-btn">Send message · 发送留言 <span class="arrow">→</span></button>
       </form>
     </div>
   </div>
@@ -1198,7 +1487,7 @@
   <div class="wrap foot-inner">
     <div>© 2026 Casey Foundation Chinese School · Casey 中文学校</div>
     <div>
-      维多利亚州注册社团法人 · Incorporated Association in Victoria · <a href="#contact">Volunteer with us</a>
+      维多利亚州注册社团法人 · Incorporated Association in Victoria · <a href="#contact">Volunteer with us · 教学志愿</a>
     </div>
   </div>
 </footer>
@@ -1241,7 +1530,7 @@
     cfBtn.innerHTML = 'Opening your email app… <span class="arrow">✓</span>';
     cfBtn.disabled = true;
     setTimeout(() => {
-      cfBtn.innerHTML = 'Send message <span class="arrow">→</span>';
+      cfBtn.innerHTML = 'Send message · 发送留言 <span class="arrow">→</span>';
       cfBtn.disabled = false;
     }, 4000);
   });
