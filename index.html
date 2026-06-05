@@ -562,33 +562,69 @@
   }
 
   /* ───── GALLERY ───── */
+  /* Auto-flowing grid: every tile is a plain .photo — drop in as many as you
+     like, no per-photo sizing needed. A repeating rhythm gives a few tiles
+     extra presence so the wall stays lively as it grows. */
   .gallery {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-auto-rows: 140px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-auto-rows: 150px;
+    grid-auto-flow: dense;
     gap: 12px;
   }
-  .gallery .photo { border-radius: 4px; }
+  .gallery .photo {
+    border-radius: 4px;
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  /* repeating accent pattern — auto-applies no matter how many photos exist */
+  .gallery .photo:nth-child(9n+1) { grid-column: span 2; grid-row: span 2; }
+  .gallery .photo:nth-child(9n+5) { grid-column: span 2; }
+  .gallery .photo:nth-child(9n+8) { grid-row: span 2; }
 
-  /* Band A – featured trio (rows 1–3) */
-  .g1  { grid-column: span 5; grid-row: span 3; } /* first.jpg — large feature */
-  .g2  { grid-column: span 3; grid-row: span 3; } /* portrait */
-  .g3  { grid-column: span 4; grid-row: span 3; } /* portrait */
+  /* collapsed state caps the wall to a tidy preview */
+  .gallery.is-collapsed .photo:nth-child(n+11) { display: none; }
 
-  /* Band B – mixed pairs (rows 4–5) */
-  .g4  { grid-column: span 3; grid-row: span 2; }
-  .g5  { grid-column: span 3; grid-row: span 2; }
-  .g6  { grid-column: span 3; grid-row: span 2; }
-  .g7  { grid-column: span 3; grid-row: span 2; }
-
-  /* Band C – compact row (rows 6–7) */
-  .g8  { grid-column: span 3; grid-row: span 2; }
-  .g9  { grid-column: span 3; grid-row: span 2; }
-  .g10 { grid-column: span 3; grid-row: span 2; }
-  .g11 { grid-column: span 3; grid-row: span 2; }
-
-  /* Show full portrait photos instead of cropping */
-  .gallery .g7 img, .gallery .g11 img { object-fit: contain; }
+  .gallery-foot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 32px;
+  }
+  .gallery-foot::before,
+  .gallery-foot::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: var(--line);
+  }
+  .gallery-toggle {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 22px;
+    border-radius: 999px;
+    border: 1.5px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .gallery-toggle:hover { border-color: var(--red-soft); color: var(--red-deep); }
+  .gallery-toggle .count {
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .gallery-toggle .chev {
+    transition: transform .25s ease;
+    font-size: 11px;
+  }
+  .gallery-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
 
   /* ───── CONTACT ───── */
   #contact { background: var(--ink); color: var(--bg); padding: 100px 0 60px; }
@@ -763,11 +799,11 @@
     .programs { grid-template-columns: 1fr; }
     .event { grid-template-columns: 80px 1fr; gap: 20px; }
     .event-tag { grid-column: 2; justify-self: start; }
-    .gallery { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 100px; }
-    .g1  { grid-column: span 6; grid-row: span 2; }
-    .g2, .g3 { grid-column: span 3; grid-row: span 2; }
-    .g4, .g5, .g6, .g7,
-    .g8, .g9, .g10, .g11 { grid-column: span 3; grid-row: span 1; }
+    .gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); grid-auto-rows: 110px; }
+    .gallery .photo:nth-child(9n+1) { grid-column: span 2; grid-row: span 2; }
+    .gallery .photo:nth-child(9n+5) { grid-column: span 2; grid-row: span 1; }
+    .gallery .photo:nth-child(9n+8) { grid-column: span 1; grid-row: span 2; }
+    .gallery.is-collapsed .photo:nth-child(n+9) { display: none; }
     .term-grid { grid-template-columns: 1fr 1fr; }
   }
 
@@ -1343,54 +1379,95 @@
       </p>
     </div>
 
-    <div class="gallery">
-      <!-- Band A: featured trio -->
-      <div class="photo g1">
+    <div class="gallery is-collapsed" id="galleryGrid">
+      <div class="photo">
         <img alt="Students at Casey Chinese School" data-src="images/gallery-1.jpg" />
-        <div class="ph-fallback">images/gallery-1.jpg</div>
+        <div class="ph-fallback">images/gallery-1.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
-      <div class="photo g2">
+      <div class="photo">
         <img alt="" data-src="images/gallery-2.jpg" />
-        <div class="ph-fallback">images/gallery-2.jpg</div>
+        <div class="ph-fallback">images/gallery-2.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
-      <div class="photo g3">
+      <div class="photo">
         <img alt="" data-src="images/gallery-3.jpg" />
-        <div class="ph-fallback">images/gallery-3.jpg</div>
+        <div class="ph-fallback">images/gallery-3.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
-      <!-- Band B -->
-      <div class="photo g4">
+      <div class="photo">
         <img alt="" data-src="images/gallery-4.jpg" />
-        <div class="ph-fallback">images/gallery-4.jpg</div>
+        <div class="ph-fallback">images/gallery-4.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
-      <div class="photo g5">
+      <div class="photo">
         <img alt="" data-src="images/gallery-5.jpg" />
-        <div class="ph-fallback">images/gallery-5.jpg</div>
+        <div class="ph-fallback">images/gallery-5.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
-      <div class="photo g6">
+      <div class="photo">
         <img alt="" data-src="images/gallery-6.jpg" />
-        <div class="ph-fallback">images/gallery-6.jpg</div>
+        <div class="ph-fallback">images/gallery-6.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
-      <div class="photo g7">
+      <div class="photo">
         <img alt="" data-src="images/gallery-7.jpg" />
-        <div class="ph-fallback">images/gallery-7.jpg</div>
+        <div class="ph-fallback">images/gallery-7.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
-      <!-- Band C -->
-      <div class="photo g8">
+      <div class="photo">
         <img alt="" data-src="images/gallery-8.jpg" />
-        <div class="ph-fallback">images/gallery-8.jpg</div>
+        <div class="ph-fallback">images/gallery-8.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
-      <div class="photo g9">
+      <div class="photo">
         <img alt="" data-src="images/gallery-9.jpg" />
-        <div class="ph-fallback">images/gallery-9.jpg</div>
+        <div class="ph-fallback">images/gallery-9.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
-      <div class="photo g10">
+      <div class="photo">
         <img alt="" data-src="images/gallery-10.jpg" />
-        <div class="ph-fallback">images/gallery-10.jpg</div>
+        <div class="ph-fallback">images/gallery-10.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
-      <div class="photo g11">
+      <div class="photo">
         <img alt="" data-src="images/gallery-11.jpg" />
-        <div class="ph-fallback">images/gallery-11.jpg</div>
+        <div class="ph-fallback">images/gallery-11.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
       </div>
+      <div class="photo">
+        <img alt="" data-src="images/gallery-12.jpg" />
+        <div class="ph-fallback">images/gallery-12.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
+      </div>
+      <div class="photo">
+        <img alt="" data-src="images/gallery-13.jpg" />
+        <div class="ph-fallback">images/gallery-13.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
+      </div>
+      <div class="photo">
+        <img alt="" data-src="images/gallery-14.jpg" />
+        <div class="ph-fallback">images/gallery-14.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
+      </div>
+      <div class="photo">
+        <img alt="" data-src="images/gallery-15.webp" />
+        <div class="ph-fallback">images/gallery-15.webp<br /><span style="opacity:.7">any size · crops to fit</span></div>
+      </div>
+      <div class="photo">
+        <img alt="" data-src="images/gallery-16.jpg" />
+        <div class="ph-fallback">images/gallery-16.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
+      </div>
+      <div class="photo">
+        <img alt="" data-src="images/gallery-17.jpg" />
+        <div class="ph-fallback">images/gallery-17.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
+      </div>
+      <div class="photo">
+        <img alt="" data-src="images/gallery-18.jpg" />
+        <div class="ph-fallback">images/gallery-18.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
+      </div>
+      <div class="photo">
+        <img alt="" data-src="images/gallery-19.jpg" />
+        <div class="ph-fallback">images/gallery-19.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
+      </div>
+      <div class="photo">
+        <img alt="" data-src="images/gallery-20.jpg" />
+        <div class="ph-fallback">images/gallery-20.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
+      </div>
+    </div>
+
+    <div class="gallery-foot" id="galleryFoot" hidden>
+      <button class="gallery-toggle" id="galleryToggle" aria-expanded="false" aria-controls="galleryGrid">
+        <span class="label">Show all</span>
+        <span class="count"></span>
+        <span class="chev">▾</span>
+      </button>
     </div>
   </div>
 </section>
@@ -1550,6 +1627,40 @@
   // a11y: language tags on Chinese text; aria-hidden on decorative dot bullets
   document.querySelectorAll('.zh, .zh-sans, .zh-para, .zh-title, .zh-title-sm, .zh-name, .zh-note, .zh-sub').forEach(el => el.setAttribute('lang', 'zh-Hans'));
   document.querySelectorAll('.dot').forEach(el => el.setAttribute('aria-hidden', 'true'));
+
+  // gallery: cap the wall to a tidy preview, expand on demand.
+  // The cap matches the CSS nth-child rule (>10 on desktop, >8 on small screens).
+  (function () {
+    const gallery = document.getElementById('galleryGrid');
+    const foot = document.getElementById('galleryFoot');
+    const btn = document.getElementById('galleryToggle');
+    if (!gallery || !btn) return;
+    const previewCount = () => window.matchMedia('(max-width: 920px)').matches ? 8 : 10;
+    const total = gallery.querySelectorAll('.photo').length;
+
+    function sync() {
+      const hidden = total - previewCount();
+      if (hidden > 0 && gallery.classList.contains('is-collapsed')) {
+        foot.hidden = false;
+        btn.querySelector('.label').textContent = 'Show all';
+        btn.querySelector('.count').textContent = total + ' photos';
+      } else if (hidden > 0) {
+        foot.hidden = false;
+        btn.querySelector('.label').textContent = 'Show less';
+        btn.querySelector('.count').textContent = '';
+      } else {
+        foot.hidden = true;
+      }
+    }
+
+    btn.addEventListener('click', () => {
+      const expanded = gallery.classList.toggle('is-collapsed') === false;
+      btn.setAttribute('aria-expanded', String(expanded));
+      sync();
+    });
+    window.addEventListener('resize', sync, { passive: true });
+    sync();
+  })();
 </script>
 </body>
 </html>

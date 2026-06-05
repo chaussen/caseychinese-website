@@ -8,6 +8,8 @@ prompts.md
 # OS files
 .DS_Store
 Thumbs.db
+*.Zone.Identifier
+*:Zone.Identifier
 
 # Editor
 *.swp
