@@ -789,8 +789,10 @@
     .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
       background: var(--bg); flex-direction: column; align-items: stretch;
       gap: 0; padding: 12px 22px 22px; border-bottom: 1px solid var(--line);
+      max-height: calc(100dvh - 64px); overflow-y: auto; -webkit-overflow-scrolling: touch;
     }
     .nav-links.open { display: flex; }
+    body.nav-open { overflow: hidden; }
     .nav-links a { padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
     .nav-links a:last-child { border-bottom: none; }
     .nav-cta { margin-top: 12px; text-align: center; }
@@ -2114,14 +2116,17 @@
   // mobile nav
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
+  const closeNav = () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  };
   toggle.addEventListener('click', () => {
     const isOpen = links.classList.toggle('open');
     toggle.setAttribute('aria-expanded', isOpen);
+    document.body.classList.toggle('nav-open', isOpen);
   });
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    links.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-  }));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
   // a11y: language tags on Chinese text; aria-hidden on decorative dot bullets
   document.querySelectorAll('.zh, .zh-sans, .zh-para, .zh-title, .zh-title-sm, .zh-name, .zh-note, .zh-sub, .tb-h2cn, .tb-zh, .tb-cn, .zhh, .tb-pband__cn').forEach(el => el.setAttribute('lang', 'zh-Hans'));
