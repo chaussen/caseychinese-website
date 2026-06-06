@@ -1203,11 +1203,70 @@
     border: 1px solid #eee5d2;
     transform: rotate(-0.6deg);
   }
+  #textbooks .tb-pframe {
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+    aspect-ratio: 1600/792;
+    background: #eef1ef;
+  }
   #textbooks .tb-pcard img {
     display: block;
     width: 100%;
     height: auto;
-    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  #textbooks .tb-pband {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14.2%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: #f7efe2;
+    letter-spacing: .16em;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.16), rgba(0,0,0,0) 62%),
+      linear-gradient(100deg, #9c3f26 0%, #b1492c 46%, #8f3a22 100%);
+    box-shadow: inset 0 -1px 0 rgba(255,255,255,.14);
+  }
+  #textbooks .tb-pband::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #d9b24e, #f0d27e 50%, #d9b24e);
+  }
+  #textbooks .tb-pband__cn {
+    font-family: var(--tb-cn-serif);
+    font-weight: 700;
+    font-size: clamp(13px, 1.45vw, 18px);
+    letter-spacing: .24em;
+  }
+  #textbooks .tb-pband__en {
+    font-family: var(--tb-sans);
+    font-weight: 600;
+    font-size: clamp(9px, .92vw, 11.5px);
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    opacity: .82;
+  }
+  #textbooks .tb-pband__sep {
+    width: 1px;
+    height: 13px;
+    background: rgba(255,255,255,.42);
+    flex-shrink: 0;
+  }
+  @media (max-width: 560px) {
+    #textbooks .tb-pband__en { display: none; }
   }
   #textbooks .tb-pcard figcaption {
     font-family: var(--tb-sans);
@@ -1393,28 +1452,22 @@
         <h2>A school built by <em>families</em>.</h2>
         <div class="zh-title">关于我们</div>
       </div>
-      <p class="lede">
-        Casey Chinese School is rooted in the Casey community. Every Saturday, children
-        learn Mandarin in a warm classroom — language and culture coming together naturally.
-        <span class="zh-note">Casey中文学校扎根凯西社区。每周六，孩子们在温馨的课堂里学中文——语言和文化自然地融在一起。</span>
-      </p>
+      <p class="lede">Our school is part of a proud tradition. Our main school has been committed to Chinese language education in Melbourne since 1971 — making it one of the longest-serving Chinese educational organisations in Victoria. That legacy of community, culture, and language learning is the foundation we stand on.</p>
+      <p class="lede">The Casey campus opened in 2017, bringing this tradition to the south-east. We have grown into a school the local community calls its own — small enough that every child is known by name, strong enough to carry a lineage that spans generations.</p>
+      <p class="lede"><span class="zh-note">我们的主校1971年成立于墨尔本，数十年薪火相传，是维州华人社区最具历史的中文教育机构之一。语言与文化，是我们办学的根基。</span></p>
+      <p class="lede"><span class="zh-note">凯西校区2017年落地东南区，文脉绵延，与社区共同生长。课堂虽小，师生相知；根深叶茂，生生不息。</span></p>
     </div>
 
     <div class="about-grid">
       <div class="about-body">
         <p class="lead">
-          We believe language is a doorway — to family, to heritage, and to the world.
+          Casey Chinese School is rooted in the Casey community. Every Saturday, children learn Mandarin in a warm classroom — language and culture coming together naturally.
         </p>
         <p>
-          Every Saturday, classrooms fill with children learning to read, write, sing,
-          and speak Mandarin. Our small class sizes mean each student is known by name,
-          and our curriculum balances structured literacy with cultural arts: calligraphy,
-          paper-cutting, music, dance, and seasonal celebrations.
+          We believe language is a doorway — to family, to heritage, and to the world. Our small class sizes mean each student is known by name, and our curriculum balances structured literacy with cultural arts: calligraphy, paper-cutting, music, dance, and seasonal celebrations.
         </p>
-        <p class="zh-para">
-          我们相信，语言是连接家庭、传承与世界的桥梁。每周六，孩子们在小班教学中学习汉语读写，
-          同时通过书法、剪纸、音乐、舞蹈与传统节日庆典，让语言学习充满生命力。
-        </p>
+        <p class="zh-para">Casey中文学校植根凯西社区，每周六，孩子们相聚课堂，语言为纽带，文化铭于心间。</p>
+        <p class="zh-para">语言是门——通往家庭，通往血脉，通往世界。小班教学，有名有姓，有声有色。书法、剪纸、音乐、舞蹈，岁时节令，一一经历。</p>
       </div>
       <dl class="stats">
         <div class="stat">
@@ -1540,8 +1593,15 @@
       </div>
       <div class="tb-photo-row">
         <figure class="tb-pcard">
-          <img src="images/zhongwen-series.png" alt="中文 Books 1–4, Jinan University Press, on a classroom table" width="1600" height="863">
-          <figcaption><span>《中文》· 第一册～第四册</span><span class="r">暨南大学出版社</span></figcaption>
+          <div class="tb-pframe">
+            <img src="images/zhongwen-series.png" alt="中文 Books 1–4, Jinan University Press, on a classroom table">
+            <div class="tb-pband">
+              <span class="tb-pband__cn">暨南大学《中文》</span>
+              <span class="tb-pband__sep"></span>
+              <span class="tb-pband__en">Core Readers · 新版</span>
+            </div>
+          </div>
+          <figcaption><span class="r">暨南大学出版社 · Jinan University Press</span></figcaption>
         </figure>
         <div class="tb-ptext">
           <h4>A trusted <em>standard</em>.</h4>
@@ -2059,7 +2119,7 @@
   }));
 
   // a11y: language tags on Chinese text; aria-hidden on decorative dot bullets
-  document.querySelectorAll('.zh, .zh-sans, .zh-para, .zh-title, .zh-title-sm, .zh-name, .zh-note, .zh-sub, .tb-h2cn, .tb-zh, .tb-cn, .zhh').forEach(el => el.setAttribute('lang', 'zh-Hans'));
+  document.querySelectorAll('.zh, .zh-sans, .zh-para, .zh-title, .zh-title-sm, .zh-name, .zh-note, .zh-sub, .tb-h2cn, .tb-zh, .tb-cn, .zhh, .tb-pband__cn').forEach(el => el.setAttribute('lang', 'zh-Hans'));
   document.querySelectorAll('.dot').forEach(el => el.setAttribute('aria-hidden', 'true'));
 
   // gallery: cap the wall to a tidy preview, expand on demand.
