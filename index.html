@@ -32,7 +32,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
     --red: #F08379;
@@ -897,6 +897,390 @@
     .term-grid { grid-template-columns: 1fr; }
     .fee-options { grid-template-columns: 1fr; }
   }
+
+  /* ───── TEXTBOOKS ───── */
+  #textbooks {
+    --tb-paper: #faf6ec;
+    --tb-paper-2: #f3ecdd;
+    --tb-line: #e4d9c2;
+    --tb-ink: #2c2620;
+    --tb-ink-soft: #6c6354;
+    --tb-ink-faint: #978c79;
+    --tb-accent: #b1492c;
+    --tb-serif: "Source Serif 4", Georgia, serif;
+    --tb-sans: "Schibsted Grotesk", system-ui, sans-serif;
+    --tb-cn: "Noto Sans SC", system-ui, sans-serif;
+    --tb-cn-serif: "Noto Serif SC", "Songti SC", serif;
+    position: relative;
+    background: var(--tb-paper);
+    padding: 96px 0 104px;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    color: var(--tb-ink);
+    font-family: var(--tb-serif);
+  }
+  #textbooks::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+  #textbooks .tb-eyebrow {
+    font-family: var(--tb-sans);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--tb-accent);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 22px;
+  }
+  #textbooks .tb-eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 1.5px;
+    background: var(--tb-accent);
+    display: block;
+    flex-shrink: 0;
+  }
+  #textbooks .tb-eyebrow .tb-muted {
+    color: var(--tb-ink-faint);
+    letter-spacing: .18em;
+    font-weight: 500;
+  }
+  #textbooks .tb-h2 {
+    font-family: var(--tb-serif);
+    font-weight: 600;
+    font-size: clamp(30px, 4.2vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -.01em;
+    margin: 0;
+    max-width: 20ch;
+    text-wrap: balance;
+  }
+  #textbooks .tb-h2 em { font-style: italic; color: var(--tb-accent); }
+  #textbooks .tb-h2cn {
+    font-family: var(--tb-cn-serif);
+    font-weight: 500;
+    font-size: clamp(15px, 1.5vw, 19px);
+    letter-spacing: .16em;
+    color: var(--tb-ink-faint);
+    margin: 20px 0 0;
+  }
+  #textbooks .tb-lede {
+    font-size: clamp(16px, 1.55vw, 19px);
+    line-height: 1.62;
+    color: var(--tb-ink-soft);
+    max-width: 60ch;
+    margin: 26px 0 0;
+  }
+  #textbooks .tb-lede .tb-cn {
+    display: block;
+    font-family: var(--tb-cn);
+    font-size: .92em;
+    margin-top: 8px;
+    color: var(--tb-ink-faint);
+    line-height: 1.85;
+  }
+  /* group sub-labels */
+  #textbooks .tb-grpA { margin-top: 64px; }
+  #textbooks .tb-grpB { margin-top: 78px; }
+  #textbooks .tb-glabel {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 0 0 30px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--tb-line);
+  }
+  #textbooks .tb-glabel .tb-n {
+    font-family: var(--tb-sans);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--tb-accent);
+    letter-spacing: .1em;
+  }
+  #textbooks .tb-glabel h3 {
+    font-family: var(--tb-serif);
+    font-weight: 600;
+    font-size: clamp(20px, 2.2vw, 26px);
+    margin: 0;
+    letter-spacing: -.01em;
+  }
+  #textbooks .tb-glabel .tb-zh {
+    font-family: var(--tb-cn);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--tb-ink-faint);
+    letter-spacing: .06em;
+  }
+  #textbooks .tb-glabel .tb-meta {
+    margin-left: auto;
+    font-family: var(--tb-sans);
+    font-weight: 500;
+    font-size: 12.5px;
+    letter-spacing: .04em;
+    color: var(--tb-ink-faint);
+    text-align: right;
+    align-self: center;
+  }
+  /* four designed covers */
+  #textbooks .tb-shelf {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    align-items: end;
+  }
+  #textbooks .tb-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #textbooks .tb-book {
+    position: relative;
+    width: 100%;
+    max-width: 228px;
+    aspect-ratio: 210 / 272;
+    filter: drop-shadow(0 18px 22px rgba(60,38,12,.24)) drop-shadow(0 5px 8px rgba(60,38,12,.16));
+  }
+  #textbooks .tb-book .book__pages {
+    position: absolute;
+    top: 1.5%; bottom: 1.5%; right: -6px;
+    width: 9px;
+    border-radius: 0 3px 3px 0;
+    z-index: -1;
+    background: repeating-linear-gradient(180deg, #f3ead7 0 1.5px, #d6c9ac 1.5px 3px);
+    box-shadow: 0 3px 6px rgba(0,0,0,.2);
+  }
+  #textbooks .tb-book .book__face {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    color: #f8f2e7;
+    border-radius: 2px 6px 6px 2px;
+    background: linear-gradient(158deg, var(--deep), var(--caccent) 80%);
+    container-type: size;
+    box-shadow:
+      inset 16px 0 22px -15px rgba(0,0,0,.5),
+      inset -1px 0 0 rgba(255,255,255,.1),
+      inset 0 0 0 1px rgba(255,255,255,.06);
+  }
+  #textbooks .tb-book .book__face::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+    background: radial-gradient(70cqw 54cqh at 86% 7%, rgba(255,255,255,.16), transparent 60%);
+  }
+  #textbooks .cv {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 9cqh 9cqw;
+  }
+  #textbooks .cv__top { display: flex; justify-content: flex-end; }
+  #textbooks .cv__pig { text-align: center; font-family: var(--tb-cn-serif); }
+  #textbooks .cv__pig .g {
+    display: grid;
+    place-items: center;
+    font-size: 6cqw;
+    font-weight: 700;
+    line-height: 1;
+    width: 10cqw; height: 10cqw;
+    margin: 0 0 .5cqh auto;
+    border: .3cqw solid rgba(255,255,255,.6);
+    border-radius: 1.2cqw;
+  }
+  #textbooks .cv__pig .py {
+    display: block;
+    font-family: var(--tb-sans);
+    font-weight: 600;
+    font-size: 1.7cqw;
+    letter-spacing: .12em;
+    opacity: .92;
+  }
+  #textbooks .cv__pig .nm {
+    font-family: var(--tb-sans);
+    font-size: 1.5cqw;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    opacity: .8;
+  }
+  #textbooks .cv__mid { margin-top: auto; }
+  #textbooks .cv__series {
+    font-family: var(--tb-cn);
+    font-weight: 500;
+    font-size: 2cqw;
+    letter-spacing: .34em;
+    opacity: .82;
+    margin-bottom: 2cqh;
+  }
+  #textbooks .cv__title {
+    font-family: var(--tb-cn-serif);
+    font-weight: 900;
+    margin: 0;
+    font-size: 17cqw;
+    line-height: 1.02;
+    letter-spacing: .04em;
+  }
+  #textbooks .cv__title ruby { ruby-position: over; padding-inline: .04em; }
+  #textbooks .cv__title ruby rt {
+    font-family: var(--tb-sans);
+    font-weight: 600;
+    font-size: .17em;
+    letter-spacing: .06em;
+    color: inherit;
+    opacity: .82;
+    line-height: 1.5;
+  }
+  #textbooks .cv__sub {
+    font-family: var(--tb-sans);
+    font-weight: 700;
+    font-size: 4.4cqw;
+    margin-top: 2.6cqh;
+  }
+  #textbooks .cv__rule {
+    margin-top: 4cqh;
+    padding-top: 2.4cqh;
+    border-top: 1px solid rgba(255,255,255,.32);
+    font-family: var(--tb-sans);
+    font-weight: 600;
+    font-size: 2.3cqw;
+    letter-spacing: .04em;
+    opacity: .9;
+  }
+  #textbooks .tb-cap { text-align: center; margin-top: 20px; }
+  #textbooks .tb-cap .cncn {
+    font-family: var(--tb-cn-serif);
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: .06em;
+    color: var(--tb-ink);
+  }
+  #textbooks .tb-cap .cncn ruby { ruby-position: over; }
+  #textbooks .tb-cap .cncn ruby rt {
+    font-family: var(--tb-sans);
+    font-weight: 600;
+    font-size: .34em;
+    color: var(--tb-ink-faint);
+    letter-spacing: .03em;
+  }
+  #textbooks .tb-cap .en {
+    font-family: var(--tb-sans);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--tb-ink-soft);
+    margin-top: 7px;
+  }
+  #textbooks .tb-cap .yr {
+    font-family: var(--tb-serif);
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--tb-ink-faint);
+    margin-top: 4px;
+  }
+  /* photo card */
+  #textbooks .tb-photo-row {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  #textbooks .tb-pcard {
+    background: #fff;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 26px 50px -22px rgba(60,40,16,.42), 0 2px 0 rgba(0,0,0,.04);
+    border: 1px solid #eee5d2;
+    transform: rotate(-0.6deg);
+  }
+  #textbooks .tb-pcard img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+  }
+  #textbooks .tb-pcard figcaption {
+    font-family: var(--tb-sans);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: .06em;
+    color: var(--tb-ink-soft);
+    padding: 13px 4px 4px;
+    display: flex;
+    justify-content: space-between;
+    gap: 6px 16px;
+    flex-wrap: wrap;
+  }
+  #textbooks .tb-pcard figcaption > span { white-space: nowrap; }
+  #textbooks .tb-pcard figcaption .r { color: var(--tb-ink-faint); font-weight: 500; }
+  #textbooks .tb-ptext h4 {
+    font-family: var(--tb-serif);
+    font-weight: 600;
+    font-size: clamp(21px, 2.3vw, 28px);
+    margin: 0 0 6px;
+    letter-spacing: -.01em;
+  }
+  #textbooks .tb-ptext h4 em { font-style: italic; color: var(--tb-accent); }
+  #textbooks .tb-ptext .zhh {
+    font-family: var(--tb-cn-serif);
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: .12em;
+    color: var(--tb-ink-faint);
+    margin: 0 0 18px;
+  }
+  #textbooks .tb-ptext p {
+    font-size: 16.5px;
+    line-height: 1.64;
+    color: var(--tb-ink-soft);
+    margin: 0 0 14px;
+    max-width: 42ch;
+  }
+  #textbooks .tb-ptext p .tb-cn {
+    display: block;
+    font-family: var(--tb-cn);
+    font-size: .9em;
+    color: var(--tb-ink-faint);
+    margin-top: 7px;
+    line-height: 1.8;
+  }
+  #textbooks .tb-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  #textbooks .tb-tags span {
+    font-family: var(--tb-sans);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .04em;
+    color: var(--tb-ink-soft);
+    background: var(--tb-paper-2);
+    border: 1px solid var(--tb-line);
+    border-radius: 100px;
+    padding: 6px 13px;
+  }
+  @media (max-width: 880px) {
+    #textbooks { padding: 72px 0 80px; }
+    #textbooks .tb-shelf { grid-template-columns: repeat(2, 1fr); gap: 30px 24px; }
+    #textbooks .tb-photo-row { grid-template-columns: 1fr; gap: 30px; }
+    #textbooks .tb-glabel { flex-wrap: wrap; }
+    #textbooks .tb-glabel .tb-meta { margin-left: 0; width: 100%; text-align: left; }
+  }
+  @media (max-width: 460px) {
+    #textbooks .tb-shelf { grid-template-columns: 1fr; max-width: 280px; margin-inline: auto; }
+  }
 </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLRWEHJX8P"></script>
@@ -928,6 +1312,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#about">About<span class="zh-nav">关于我们</span></a>
       <a href="#programs">Programs<span class="zh-nav">课程</span></a>
+      <a href="#textbooks">Textbooks<span class="zh-nav">课本</span></a>
       <a href="#fees">Fees<span class="zh-nav">学费</span></a>
       <a href="#enrolment">Enrolment<span class="zh-nav">报名</span></a>
       <a href="#faq">FAQ<span class="zh-nav">常见问题</span></a>
@@ -1118,6 +1503,55 @@
           <span><span class="ic"></span>Saturdays</span>
         </div>
       </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───── TEXTBOOKS ───── -->
+<section id="textbooks" data-screen-label="Textbooks">
+  <div class="wrap">
+
+    <p class="tb-eyebrow">Textbooks <span class="tb-muted">· 课本</span></p>
+    <h2 class="tb-h2">Books our students <em>grow</em> with.</h2>
+    <p class="tb-h2cn">孩子们使用的课本</p>
+    <p class="tb-lede">Our teachers developed a four-level reader designed around our own students — and we pair it with the established 暨南大学《中文》series used by Chinese schools worldwide.
+      <span class="tb-cn">我们的老师为本校学生自编了一套四级读本，并选用全球华校通用的暨南大学《中文》系列作为核心教材。</span>
+    </p>
+
+    <!-- Group 01: our own series -->
+    <div class="tb-grpA">
+      <div class="tb-glabel">
+        <span class="tb-n">01</span>
+        <h3>Our own series</h3>
+        <span class="tb-zh">本校自编读本</span>
+        <span class="tb-meta">Four levels · Prep – Year 10<br>启蒙 · 初级 · 中级 · 高级</span>
+      </div>
+      <div class="tb-shelf" data-tb-shelf></div>
+    </div>
+
+    <!-- Group 02: core Chinese readers -->
+    <div class="tb-grpB">
+      <div class="tb-glabel">
+        <span class="tb-n">02</span>
+        <h3>Core Chinese readers</h3>
+        <span class="tb-zh">核心教材</span>
+        <span class="tb-meta">暨南大学《中文》· 第三版<br>Jinan University Press</span>
+      </div>
+      <div class="tb-photo-row">
+        <figure class="tb-pcard">
+          <img src="images/zhongwen-series.png" alt="中文 Books 1–4, Jinan University Press, on a classroom table" width="1600" height="863">
+          <figcaption><span>《中文》· 第一册～第四册</span><span class="r">暨南大学出版社</span></figcaption>
+        </figure>
+        <div class="tb-ptext">
+          <h4>A trusted <em>standard</em>.</h4>
+          <p class="zhh">全球华校通用的中文教材</p>
+          <p>The 暨南《中文》series is one of the most widely used Mandarin programs for overseas Chinese schools — structured literacy, character recognition, and graded readers our 系统教材班 students grow through.
+            <span class="tb-cn">暨南《中文》是海外华校最广泛采用的中文教程之一，系统的识字与分级阅读，陪伴系统教材班的孩子稳步成长。</span>
+          </p>
+          <div class="tb-tags"><span>Simplified · 简体</span><span>Putonghua · 普通话</span><span>Graded readers</span></div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -1625,7 +2059,7 @@
   }));
 
   // a11y: language tags on Chinese text; aria-hidden on decorative dot bullets
-  document.querySelectorAll('.zh, .zh-sans, .zh-para, .zh-title, .zh-title-sm, .zh-name, .zh-note, .zh-sub').forEach(el => el.setAttribute('lang', 'zh-Hans'));
+  document.querySelectorAll('.zh, .zh-sans, .zh-para, .zh-title, .zh-title-sm, .zh-name, .zh-note, .zh-sub, .tb-h2cn, .tb-zh, .tb-cn, .zhh').forEach(el => el.setAttribute('lang', 'zh-Hans'));
   document.querySelectorAll('.dot').forEach(el => el.setAttribute('aria-hidden', 'true'));
 
   // gallery: cap the wall to a tidy preview, expand on demand.
@@ -1660,6 +2094,50 @@
     });
     window.addEventListener('resize', sync, { passive: true });
     sync();
+  })();
+</script>
+
+<script>
+  // Render the four designed book covers for #textbooks Group 01
+  (function () {
+    const BANDS = [
+      { glyph:'朱', py:'zhū',  name:'Cinnabar',  title:[['启','qǐ'],['蒙','méng']], sub:'Foundation',   yr:'Prep – Year 2',  caccent:'oklch(0.555 0.165 33)',  deep:'oklch(0.405 0.135 33)'  },
+      { glyph:'青', py:'qīng', name:'Celadon',   title:[['初','chū'],['级','jí']],   sub:'Elementary',   yr:'Year 3 – 4',     caccent:'oklch(0.520 0.085 178)', deep:'oklch(0.395 0.070 180)' },
+      { glyph:'靛', py:'diàn', name:'Indigo',    title:[['中','zhōng'],['级','jí']], sub:'Intermediate', yr:'Year 5 – 6',     caccent:'oklch(0.500 0.135 258)', deep:'oklch(0.375 0.115 260)' },
+      { glyph:'黛', py:'dài',  name:'Aubergine', title:[['高','gāo'],['级','jí']],   sub:'Senior',       yr:'Year 7 – 10',    caccent:'oklch(0.470 0.130 332)', deep:'oklch(0.360 0.110 333)' },
+    ];
+    const ruby = (pairs) => pairs.map(([c, p]) => `<ruby>${c}<rt>${p}</rt></ruby>`).join('');
+    const shelf = document.querySelector('[data-tb-shelf]');
+    if (!shelf) return;
+    BANDS.forEach((b, i) => {
+      const el = document.createElement('div');
+      el.className = 'tb-item';
+      el.innerHTML = `
+        <div class="tb-book" style="--caccent:${b.caccent};--deep:${b.deep}">
+          <div class="book__pages"></div>
+          <div class="book__face"><div class="cv">
+            <div class="cv__top"><div class="cv__pig">
+              <span class="g">${b.glyph}</span>
+              <span class="py">${b.py}</span>
+              <span class="nm">${b.name}</span>
+            </div></div>
+            <div class="cv__mid">
+              <div class="cv__series">中文课本</div>
+              <div class="cv__title">${ruby(b.title)}</div>
+              <div class="cv__sub">Band ${i + 1} · ${b.sub}</div>
+              <div class="cv__rule">${b.yr}</div>
+            </div>
+          </div></div>
+        </div>
+        <div class="tb-cap">
+          <div class="cncn">${ruby(b.title)}</div>
+          <div class="en">${b.sub}</div>
+          <div class="yr">${b.yr}</div>
+        </div>`;
+      shelf.appendChild(el);
+    });
+    // apply lang attribute to the dynamically generated Chinese text
+    shelf.querySelectorAll('.cncn, .cv__series, .cv__title, .g').forEach(el => el.setAttribute('lang', 'zh-Hans'));
   })();
 </script>
 </body>
