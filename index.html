@@ -105,8 +105,9 @@
   .brand {
     display: block;
     text-decoration: none;
-    height: 100%;
+    height: 80%;
     line-height: 0;
+    flex-shrink: 0;
   }
   .brand-logo {
     height: 100%;
@@ -114,20 +115,22 @@
     display: block;
   }
   .nav-links {
-    display: flex; gap: 32px; align-items: center;
+    display: flex; gap: clamp(12px, 1.6vw, 28px); align-items: center;
+    margin-left: clamp(16px, 2vw, 32px);
   }
   .nav-links a {
     text-decoration: none;
-    font-size: 14px;
+    font-size: clamp(12px, 1.1vw, 14px);
     font-weight: 500;
     color: var(--ink);
     position: relative;
     padding: 4px 0;
+    white-space: nowrap;
   }
   .nav-links a .zh-nav {
     display: block;
     font-family: var(--zh-sans);
-    font-size: 9.5px;
+    font-size: 9px;
     color: var(--ink-mute);
     line-height: 1;
     margin-top: 2px;
@@ -143,10 +146,12 @@
   .nav-cta {
     background: var(--ink);
     color: white !important;
-    padding: 10px 18px !important;
+    padding: 8px 16px !important;
     border-radius: 999px;
-    font-size: 13px !important;
+    font-size: clamp(11px, 1vw, 13px) !important;
     transition: background .2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .nav-cta::after { display: none; }
   .nav-cta:hover { background: var(--red-deep); }
@@ -1467,7 +1472,7 @@
           We believe language is a doorway — to family, to heritage, and to the world. Our small class sizes mean each student is known by name, and our curriculum balances structured literacy with cultural arts: calligraphy, paper-cutting, music, dance, and seasonal celebrations.
         </p>
         <p class="zh-para">Casey中文学校植根凯西社区，每周六，孩子们相聚课堂，语言为纽带，文化铭于心间。</p>
-        <p class="zh-para">语言是门——通往家庭，通往血脉，通往世界。小班教学，有名有姓，有声有色。书法、剪纸、音乐、舞蹈，岁时节令，一一经历。</p>
+        <p class="zh-para">语言是一扇门——通往家庭，通往血脉，通往世界。小班教学，有名有姓，有声有色。书法、剪纸、音乐、舞蹈，岁时节令，一一经历。</p>
       </div>
       <dl class="stats">
         <div class="stat">
