@@ -117,25 +117,35 @@
     inkEls.forEach(function (p) {
       var L = p.getTotalLength();
       p.dataset.len = L;
-      p.style.strokeDasharray = L;
-      p.style.strokeDashoffset = L;
+      p.style.strokeDasharray = L + "px";
+      p.style.strokeDashoffset = L + "px";
     });
+  }
+
+  // CSS transitions (not WAAPI) — stroke-dashoffset keyframes are unreliable
+  // cross-browser; transitions with explicit px units work everywhere and the
+  // end state lives in inline style, so nothing fights the cascade afterwards.
+  function resetStroke(p) {
+    p.style.transition = "none";
+    p.style.strokeDashoffset = p.dataset.len + "px";
+  }
+  function drawStroke(p, dur) {
+    void p.getBoundingClientRect();          // commit the start value first
+    p.style.transition = "stroke-dashoffset " + dur + "ms cubic-bezier(.45,.05,.3,1)";
+    p.style.strokeDashoffset = "0px";
   }
 
   function showAll() {
     inkEls.forEach(function (p) {
-      p.getAnimations && p.getAnimations().forEach(function (a) { a.cancel(); });
-      p.style.strokeDashoffset = 0;
+      p.style.transition = "none";
+      p.style.strokeDashoffset = "0px";
     });
     stepIdx = inkEls.length;
   }
 
   function play() {
     seqTimers.forEach(clearTimeout); seqTimers = [];
-    inkEls.forEach(function (p) {
-      p.getAnimations && p.getAnimations().forEach(function (a) { a.cancel(); });
-      p.style.strokeDashoffset = +p.dataset.len;
-    });
+    inkEls.forEach(resetStroke);
     if (prefersReduced) { showAll(); return; }
     stepIdx = 0;
     var i = 0;
@@ -143,8 +153,7 @@
       if (i >= inkEls.length) return;
       var p = inkEls[i], L = +p.dataset.len;
       var dur = clamp(220 + L * 0.34, 320, 900) / state.speed;
-      p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }],
-        { duration: dur, easing: "cubic-bezier(.45,.05,.3,1)", fill: "forwards" });
+      drawStroke(p, dur);
       i++; stepIdx = i;
       var t = setTimeout(next, dur + 80 / state.speed);
       seqTimers.push(t);
@@ -155,12 +164,10 @@
   function step() {
     seqTimers.forEach(clearTimeout); seqTimers = [];
     if (stepIdx >= inkEls.length) {            // restart from blank
-      inkEls.forEach(function (p) { p.style.strokeDashoffset = +p.dataset.len; });
+      inkEls.forEach(resetStroke);
       stepIdx = 0;
     }
-    var p = inkEls[stepIdx], L = +p.dataset.len;
-    p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }],
-      { duration: prefersReduced ? 1 : 460 / state.speed, easing: "cubic-bezier(.45,.05,.3,1)", fill: "forwards" });
+    drawStroke(inkEls[stepIdx], prefersReduced ? 1 : 460 / state.speed);
     stepIdx++;
   }
 

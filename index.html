@@ -2305,7 +2305,7 @@
     host.innerHTML = gridSVG() + '<svg viewBox="0 0 1024 1024"><defs>' + defs + '</defs>' +
       '<g transform="translate(0,900) scale(1,-1)">' + gh + ink + '</g></svg>';
     inkEls = [].slice.call(host.querySelectorAll('.fw-ink'));
-    inkEls.forEach(function (p) { var L = p.getTotalLength(); p.dataset.len = L; p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+    inkEls.forEach(function (p) { var L = p.getTotalLength(); p.dataset.len = L; p.style.strokeDasharray = L + 'px'; p.style.strokeDashoffset = L + 'px'; });
   }
   function clearT() { timers.forEach(clearTimeout); timers = []; if (dwell) clearTimeout(dwell); }
   function chips() {
@@ -2315,13 +2315,17 @@
   }
   function setChip() { [].slice.call(cycleEl.children).forEach(function (b, i) { b.classList.toggle('on', i === idx); }); }
   function play() {
-    if (reduce) { inkEls.forEach(function (p) { p.style.strokeDashoffset = 0; }); dwell = setTimeout(next, 2600); return; }
+    if (reduce) { inkEls.forEach(function (p) { p.style.transition = 'none'; p.style.strokeDashoffset = '0px'; }); dwell = setTimeout(next, 2600); return; }
     var i = 0;
     (function step() {
       if (i >= inkEls.length) { dwell = setTimeout(next, 1700); return; }
       var p = inkEls[i], L = +p.dataset.len;
       var dur = Math.max(360, Math.min(820, 240 + L * 0.32));
-      p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: dur, easing: 'cubic-bezier(.45,.05,.3,1)', fill: 'forwards' });
+      // CSS transition instead of WAAPI: stroke-dashoffset keyframes are
+      // unreliable cross-browser; px-unit transitions work everywhere.
+      void p.getBoundingClientRect();
+      p.style.transition = 'stroke-dashoffset ' + dur + 'ms cubic-bezier(.45,.05,.3,1)';
+      p.style.strokeDashoffset = '0px';
       i++; timers.push(setTimeout(step, dur + 90));
     })();
   }
