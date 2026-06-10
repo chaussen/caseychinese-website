@@ -262,6 +262,43 @@
     });
   }
 
+  // ---- read aloud (Web Speech API; buttons stay hidden when unsupported) ----
+  var canSpeak = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  function zhVoice() {
+    var vs = speechSynthesis.getVoices().filter(function (v) { return /^zh([-_]|$)/i.test(v.lang); });
+    var cn = vs.filter(function (v) { return /CN|cmn|Hans/i.test(v.lang + " " + v.name); });
+    return cn[0] || vs[0] || null;
+  }
+  function speak(text, btn) {
+    if (!canSpeak || !text) return;
+    speechSynthesis.cancel();
+    $all(".say.is-speaking").forEach(function (b) { b.classList.remove("is-speaking"); });
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = "zh-CN";
+    u.rate = 0.75;
+    var v = zhVoice();
+    if (v) u.voice = v;
+    if (btn) {
+      btn.classList.add("is-speaking");
+      u.onend = u.onerror = function () { btn.classList.remove("is-speaking"); };
+    }
+    speechSynthesis.speak(u);
+  }
+  function initSpeech() {
+    var sayBtn = $("#ce-say"), saySentBtn = $("#ce-say-sent");
+    if (!canSpeak || !sayBtn) return;
+    speechSynthesis.getVoices();          // warm the voice list (loads async)
+    sayBtn.hidden = false;
+    sayBtn.addEventListener("click", function () { speak(DATA[state.idx].ch, sayBtn); });
+    if (saySentBtn) {
+      saySentBtn.hidden = false;
+      saySentBtn.addEventListener("click", function () {
+        var seg = DATA[state.idx].ex.seg;
+        speak(seg.map(function (p) { return p[0]; }).join(""), saySentBtn);
+      });
+    }
+  }
+
   // ---- build the wall ----
   function buildWall() {
     var wall = $("#ce-wall");
@@ -283,6 +320,7 @@
     writerEl = $("#ce-writer");
     buildWall();
     setPinyin(state.pinyin);
+    initSpeech();
 
     $("#ce-replay").addEventListener("click", play);
     $("#ce-step").addEventListener("click", step);

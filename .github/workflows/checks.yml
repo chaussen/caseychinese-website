@@ -1,0 +1,16 @@
+name: Site checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check internal links and assets
+        run: python3 scripts/check-links.py
+      - name: Validate HTML
+        run: npx --yes html-validate@11 *.html

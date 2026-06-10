@@ -29,8 +29,12 @@ origin to that tag on every page that uses it.
 - **Photos** — see `images/README.md`. Gallery photos are `images/gallery-N.jpg`;
   add the next number and a matching tile in `#galleryGrid` in `index.html`.
   Keep files under ~500 KB.
-- **Term dates / fees / events** — edit the matching section in `index.html`
-  (search for `id="schedule"`, `id="fees"`, `id="events"`).
+- **Term dates / fees** — edit the matching section in `index.html`
+  (search for `id="schedule"`, `id="fees"`).
+- **Events** — add an `<article class="event" data-date="YYYY-MM-DD">` block in
+  the `#events` section. Past events hide themselves automatically, and a
+  "check back soon" note appears when none are upcoming — so old entries never
+  need deleting, just add new ones.
 - **Enrolment form** — replace `enrolment-form-2026.pdf` and update the link
   text in the `#enrolment` section for the new year.
 - **Characters** — add an entry to `learn/char-data.js` (stroke paths and
@@ -40,6 +44,13 @@ origin to that tag on every page that uses it.
 - **New pages** — add the page, link it from the nav, and add it to
   `sitemap.xml`.
 
+## Checks
+
+Every push and pull request runs `.github/workflows/checks.yml`:
+`scripts/check-links.py` verifies that every local `src`/`href` resolves to a
+real file, and `html-validate` (configured in `.htmlvalidate.json`) lints the
+HTML. Run both locally the same way before pushing if you want a head start.
+
 ## Conventions
 
 - English first, Chinese alongside; Chinese text gets `lang="zh-Hans"`.
@@ -48,3 +59,7 @@ origin to that tag on every page that uses it.
   (the strokes are the lesson content).
 - Images use `loading="lazy"` except the hero, which uses
   `fetchpriority="high"`.
+- The explorer's read-aloud buttons use the browser's built-in Web Speech API
+  (no external service); they stay hidden on browsers without a speech engine.
+- Old URLs from the retired site (`about/classes/contact/enrolment.html`) are
+  kept as tiny redirect stubs pointing at the matching `index.html` section.

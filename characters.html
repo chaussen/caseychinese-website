@@ -156,6 +156,12 @@
 
   .ce-block{margin-bottom:22px;}
   .ce-block:last-child{margin-bottom:0;}
+  .say{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);
+    color:var(--red-deep);cursor:pointer;display:inline-grid;place-items:center;
+    transition:all .2s;flex-shrink:0;align-self:center;padding:0;}
+  .say:hover{border-color:var(--red-deep);background:var(--red-tint);}
+  .say.is-speaking{background:var(--red-deep);border-color:var(--red-deep);color:#fff;}
+  .say-sm{width:30px;height:30px;vertical-align:middle;margin-left:8px;}
   .ce-lbl{display:inline-block;font-family:var(--zh-sans);font-size:12px;font-weight:600;
     letter-spacing:.02em;color:var(--red-deep);background:var(--red-tint);border-radius:999px;
     padding:4px 11px;margin-bottom:11px;}
@@ -290,7 +296,7 @@
     <a href="index.html" class="brand">
       <img src="images/logo.png" alt="Casey Chinese School · Casey 中文学校" class="brand-logo" />
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="navLinks">
@@ -312,8 +318,8 @@
     <h1>Meet your <em>first</em> characters.</h1>
     <div class="hero-zh">每天学一个字，进步一点点</div>
     <p class="hero-lede">
-      Tap a character, read it aloud, and follow every stroke in order — that's how the shapes really start to stick.
-      <span class="zh-note">点一点，读一读，跟着写，汉字就能记得牢。</span>
+      Tap a character, hear it spoken, read it aloud, and follow every stroke in order — that's how the shapes really start to stick.
+      <span class="zh-note">点一点，听一听，读一读，跟着写，汉字就能记得牢。</span>
     </p>
     <div class="hero-free"><span class="d"></span>Twelve foundational characters</div>
   </div>
@@ -346,6 +352,9 @@
           <div>
             <div class="ce-py py-hide" id="ce-py">—</div>
           </div>
+          <button class="say" id="ce-say" type="button" hidden aria-label="Hear it spoken · 听发音">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
           <div>
             <div class="ce-en" id="ce-en">—</div>
           </div>
@@ -362,6 +371,9 @@
 
         <div class="ce-block">
           <span class="ce-lbl" id="ce-ex-lbl">举个例子 · Here's an example</span>
+          <button class="say say-sm" id="ce-say-sent" type="button" hidden aria-label="Hear the sentence · 听句子">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
           <p class="ce-sentence" id="ce-sentence" lang="zh-Hans"></p>
           <p class="ce-sentence-en" id="ce-sentence-en"></p>
         </div>
