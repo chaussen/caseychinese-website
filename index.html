@@ -4,11 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
 <meta name="robots" content="index, follow" />
 <title>Casey Chinese School | Berwick Cranbourne Narre Warren | Saturday Chinese Classes</title>
 <meta name="description" content="Casey Chinese School — Saturday Chinese classes for all year levels in Narre Warren, serving Berwick, Cranbourne, Hallam and Casey families. Free trial lesson for new students. 每周六中文课，新生可免费试课。" />
 <meta name="keywords" content="Casey Chinese school, Berwick Chinese school, Cranbourne Chinese school, Narre Warren Chinese school, Saturday Chinese school Melbourne, 中文学校, 华文学校" />
+<link rel="canonical" href="https://caseychinese.org/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Casey Chinese School · Casey 中文学校" />
+<meta property="og:description" content="Saturday Chinese classes for all year levels in Narre Warren, serving Berwick, Cranbourne, Hallam and Casey families. Free trial lesson for new students." />
+<meta property="og:url" content="https://caseychinese.org/" />
+<meta property="og:image" content="https://caseychinese.org/images/hero.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/png" href="favicon.png" />
 <script type="application/ld+json">
 {
@@ -35,7 +42,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
     --red: #F08379;
@@ -228,6 +235,15 @@
     color: var(--ink);
   }
   .trial-note .zh-sans { font-size: 12px; color: var(--ink-soft); }
+  .fb-share {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #1877F2; color: #fff;
+    font-size: 13px; font-weight: 600;
+    padding: 8px 16px; border-radius: 999px;
+    text-decoration: none;
+    transition: background .2s ease;
+  }
+  .fb-share:hover { background: #0f5fce; }
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 14px 26px;
@@ -348,7 +364,7 @@
     line-height: 1.5;
   }
   .photo img.loaded + .ph-fallback { display: none; }
-  .photo img:not(.loaded) { display: none; }
+  .photo img:not(.loaded) { opacity: 0; }
 
   /* ───── SECTIONS ───── */
   section.section { padding: 100px 0; }
@@ -1354,8 +1370,22 @@
   .feat-card { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: clamp(20px,3vw,30px); box-shadow: 0 40px 70px -50px rgba(200,75,63,.45); }
   .feat-badge { position: absolute; top: -13px; left: 24px; z-index: 2; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; background: var(--red-deep); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; box-shadow: 0 10px 22px -10px rgba(200,75,63,.6); }
   .feat-badge .d { width: 6px; height: 6px; border-radius: 50%; background: #fff; opacity: .9; }
-  .feat-writer { position: relative; width: 100%; aspect-ratio: 1/1; background: radial-gradient(120% 120% at 30% 20%, #fff, var(--bg) 120%); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .feat-writer { position: relative; display: block; width: 100%; padding: 0; aspect-ratio: 1/1; background: radial-gradient(120% 120% at 30% 20%, #fff, var(--bg) 120%); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; cursor: pointer; appearance: none; -webkit-appearance: none; }
   .feat-writer svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .feat-writer::after {
+    content: '↻ Replay';
+    position: absolute; right: 10px; bottom: 10px;
+    font-family: var(--sans); font-size: 12px; font-weight: 600;
+    color: var(--red-deep); background: rgba(255, 255, 255, 0.92);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 5px 12px;
+    opacity: 0; transition: opacity .2s ease;
+    pointer-events: none;
+  }
+  .feat-writer:hover::after, .feat-writer:focus-visible::after { opacity: 1; }
+  @media (hover: none) { .feat-writer::after { opacity: .9; } }
+  .feat-writer:focus-visible, .feat-chip:focus-visible { outline: 2.5px solid var(--red-deep); outline-offset: 3px; }
+  .feat-hint { margin: 14px 0 0; text-align: center; font-size: 13.5px; color: var(--ink-soft); }
   .feat-writer .fw-frame { stroke: var(--line); stroke-width: 3; fill: none; }
   .feat-writer .fw-dash { stroke: var(--red-soft); stroke-width: 2; stroke-dasharray: 7 13; opacity: .6; }
   .feat-writer .fw-diag { stroke: var(--line-soft); stroke-width: 2; stroke-dasharray: 5 16; }
@@ -1395,11 +1425,6 @@
 <body>
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
-
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
-  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0">
-</script>
 
 <!-- ───── NAV ───── -->
 <nav class="nav" id="nav">
@@ -1452,11 +1477,11 @@
         <span class="zh-sans">· 新生可免费试课</span>
       </div>
       <div style="margin-top:18px;">
-        <div class="fb-share-button"
-          data-href="https://caseychinese.org"
-          data-layout="button"
-          data-size="large">
-        </div>
+        <a class="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaseychinese.org%2F"
+          target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>
+          Share on Facebook
+        </a>
       </div>
       <dl class="hero-meta">
         <div>
@@ -1472,8 +1497,8 @@
     <div class="hero-visual">
       <div class="hero-photo back"></div>
       <div class="hero-photo front photo">
-        <img alt="Students at Casey Chinese School" data-src="images/hero.png?v=1" />
-        <div class="ph-fallback">images/hero.png</div>
+        <img alt="Students at Casey Chinese School" src="images/hero.jpg" fetchpriority="high" decoding="async" />
+        <div class="ph-fallback">images/hero.jpg</div>
       </div>
       <div class="hero-stamp">
         <span><span class="big">学</span>Learn<br />Chinese</span>
@@ -1607,8 +1632,9 @@
       <div class="feat-stage">
         <div class="feat-card">
           <span class="feat-badge"><span class="d"></span>New · 好玩 · Try it</span>
-          <div class="feat-writer" id="featWriter" role="img" aria-label="A Chinese character being written stroke by stroke"></div>
-          <div class="feat-cycle" id="featCycle" aria-hidden="true"></div>
+          <button class="feat-writer" id="featWriter" type="button" aria-label="Replay the stroke-order animation"></button>
+          <div class="feat-cycle" id="featCycle" role="group" aria-label="Pick a character to watch"></div>
+          <p class="feat-hint">Tap a character to watch it written<span class="zh-sans" lang="zh-Hans"> · 点哪个字，写哪个字</span></p>
         </div>
       </div>
       <div class="feat-copy">
@@ -1664,7 +1690,7 @@
       <div class="tb-photo-row">
         <figure class="tb-pcard">
           <div class="tb-pframe">
-            <img src="images/zhongwen-series.png" alt="中文 Books 1–4, Jinan University Press, on a classroom table">
+            <img src="images/zhongwen-series.jpg" loading="lazy" decoding="async" alt="中文 Books 1–4, Jinan University Press, on a classroom table">
             <div class="tb-pband">
               <span class="tb-pband__cn">暨南大学《中文》</span>
               <span class="tb-pband__sep"></span>
@@ -1945,83 +1971,83 @@
 
     <div class="gallery is-collapsed" id="galleryGrid">
       <div class="photo">
-        <img alt="Students at Casey Chinese School" data-src="images/gallery-1.jpg" />
-        <div class="ph-fallback">images/gallery-1.jpg<br /><span style="opacity:.7">any size · crops to fit</span></div>
+        <img alt="Students at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-1.jpg" />
+        <div class="ph-fallback">images/gallery-1.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Students learning Mandarin at Casey Chinese School" data-src="images/gallery-2.jpg" />
+        <img alt="Students learning Mandarin at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-2.jpg" />
         <div class="ph-fallback">images/gallery-2.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Chinese calligraphy class activity" data-src="images/gallery-3.jpg" />
+        <img alt="Chinese calligraphy class activity" loading="lazy" decoding="async" src="images/gallery-3.jpg" />
         <div class="ph-fallback">images/gallery-3.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Casey Chinese School Saturday class" data-src="images/gallery-4.jpg" />
+        <img alt="Casey Chinese School Saturday class" loading="lazy" decoding="async" src="images/gallery-4.jpg" />
         <div class="ph-fallback">images/gallery-4.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Cultural arts activity at Casey Chinese School" data-src="images/gallery-5.jpg" />
+        <img alt="Cultural arts activity at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-5.jpg" />
         <div class="ph-fallback">images/gallery-5.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Students and teacher in Mandarin class" data-src="images/gallery-6.jpg" />
+        <img alt="Students and teacher in Mandarin class" loading="lazy" decoding="async" src="images/gallery-6.jpg" />
         <div class="ph-fallback">images/gallery-6.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Chinese New Year celebration at Casey Chinese School" data-src="images/gallery-7.jpg" />
+        <img alt="Chinese New Year celebration at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-7.jpg" />
         <div class="ph-fallback">images/gallery-7.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Students practising Chinese character writing" data-src="images/gallery-8.jpg" />
+        <img alt="Students practising Chinese character writing" loading="lazy" decoding="async" src="images/gallery-8.jpg" />
         <div class="ph-fallback">images/gallery-8.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Paper-cutting craft session at Casey Chinese School" data-src="images/gallery-9.jpg" />
+        <img alt="Paper-cutting craft session at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-9.jpg" />
         <div class="ph-fallback">images/gallery-9.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Community gathering at Casey Chinese School" data-src="images/gallery-10.jpg" />
+        <img alt="Community gathering at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-10.jpg" />
         <div class="ph-fallback">images/gallery-10.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Students in a classroom at Casey Chinese School" data-src="images/gallery-11.jpg" />
+        <img alt="Students in a classroom at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-11.jpg" />
         <div class="ph-fallback">images/gallery-11.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Cultural performance by Casey Chinese School students" data-src="images/gallery-12.jpg" />
+        <img alt="Cultural performance by Casey Chinese School students" loading="lazy" decoding="async" src="images/gallery-12.jpg" />
         <div class="ph-fallback">images/gallery-12.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Mid-Autumn Festival celebration at Casey Chinese School" data-src="images/gallery-13.jpg" />
+        <img alt="Mid-Autumn Festival celebration at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-13.jpg" />
         <div class="ph-fallback">images/gallery-13.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Students and families at a Casey Chinese School event" data-src="images/gallery-14.jpg" />
+        <img alt="Students and families at a Casey Chinese School event" loading="lazy" decoding="async" src="images/gallery-14.jpg" />
         <div class="ph-fallback">images/gallery-14.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Traditional dance activity at Casey Chinese School" data-src="images/gallery-15.webp" />
+        <img alt="Traditional dance activity at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-15.webp" />
         <div class="ph-fallback">images/gallery-15.webp</div>
       </div>
       <div class="photo">
-        <img alt="Casey Chinese School classroom scene" data-src="images/gallery-16.jpg" />
+        <img alt="Casey Chinese School classroom scene" loading="lazy" decoding="async" src="images/gallery-16.jpg" />
         <div class="ph-fallback">images/gallery-16.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Seasonal celebration at Casey Chinese School" data-src="images/gallery-17.jpg" />
+        <img alt="Seasonal celebration at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-17.jpg" />
         <div class="ph-fallback">images/gallery-17.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Parents and children at Casey Chinese School" data-src="images/gallery-18.jpg" />
+        <img alt="Parents and children at Casey Chinese School" loading="lazy" decoding="async" src="images/gallery-18.jpg" />
         <div class="ph-fallback">images/gallery-18.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Students engaged in group learning activity" data-src="images/gallery-19.jpg" />
+        <img alt="Students engaged in group learning activity" loading="lazy" decoding="async" src="images/gallery-19.jpg" />
         <div class="ph-fallback">images/gallery-19.jpg</div>
       </div>
       <div class="photo">
-        <img alt="Casey Chinese School school community portrait" data-src="images/gallery-20.jpg" />
+        <img alt="Casey Chinese School school community portrait" loading="lazy" decoding="async" src="images/gallery-20.jpg" />
         <div class="ph-fallback">images/gallery-20.jpg</div>
       </div>
     </div>
@@ -2089,7 +2115,7 @@
           <div style="display: flex; gap: 24px; flex-wrap: wrap; margin-top: 12px;">
             <div>
               <div class="val-name">WhatsApp</div>
-              <a href="https://wa.me/qr/QQGGSF5KSQVYE1" target="_blank" style="text-decoration: none;">
+              <a href="https://wa.me/qr/QQGGSF5KSQVYE1" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
                 <img src="images/whatsapp.png" alt="WhatsApp QR code" class="wechat-qr" style="border: 1px solid rgba(255,255,255,0.1);" />
               </a>
             </div>
@@ -2126,7 +2152,7 @@
 <!-- ───── FOOTER ───── -->
 <footer class="foot">
   <div class="wrap foot-inner">
-    <div>© 2026 Casey Foundation Chinese School · Casey 中文学校</div>
+    <div>© <span id="footYear">2026</span> Casey Foundation Chinese School · Casey 中文学校</div>
     <div>
       维多利亚州注册社团法人 · Incorporated Association in Victoria · <a href="#contact">Volunteer with us · 教学志愿</a>
     </div>
@@ -2140,17 +2166,15 @@
   document.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  document.getElementById('footYear').textContent = new Date().getFullYear();
 
-  // Probe for user-supplied photos. If a real image exists at data-src, swap it in;
-  // otherwise leave the styled placeholder showing.
-  document.querySelectorAll('img[data-src]').forEach(img => {
-    const url = img.getAttribute('data-src');
-    const probe = new Image();
-    probe.onload = () => {
-      img.src = url;
-      img.classList.add('loaded');
-    };
-    probe.src = url;
+
+  // Reveal photos once they load; if a file is missing, the styled placeholder
+  // stays visible. Lazy loading is left to the browser via loading="lazy".
+  document.querySelectorAll('.photo img').forEach(img => {
+    const mark = () => img.classList.add('loaded');
+    if (img.complete && img.naturalWidth > 0) mark();
+    else img.addEventListener('load', mark, { once: true });
   });
 
   // contact form — mailto approach (no server needed, works on static hosting)
@@ -2281,6 +2305,7 @@
   var cycleEl = document.getElementById('featCycle');
   if (!host || !cycleEl) return;
   var idx = 0, timers = [], dwell = null, inkEls = [], started = false;
+  var prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function gridSVG() {
     return '<svg viewBox="0 0 1024 1024" aria-hidden="true">' +
@@ -2305,16 +2330,27 @@
     inkEls.forEach(function (p) { var L = p.getTotalLength(); p.dataset.len = L; p.style.strokeDasharray = L + 'px'; p.style.strokeDashoffset = L + 'px'; });
   }
   function clearT() { timers.forEach(clearTimeout); timers = []; if (dwell) clearTimeout(dwell); }
+  function showAll() {
+    clearT();
+    inkEls.forEach(function (p) { p.style.transition = 'none'; p.style.strokeDashoffset = '0px'; });
+  }
   function chips() {
     cycleEl.innerHTML = ORDER.map(function (c, i) {
-      return '<button class="feat-chip' + (i === idx ? ' on' : '') + '" data-i="' + i + '" type="button" tabindex="-1" aria-label="' + c + '">' + c + '</button>';
+      return '<button class="feat-chip' + (i === idx ? ' on' : '') + '" data-i="' + i + '" type="button" ' +
+        'aria-pressed="' + (i === idx) + '" lang="zh-Hans" aria-label="Watch ' + c + ' written stroke by stroke">' + c + '</button>';
     }).join('');
   }
-  function setChip() { [].slice.call(cycleEl.children).forEach(function (b, i) { b.classList.toggle('on', i === idx); }); }
+  function setChip() {
+    [].slice.call(cycleEl.children).forEach(function (b, i) {
+      var on = i === idx;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on);
+    });
+  }
   function play() {
     var i = 0;
     (function step() {
-      if (i >= inkEls.length) { dwell = setTimeout(next, 1700); return; }
+      if (i >= inkEls.length) { if (!prefersReduced) dwell = setTimeout(next, 1700); return; }
       var p = inkEls[i], L = +p.dataset.len;
       var dur = Math.max(360, Math.min(820, 240 + L * 0.32));
       // CSS transition instead of WAAPI: stroke-dashoffset keyframes are
@@ -2328,12 +2364,16 @@
   function show(n) { clearT(); idx = (n + ORDER.length) % ORDER.length; build(ORDER[idx]); setChip(); play(); }
   function next() { show(idx + 1); }
 
-  function start() { if (started) return; started = true; show(idx); }
+  // Under prefers-reduced-motion nothing plays on its own: the character is
+  // shown fully drawn, and animation only runs on an explicit tap/click
+  // (the strokes are the lesson content, matching learn/explorer.js policy).
+  function start() { if (started) return; started = true; if (prefersReduced) { showAll(); return; } show(idx); }
   chips();
   build(ORDER[idx]);
   cycleEl.addEventListener('click', function (e) {
     var b = e.target.closest('.feat-chip'); if (!b) return; started = true; show(+b.dataset.i);
   });
+  host.addEventListener('click', function () { started = true; show(idx); });
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (en) {
       if (en.isIntersecting) { start(); }
