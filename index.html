@@ -2321,8 +2321,7 @@
       if (i >= inkEls.length) { dwell = setTimeout(next, 1700); return; }
       var p = inkEls[i], L = +p.dataset.len;
       var dur = Math.max(360, Math.min(820, 240 + L * 0.32));
-      var anim = p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: dur, easing: 'cubic-bezier(.45,.05,.3,1)', fill: 'forwards' });
-      anim.onfinish = function() { p.style.strokeDashoffset = 0; };
+      p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: dur, easing: 'cubic-bezier(.45,.05,.3,1)', fill: 'forwards' });
       i++; timers.push(setTimeout(step, dur + 90));
     })();
   }
