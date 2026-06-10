@@ -4,14 +4,30 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
 <meta name="robots" content="index, follow" />
 <title>Learn a Character | 认字 — Casey Chinese School</title>
 <meta name="description" content="A free, interactive way to meet your first Chinese characters. Watch each one written stroke by stroke, see it in a real sentence, and learn where it comes from. 免费认字小工具 — 看笔顺、读句子、知字源。" />
+<link rel="canonical" href="https://caseychinese.org/characters.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Learn a Character · 识字小馆 — Casey Chinese School" />
+<meta property="og:description" content="Meet your first Chinese characters: watch each one written stroke by stroke, read it in a real sentence, and learn where it comes from." />
+<meta property="og:url" content="https://caseychinese.org/characters.html" />
+<meta property="og:image" content="https://caseychinese.org/images/hero.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;1,400&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLRWEHJX8P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TLRWEHJX8P');
+</script>
 <style>
   :root{
     --red:#F08379; --red-deep:#C84B3F; --red-soft:#F8C5BF; --red-tint:#FCE6E2;
@@ -46,7 +62,7 @@
 
   /* one ruby per character (house rule) */
   ruby{ruby-position:over;}
-  ruby rt{font-family:var(--sans);font-weight:600;color:var(--ink-mute);}
+  ruby rt{font-family:var(--sans);font-weight:600;color:var(--ink-soft);}
 
   /* ───── NAV ───── */
   .nav{position:sticky;top:0;z-index:50;height:64px;background:rgba(255,248,245,.85);
@@ -84,7 +100,7 @@
     margin-top:8px;line-height:1.8;}
   .hero-free{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:7px 15px;
     background:var(--red-tint);border:1px solid var(--red-soft);border-radius:999px;
-    font-size:12.5px;font-weight:600;color:var(--red-deep);letter-spacing:.02em;}
+    font-size:12.5px;font-weight:600;color:#9A3027;letter-spacing:.02em;}
   .hero-free .d{width:6px;height:6px;border-radius:50%;background:var(--red);}
 
   /* ───── EXPLORER ───── */
@@ -101,7 +117,7 @@
   .writer__grid .g-dash{stroke:var(--red-soft);stroke-width:2;stroke-dasharray:7 13;opacity:.6;}
   .writer__grid .g-diag{stroke:var(--line-soft);stroke-width:2;stroke-dasharray:5 16;}
   .writer .ghost{fill:var(--ghost);}
-  .writer .snum{font-family:var(--sans);font-size:70px;font-weight:800;
+  .writer .snum{font-family:var(--sans);font-size:70px;font-weight:700;
     paint-order:stroke;stroke:#fffdf8;stroke-width:14px;stroke-linejoin:round;}
 
   .writer-wrap{display:flex;flex-direction:column;gap:16px;}
@@ -140,6 +156,12 @@
 
   .ce-block{margin-bottom:22px;}
   .ce-block:last-child{margin-bottom:0;}
+  .say{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);
+    color:var(--red-deep);cursor:pointer;display:inline-grid;place-items:center;
+    transition:all .2s;flex-shrink:0;align-self:center;padding:0;}
+  .say:hover{border-color:var(--red-deep);background:var(--red-tint);}
+  .say.is-speaking{background:var(--red-deep);border-color:var(--red-deep);color:#fff;}
+  .say-sm{width:30px;height:30px;vertical-align:middle;margin-left:8px;}
   .ce-lbl{display:inline-block;font-family:var(--zh-sans);font-size:12px;font-weight:600;
     letter-spacing:.02em;color:var(--red-deep);background:var(--red-tint);border-radius:999px;
     padding:4px 11px;margin-bottom:11px;}
@@ -170,13 +192,13 @@
     background:#fff;transition:left .2s;}
   .ce-pinyin.is-off .knob{background:var(--ink-mute);}
   .ce-pinyin.is-off .knob::after{left:2px;}
-  .ce-pinyin .zh-sans{font-size:12px;color:var(--ink-mute);}
+  .ce-pinyin .zh-sans{font-size:12px;color:var(--ink-soft);}
 
   /* wall */
   .wall-head{display:flex;align-items:baseline;gap:14px;margin:46px 0 16px;}
   .wall-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.6vw,30px);margin:0;letter-spacing:-.01em;}
   .wall-head .zh{font-family:var(--zh);font-size:15px;color:var(--ink-mute);}
-  .wall-head .hint{margin-left:auto;font-size:12.5px;color:var(--ink-mute);}
+  .wall-head .hint{margin-left:auto;font-size:12.5px;color:var(--ink-soft);}
   .wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:10px;}
   .wall__cell{display:flex;flex-direction:column;align-items:center;gap:3px;padding:14px 6px 10px;
     background:var(--paper);border:1.5px solid var(--line);border-radius:11px;cursor:pointer;transition:all .18s;}
@@ -184,7 +206,7 @@
   .wall__cell.is-active{border-color:var(--red-deep);background:var(--red-tint);box-shadow:0 0 0 1px var(--red-deep);}
   .wall__ch{font-family:var(--zh);font-size:30px;line-height:1;color:var(--ink);}
   .wall__cell.is-active .wall__ch{color:var(--red-deep);}
-  .wall__py{font-size:12px;color:var(--ink-mute);font-weight:500;}
+  .wall__py{font-size:12px;color:var(--ink-soft);font-weight:500;}
   body.no-pinyin .wall__py{visibility:hidden;}
 
   /* ───── POEM ───── */
@@ -219,7 +241,7 @@
   .btn-ghost:hover{background:var(--ink);color:#fff;}
   .btn .arrow{transition:transform .2s;}
   .btn:hover .arrow{transform:translateX(3px);}
-  .nudge-actions .free{font-size:12.5px;color:var(--ink-mute);text-align:center;}
+  .nudge-actions .free{font-size:12.5px;color:var(--ink-soft);text-align:center;}
 
   /* ───── FOOTER ───── */
   footer.foot{background:var(--ink);color:rgba(255,248,245,.75);padding:34px 0 46px;
@@ -239,8 +261,10 @@
   @media (max-width:920px){
     .wrap{padding:0 22px;}
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);
-      flex-direction:column;align-items:stretch;gap:0;padding:12px 22px 22px;border-bottom:1px solid var(--line);}
+      flex-direction:column;align-items:stretch;gap:0;padding:12px 22px 22px;border-bottom:1px solid var(--line);
+      max-height:calc(100dvh - 64px);overflow-y:auto;-webkit-overflow-scrolling:touch;}
     .nav-links.open{display:flex;}
+    body.nav-open{overflow:hidden;}
     .nav-links a{padding:14px 0;border-bottom:1px solid var(--line-soft);}
     .nav-links a:last-child{border-bottom:none;}
     .nav-cta{margin-top:12px;text-align:center;}
@@ -272,7 +296,7 @@
     <a href="index.html" class="brand">
       <img src="images/logo.png" alt="Casey Chinese School · Casey 中文学校" class="brand-logo" />
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="navLinks">
@@ -290,14 +314,14 @@
 <!-- ───── HERO ───── -->
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow"><span class="dot"></span>Free to play · 识字小馆 · Character explorer</div>
+    <div class="eyebrow"><span class="dot"></span>Learn a Character · 识字小馆</div>
     <h1>Meet your <em>first</em> characters.</h1>
     <div class="hero-zh">每天学一个字，进步一点点</div>
     <p class="hero-lede">
-      Tap a character, read it aloud, and follow every stroke in order — that's how the shapes really start to stick. No sign-up, no app, just you and the characters.
-      <span class="zh-note">点一点，读一读，跟着写，汉字就能记得牢。</span>
+      Tap a character, hear it spoken, read it aloud, and follow every stroke in order — that's how the shapes really start to stick.
+      <span class="zh-note">点一点，听一听，读一读，跟着写，汉字就能记得牢。</span>
     </p>
-    <div class="hero-free"><span class="d"></span>12 foundational characters · works on any phone</div>
+    <div class="hero-free"><span class="d"></span>Twelve foundational characters</div>
   </div>
 </header>
 
@@ -328,6 +352,9 @@
           <div>
             <div class="ce-py py-hide" id="ce-py">—</div>
           </div>
+          <button class="say" id="ce-say" type="button" hidden aria-label="Hear it spoken · 听发音">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
           <div>
             <div class="ce-en" id="ce-en">—</div>
           </div>
@@ -344,7 +371,10 @@
 
         <div class="ce-block">
           <span class="ce-lbl" id="ce-ex-lbl">举个例子 · Here's an example</span>
-          <p class="ce-sentence" id="ce-sentence"></p>
+          <button class="say say-sm" id="ce-say-sent" type="button" hidden aria-label="Hear the sentence · 听句子">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
+          <p class="ce-sentence" id="ce-sentence" lang="zh-Hans"></p>
           <p class="ce-sentence-en" id="ce-sentence-en"></p>
         </div>
       </div>
@@ -369,7 +399,7 @@
       <span class="zh">字卡大集合</span>
       <span class="hint">Tap any character · or use ← →</span>
     </div>
-    <div class="wall" id="ce-wall" role="list"></div>
+    <div class="wall" id="ce-wall" role="group" aria-label="All twelve characters"></div>
   </div>
 </main>
 
@@ -401,8 +431,8 @@
       <div>
         <h2>Enjoyed meeting these <em>characters?</em></h2>
         <p>
-          Enjoying the tool? Come along to a Saturday class and learn many more characters with us — your very first lesson is completely free.
-          <span class="zh-note">喜欢这个小工具吗？来我们的周六课堂，一起学更多汉字。第一次来可以免费试听。</span>
+          Come along to a Saturday class and learn many more characters with us — your very first lesson is completely free.
+          <span class="zh-note">来我们的周六课堂，一起学更多汉字。第一次来可以免费试听。</span>
         </p>
       </div>
       <div class="nudge-actions">
@@ -431,7 +461,9 @@
   var nav=document.getElementById('nav');
   addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8);},{passive:true});
   var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
-  t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o);});
+  t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o);document.body.classList.toggle('nav-open',o);});
+  [].slice.call(l.querySelectorAll('a')).forEach(function(a){a.addEventListener('click',function(){
+    l.classList.remove('open');t.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open');});});
   document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 <script src="learn/char-data.js"></script>

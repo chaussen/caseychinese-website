@@ -178,7 +178,7 @@
   var CJK = /[\u3400-\u9fff\u2e80-\u2eff\u31c0-\u31ef⺈㇏]+/g;
   function markCJK(str) {
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;")
-      .replace(CJK, function (m) { return '<span class="zh-inline">' + m + "</span>"; });
+      .replace(CJK, function (m) { return '<span class="zh-inline" lang="zh-Hans">' + m + "</span>"; });
   }
   function rubyFor(seg, focus) {
     return seg.map(function (pair) {
@@ -192,7 +192,7 @@
   function renderInfo(d) {
     $("#ce-py").innerHTML = d.py;
     $("#ce-en").textContent = d.en;
-    $("#ce-rad").innerHTML = '<span class="zh-inline">' + d.radical + "</span> " +
+    $("#ce-rad").innerHTML = '<span class="zh-inline" lang="zh-Hans">' + d.radical + "</span> " +
       '<span class="chip__t">radical · ' + d.radEn + "</span>";
     $("#ce-strokes").innerHTML = d.s.length + ' <span class="chip__t">stroke' + (d.s.length > 1 ? "s" : "") + "</span>";
     $("#ce-origin").innerHTML = markCJK(d.origin);
@@ -262,13 +262,50 @@
     });
   }
 
+  // ---- read aloud (Web Speech API; buttons stay hidden when unsupported) ----
+  var canSpeak = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  function zhVoice() {
+    var vs = speechSynthesis.getVoices().filter(function (v) { return /^zh([-_]|$)/i.test(v.lang); });
+    var cn = vs.filter(function (v) { return /CN|cmn|Hans/i.test(v.lang + " " + v.name); });
+    return cn[0] || vs[0] || null;
+  }
+  function speak(text, btn) {
+    if (!canSpeak || !text) return;
+    speechSynthesis.cancel();
+    $all(".say.is-speaking").forEach(function (b) { b.classList.remove("is-speaking"); });
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = "zh-CN";
+    u.rate = 0.75;
+    var v = zhVoice();
+    if (v) u.voice = v;
+    if (btn) {
+      btn.classList.add("is-speaking");
+      u.onend = u.onerror = function () { btn.classList.remove("is-speaking"); };
+    }
+    speechSynthesis.speak(u);
+  }
+  function initSpeech() {
+    var sayBtn = $("#ce-say"), saySentBtn = $("#ce-say-sent");
+    if (!canSpeak || !sayBtn) return;
+    speechSynthesis.getVoices();          // warm the voice list (loads async)
+    sayBtn.hidden = false;
+    sayBtn.addEventListener("click", function () { speak(DATA[state.idx].ch, sayBtn); });
+    if (saySentBtn) {
+      saySentBtn.hidden = false;
+      saySentBtn.addEventListener("click", function () {
+        var seg = DATA[state.idx].ex.seg;
+        speak(seg.map(function (p) { return p[0]; }).join(""), saySentBtn);
+      });
+    }
+  }
+
   // ---- build the wall ----
   function buildWall() {
     var wall = $("#ce-wall");
     wall.innerHTML = DATA.map(function (d, i) {
       return '<button class="wall__cell" data-i="' + i + '" type="button" ' +
         'aria-label="' + d.ch + " " + d.py + " — " + d.en + '">' +
-        '<span class="wall__ch">' + d.ch + "</span>" +
+        '<span class="wall__ch" lang="zh-Hans">' + d.ch + "</span>" +
         '<span class="wall__py">' + d.py + "</span></button>";
     }).join("");
     $all(".wall__cell", wall).forEach(function (b) {
@@ -283,6 +320,7 @@
     writerEl = $("#ce-writer");
     buildWall();
     setPinyin(state.pinyin);
+    initSpeech();
 
     $("#ce-replay").addEventListener("click", play);
     $("#ce-step").addEventListener("click", step);
@@ -297,7 +335,9 @@
       b.addEventListener("click", function () { setOpt("speed", parseFloat(b.dataset.speed)); });
     });
 
-    // keyboard: arrows + space, only when focus isn't on a text field
+    // keyboard: arrow keys flip characters while the explorer is in view.
+    // Space/Enter are deliberately left alone — hijacking Space breaks
+    // scroll-by-keyboard, and Replay is a focusable button already.
     document.addEventListener("keydown", function (e) {
       if (/input|textarea|select/i.test((e.target.tagName || ""))) return;
       var stage = $("#explorer");
@@ -305,10 +345,6 @@
       if (!near) return;
       if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
       else if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
-      else if (e.key === " " || e.key === "Enter") {
-        if (e.target.closest && e.target.closest("button")) return;
-        e.preventDefault(); play();
-      }
     });
 
     syncOptUI();
