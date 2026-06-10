@@ -16,8 +16,8 @@
   var state = {
     idx: clamp(saved.idx || 0, 0, DATA.length - 1),
     pinyin: saved.pinyin !== false,        // shown by default
-    rainbow: !!saved.rainbow,
-    numbers: !!saved.numbers,
+    rainbow: saved.rainbow !== false,        // colour on by default
+    numbers: saved.numbers !== false,        // order numbers on by default
     speed: saved.speed || 1                // 0.6 slow .. 1.6 fast
   };
   function persist() {
@@ -143,8 +143,9 @@
       if (i >= inkEls.length) return;
       var p = inkEls[i], L = +p.dataset.len;
       var dur = clamp(220 + L * 0.34, 320, 900) / state.speed;
-      p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }],
+      var anim = p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }],
         { duration: dur, easing: "cubic-bezier(.45,.05,.3,1)", fill: "forwards" });
+      anim.onfinish = function() { p.style.strokeDashoffset = 0; };
       i++; stepIdx = i;
       var t = setTimeout(next, dur + 80 / state.speed);
       seqTimers.push(t);
@@ -159,8 +160,9 @@
       stepIdx = 0;
     }
     var p = inkEls[stepIdx], L = +p.dataset.len;
-    p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }],
+    var anim = p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }],
       { duration: prefersReduced ? 1 : 460 / state.speed, easing: "cubic-bezier(.45,.05,.3,1)", fill: "forwards" });
+    anim.onfinish = function() { p.style.strokeDashoffset = 0; };
     stepIdx++;
   }
 

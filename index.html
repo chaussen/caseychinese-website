@@ -1617,7 +1617,7 @@
         <h2>Write your <em>first</em> character.</h2>
         <div class="zh-title">每周一字，积少成多</div>
         <p class="lede">Every character hides a little secret. Tap one to learn how it's said, watch each stroke in order, then read it in a fun sentence — free to use, starting today.
-          <span class="zh-note">这里藏着汉字的秘密。点一点，听读音，看笔顺，再读一个有趣的句子。免费使用，从今天开始。</span>
+          <span class="zh-note">这里藏着汉字的秘密。点一点，看拼音，看笔顺，再读一个有趣的句子。免费使用，从今天开始。</span>
         </p>
         <ul class="feat-points">
           <li><span class="pz">描</span><span>Watch every stroke appear, in the right order</span></li>
@@ -2321,7 +2321,8 @@
       if (i >= inkEls.length) { dwell = setTimeout(next, 1700); return; }
       var p = inkEls[i], L = +p.dataset.len;
       var dur = Math.max(360, Math.min(820, 240 + L * 0.32));
-      p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: dur, easing: 'cubic-bezier(.45,.05,.3,1)', fill: 'forwards' });
+      var anim = p.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: dur, easing: 'cubic-bezier(.45,.05,.3,1)', fill: 'forwards' });
+      anim.onfinish = function() { p.style.strokeDashoffset = 0; };
       i++; timers.push(setTimeout(step, dur + 90));
     })();
   }
