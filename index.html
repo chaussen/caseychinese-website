@@ -2282,7 +2282,6 @@
   var host = document.getElementById('featWriter');
   var cycleEl = document.getElementById('featCycle');
   if (!host || !cycleEl) return;
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var idx = 0, timers = [], dwell = null, inkEls = [], started = false;
 
   function gridSVG() {
@@ -2315,7 +2314,6 @@
   }
   function setChip() { [].slice.call(cycleEl.children).forEach(function (b, i) { b.classList.toggle('on', i === idx); }); }
   function play() {
-    if (reduce) { inkEls.forEach(function (p) { p.style.transition = 'none'; p.style.strokeDashoffset = '0px'; }); dwell = setTimeout(next, 2600); return; }
     var i = 0;
     (function step() {
       if (i >= inkEls.length) { dwell = setTimeout(next, 1700); return; }
