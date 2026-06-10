@@ -143,10 +143,13 @@
     stepIdx = inkEls.length;
   }
 
+  // Note: play() and step() run even under prefers-reduced-motion — they only
+  // fire on an explicit user action (Replay/Step/option click), and the stroke
+  // animation is the lesson content itself, not decoration. Reduced motion is
+  // honoured where playback would start on its own: see render().
   function play() {
     seqTimers.forEach(clearTimeout); seqTimers = [];
     inkEls.forEach(resetStroke);
-    if (prefersReduced) { showAll(); return; }
     stepIdx = 0;
     var i = 0;
     function next() {
@@ -167,7 +170,7 @@
       inkEls.forEach(resetStroke);
       stepIdx = 0;
     }
-    drawStroke(inkEls[stepIdx], prefersReduced ? 1 : 460 / state.speed);
+    drawStroke(inkEls[stepIdx], 460 / state.speed);
     stepIdx++;
   }
 
@@ -218,7 +221,8 @@
     renderInfo(d);
     updateWall();
     persist();
-    if (animate !== false) requestAnimationFrame(play); else showAll();
+    if (animate !== false && !prefersReduced) requestAnimationFrame(play);
+    else showAll();
   }
 
   function go(delta) {
