@@ -21,7 +21,7 @@ origin to that tag on every page that uses it.
 | `index.html` | The whole main site: about, programs, textbooks, fees, enrolment, FAQ, 2026 schedule, events, gallery, contact. All CSS/JS is inline. |
 | `characters.html` | "Learn a Character · 识字小馆" — interactive stroke-order explorer for 300 common characters in themed groups. |
 | `404.html` | Custom not-found page; also catches URLs from the retired old site. |
-| `learn/char-data.js` | **Generated** character content (pinyin, meaning, origin story, example word/sentence, stroke paths) — built by `scripts/build-char-data.py`. |
+| `learn/char-data.js` | **Generated** character content (pinyin, meaning, origin story, a common word **and** an example sentence each, stroke paths) — built by `scripts/build-char-data.py`. |
 | `learn/explorer.js` | The explorer engine: stroke animation, options, keyboard navigation. |
 
 ## Common updates

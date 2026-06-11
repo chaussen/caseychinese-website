@@ -16,13 +16,16 @@
   var GROUPS = [];
   DATA.forEach(function (d) { if (GROUPS.indexOf(d.group) < 0) GROUPS.push(d.group); });
 
+  var startIdx = clamp(saved.idx || 0, 0, DATA.length - 1);
   var state = {
-    idx: clamp(saved.idx || 0, 0, DATA.length - 1),
+    idx: startIdx,
     pinyin: saved.pinyin !== false,        // shown by default
     rainbow: saved.rainbow !== false,        // colour on by default
     numbers: saved.numbers !== false,        // order numbers on by default
     speed: saved.speed || 1,               // 0.6 slow .. 1.6 fast
-    wallGroup: GROUPS.indexOf(saved.wallGroup) >= 0 ? saved.wallGroup : "all"
+    // the wall opens on a theme, never the full 300-cell list; only a real
+    // theme name is restored ("all" is a within-visit choice)
+    wallGroup: GROUPS.indexOf(saved.wallGroup) >= 0 ? saved.wallGroup : DATA[startIdx].group
   };
   function persist() {
     try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {}
@@ -200,9 +203,10 @@
       '<span class="chip__t">radical · ' + d.radEn + "</span>";
     $("#ce-strokes").innerHTML = d.s.length + ' <span class="chip__t">stroke' + (d.s.length > 1 ? "s" : "") + "</span>";
     $("#ce-origin").innerHTML = markCJK(d.origin);
+    $("#ce-word").innerHTML = rubyFor(d.word.seg, d.ch);
+    $("#ce-word-en").textContent = d.word.en;
     $("#ce-sentence").innerHTML = rubyFor(d.ex.seg, d.ch);
     $("#ce-sentence-en").textContent = d.ex.en;
-    $("#ce-ex-lbl").textContent = d.ex.phrase ? "常用词 · A common phrase" : "举个例子 · Here's an example";
 
     var tot = "" + DATA.length;
     var pos = "" + (state.idx + 1);
@@ -301,17 +305,22 @@
     speechSynthesis.speak(u);
   }
   function initSpeech() {
-    var sayBtn = $("#ce-say"), saySentBtn = $("#ce-say-sent");
+    var sayBtn = $("#ce-say"), sayWordBtn = $("#ce-say-word"), saySentBtn = $("#ce-say-sent");
     if (!canSpeak || !sayBtn) return;
     speechSynthesis.getVoices();          // warm the voice list (loads async)
     sayBtn.hidden = false;
     sayBtn.addEventListener("click", function () { speak(DATA[state.idx].ch, sayBtn); });
+    function sayDSeg(key, btn) {
+      var seg = DATA[state.idx][key].seg;
+      speak(seg.map(function (p) { return p[0]; }).join(""), btn);
+    }
+    if (sayWordBtn) {
+      sayWordBtn.hidden = false;
+      sayWordBtn.addEventListener("click", function () { sayDSeg("word", sayWordBtn); });
+    }
     if (saySentBtn) {
       saySentBtn.hidden = false;
-      saySentBtn.addEventListener("click", function () {
-        var seg = DATA[state.idx].ex.seg;
-        speak(seg.map(function (p) { return p[0]; }).join(""), saySentBtn);
-      });
+      saySentBtn.addEventListener("click", function () { sayDSeg("ex", saySentBtn); });
     }
   }
 
@@ -335,10 +344,10 @@
   function buildFilter() {
     var box = $("#ce-filter");
     if (!box) return;
-    var chips = ['<button class="fchip" data-g="all" type="button">All · 全部</button>'];
-    GROUPS.forEach(function (g) {
-      chips.push('<button class="fchip" data-g="' + g + '" type="button">' + g + "</button>");
+    var chips = GROUPS.map(function (g) {
+      return '<button class="fchip" data-g="' + g + '" type="button">' + g + "</button>";
     });
+    chips.push('<button class="fchip" data-g="all" type="button">All · 全部</button>');
     box.innerHTML = chips.join("");
     $all(".fchip", box).forEach(function (b) {
       b.addEventListener("click", function () { setFilter(b.dataset.g, true); });

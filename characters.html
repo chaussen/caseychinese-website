@@ -154,7 +154,7 @@
   .chip .chip__t{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);}
   .chip .zh-inline{color:var(--ink);}
 
-  .ce-block{margin-bottom:22px;}
+  .ce-block{margin-bottom:18px;}
   .ce-block:last-child{margin-bottom:0;}
   .say{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);
     color:var(--red-deep);cursor:pointer;display:inline-grid;place-items:center;
@@ -168,11 +168,14 @@
   .ce-origin{font-size:17.5px;line-height:1.62;color:var(--ink-soft);margin:0;}
   .ce-origin .zh-inline{font-size:1.15em;}
   .ce-sentence{font-family:var(--zh);font-size:clamp(24px,3vw,30px);line-height:1.9;color:var(--ink);margin:0;}
-  .ce-sentence .ru rt{font-size:.34em;}
-  .ce-sentence .focus{color:var(--red-deep);}
-  .ce-sentence .focus rt{color:var(--red);}
+  .ce-sentence .ru rt,.ce-word .ru rt{font-size:.34em;}
+  .ce-sentence .focus,.ce-word .focus{color:var(--red-deep);}
+  .ce-sentence .focus rt,.ce-word .focus rt{color:var(--red);}
   .ce-sentence .punc{font-family:var(--zh);}
   .ce-sentence-en{font-size:16px;color:var(--ink-soft);margin:8px 0 0;}
+  .ce-word{font-family:var(--zh);font-size:clamp(21px,2.4vw,26px);line-height:1.9;color:var(--ink);
+    margin:0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .ce-word-en{font-family:var(--sans);font-size:15px;color:var(--ink-soft);}
 
   /* foot nav */
   .stage__foot{display:flex;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap;}
@@ -377,7 +380,15 @@
         </div>
 
         <div class="ce-block">
-          <span class="ce-lbl" id="ce-ex-lbl">举个例子 · Here's an example</span>
+          <span class="ce-lbl">常用词 · A common word</span>
+          <button class="say say-sm" id="ce-say-word" type="button" hidden aria-label="Hear the word · 听词语">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
+          <p class="ce-word" lang="zh-Hans"><span id="ce-word"></span><span class="ce-word-en" id="ce-word-en" lang="en"></span></p>
+        </div>
+
+        <div class="ce-block">
+          <span class="ce-lbl">举个例子 · Here's an example</span>
           <button class="say say-sm" id="ce-say-sent" type="button" hidden aria-label="Hear the sentence · 听句子">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
           </button>
