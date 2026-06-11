@@ -13,12 +13,16 @@
   // ---- persisted state ----
   var saved = {};
   try { saved = JSON.parse(localStorage.getItem(LS)) || {}; } catch (e) {}
+  var GROUPS = [];
+  DATA.forEach(function (d) { if (GROUPS.indexOf(d.group) < 0) GROUPS.push(d.group); });
+
   var state = {
     idx: clamp(saved.idx || 0, 0, DATA.length - 1),
     pinyin: saved.pinyin !== false,        // shown by default
     rainbow: saved.rainbow !== false,        // colour on by default
     numbers: saved.numbers !== false,        // order numbers on by default
-    speed: saved.speed || 1                // 0.6 slow .. 1.6 fast
+    speed: saved.speed || 1,               // 0.6 slow .. 1.6 fast
+    wallGroup: GROUPS.indexOf(saved.wallGroup) >= 0 ? saved.wallGroup : "all"
   };
   function persist() {
     try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {}
@@ -200,8 +204,9 @@
     $("#ce-sentence-en").textContent = d.ex.en;
     $("#ce-ex-lbl").textContent = d.ex.phrase ? "常用词 · A common phrase" : "举个例子 · Here's an example";
 
-    var pos = (state.idx + 1 < 10 ? "0" : "") + (state.idx + 1);
-    var tot = (DATA.length < 10 ? "0" : "") + DATA.length;
+    var tot = "" + DATA.length;
+    var pos = "" + (state.idx + 1);
+    while (pos.length < tot.length) pos = "0" + pos;
     $("#ce-pos").innerHTML = pos + ' <span class="sep">/</span> ' + tot;
     $("#ce-group").textContent = d.group;
   }
@@ -225,8 +230,19 @@
     else showAll();
   }
 
+  // indices visible under the current wall theme filter
+  function visibleIdxs() {
+    var out = [];
+    DATA.forEach(function (d, i) {
+      if (state.wallGroup === "all" || d.group === state.wallGroup) out.push(i);
+    });
+    return out;
+  }
+
   function go(delta) {
-    state.idx = (state.idx + delta + DATA.length) % DATA.length;
+    var list = visibleIdxs();
+    var p = list.indexOf(state.idx);
+    state.idx = p < 0 ? list[0] : list[(p + delta + list.length) % list.length];
     render(true);
     // keep active wall cell in view (horizontal scroll only — never page scroll)
     var cell = $all(".wall__cell")[state.idx];
@@ -315,10 +331,54 @@
     });
   }
 
+  // ---- wall theme filter ----
+  function buildFilter() {
+    var box = $("#ce-filter");
+    if (!box) return;
+    var chips = ['<button class="fchip" data-g="all" type="button">All · 全部</button>'];
+    GROUPS.forEach(function (g) {
+      chips.push('<button class="fchip" data-g="' + g + '" type="button">' + g + "</button>");
+    });
+    box.innerHTML = chips.join("");
+    $all(".fchip", box).forEach(function (b) {
+      b.addEventListener("click", function () { setFilter(b.dataset.g, true); });
+    });
+  }
+
+  function setFilter(g, jump) {
+    state.wallGroup = GROUPS.indexOf(g) >= 0 ? g : "all";
+    applyFilter();
+    persist();
+    if (jump) {                      // picking a theme opens its first character
+      var list = visibleIdxs();
+      if (list.indexOf(state.idx) < 0) { state.idx = list[0]; render(true); }
+    }
+  }
+
+  function applyFilter() {
+    var cells = $all(".wall__cell");
+    DATA.forEach(function (d, i) {
+      cells[i].hidden = state.wallGroup !== "all" && d.group !== state.wallGroup;
+    });
+    $all(".fchip").forEach(function (b) {
+      var on = b.dataset.g === state.wallGroup;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    var title = $("#wall-title");
+    if (title) {
+      title.textContent = state.wallGroup === "all"
+        ? "All " + DATA.length + " characters"
+        : state.wallGroup + " · " + visibleIdxs().length + " characters";
+    }
+  }
+
   // ---- init ----
   function init() {
     writerEl = $("#ce-writer");
     buildWall();
+    buildFilter();
+    applyFilter();
     setPinyin(state.pinyin);
     initSpeech();
 

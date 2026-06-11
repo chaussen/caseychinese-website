@@ -14,3 +14,6 @@ Thumbs.db
 # Editor
 *.swp
 *.swo
+
+# makemeahanzi data cache (scripts/build-char-data.py)
+.cache/
