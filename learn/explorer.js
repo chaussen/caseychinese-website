@@ -425,6 +425,21 @@
     return r.top < window.innerHeight && r.bottom > 0;
   }
 
+  // hand-off for the radicals section below: open a character from outside,
+  // switching the wall to that character's theme so everything stays in step
+  window.CCS_EXPLORER = {
+    open: function (ch) {
+      for (var i = 0; i < DATA.length; i++) {
+        if (DATA[i].ch === ch) {
+          state.idx = i;
+          setFilter(DATA[i].group);
+          render(true);
+          return;
+        }
+      }
+    }
+  };
+
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

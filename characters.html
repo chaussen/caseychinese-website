@@ -219,6 +219,56 @@
   .wall__py{font-size:12px;color:var(--ink-soft);font-weight:500;}
   body.no-pinyin .wall__py{visibility:hidden;}
 
+  /* ───── RADICALS ───── */
+  #radicals{background:var(--bg-warm);padding:84px 0;border-top:1px solid var(--line-soft);}
+  .rad-h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,44px);line-height:1.08;
+    margin:16px 0 0;letter-spacing:-.015em;}
+  .rad-h2 em{font-style:italic;color:var(--red-deep);}
+  #radicals .lede{font-size:18px;color:var(--ink-soft);max-width:760px;line-height:1.65;margin:14px 0 0;}
+  #radicals .zh-note{display:block;font-family:var(--zh);font-size:15px;color:var(--ink-mute);margin-top:8px;}
+  .rad-eq{display:flex;align-items:center;justify-content:flex-start;gap:clamp(12px,2.4vw,26px);flex-wrap:wrap;
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 24px;margin:26px 0 0;}
+  .rad-eq .t{font-family:var(--zh);font-size:clamp(34px,4vw,46px);line-height:1;color:var(--ink);text-align:center;}
+  .rad-eq .t small{display:block;font-family:var(--sans);font-size:11.5px;color:var(--ink-mute);margin-top:9px;line-height:1.3;}
+  .rad-eq .op{font-family:var(--serif);font-size:30px;color:var(--red-deep);}
+  .rad-eq .t.res .zh-eq{color:var(--red-deep);}
+  .rad-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0 0;}
+  .rad-fact{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    font-size:14px;color:var(--ink-soft);line-height:1.55;}
+  .rad-fact b{display:block;color:var(--red-deep);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+  .rad-card{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:clamp(28px,4vw,56px);align-items:start;
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:clamp(24px,3.5vw,44px);
+    margin-top:34px;box-shadow:0 30px 60px -42px rgba(200,75,63,.30);}
+  .rad-figure{text-align:center;}
+  .rad-glyph{font-family:var(--zh);font-size:clamp(110px,12vw,150px);line-height:1;color:var(--red-deep);
+    padding:36px 0;background:radial-gradient(120% 120% at 30% 20%,#fff,var(--bg) 120%);
+    border:1px solid var(--line);border-radius:12px;}
+  .rad-variant{display:inline-block;margin-top:12px;font-size:12.5px;color:var(--ink-soft);
+    background:var(--bg-warm);border:1px solid var(--line);border-radius:999px;padding:5px 13px;}
+  .rad-name{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--ink);margin-top:14px;}
+  .rad-nick{font-size:14px;color:var(--ink-soft);margin-top:6px;line-height:1.5;}
+  .rad-pos{display:inline-block;margin-top:12px;font-size:11px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--red-deep);background:var(--red-tint);border-radius:999px;padding:5px 13px;}
+  .rad-count{font-size:11px;font-weight:600;color:var(--ink-mute);margin-left:8px;letter-spacing:.06em;text-transform:uppercase;}
+  .rad-ex-wrap{display:flex;flex-wrap:wrap;gap:8px;}
+  .rad-ex{display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 11px 7px;
+    background:var(--paper);border:1.5px solid var(--line);border-radius:10px;cursor:pointer;transition:all .18s;}
+  .rad-ex:hover{border-color:var(--red-deep);background:var(--red-tint);transform:translateY(-2px);}
+  .rad-ex__ch{font-family:var(--zh);font-size:25px;line-height:1;color:var(--ink);}
+  .rad-ex__py{font-size:10.5px;color:var(--ink-soft);}
+  body.no-pinyin .rad-ex__py{visibility:hidden;}
+  .rad-ex-hint{font-size:12.5px;color:var(--ink-mute);margin:10px 0 0;}
+  .rad-xtr-wrap{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:14px;color:var(--ink-soft);}
+  .rad-xtr{background:var(--bg-warm);border:1px solid var(--line-soft);border-radius:8px;padding:6px 11px;}
+  .rad-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:10px;margin-top:18px;}
+  .rad-tile{display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 6px 9px;
+    background:var(--paper);border:1.5px solid var(--line);border-radius:11px;cursor:pointer;transition:all .18s;}
+  .rad-tile:hover{border-color:var(--red-soft);transform:translateY(-2px);box-shadow:0 12px 22px -16px rgba(200,75,63,.4);}
+  .rad-tile.is-active{border-color:var(--red-deep);background:var(--red-tint);box-shadow:0 0 0 1px var(--red-deep);}
+  .rad-tile__r{font-family:var(--zh);font-size:28px;line-height:1;color:var(--ink);}
+  .rad-tile.is-active .rad-tile__r{color:var(--red-deep);}
+  .rad-tile__en{font-size:10.5px;color:var(--ink-soft);}
+
   /* ───── POEM ───── */
   #poem{background:var(--ink);color:var(--bg);padding:84px 0;}
   #poem .eyebrow{color:var(--red-soft);}
@@ -285,6 +335,9 @@
     .ce-chips{margin-left:0;width:100%;}
     .poem-grid,.nudge{grid-template-columns:1fr;gap:34px;}
     .nudge-actions{align-items:flex-start;}
+    .rad-card{grid-template-columns:1fr;gap:26px;}
+    .rad-figure{max-width:320px;margin:0 auto;}
+    .rad-facts{grid-template-columns:1fr;}
   }
   @media (max-width:480px){
     .hero{padding:44px 0 22px;}
@@ -422,6 +475,70 @@
   </div>
 </main>
 
+<!-- ───── RADICALS ───── -->
+<section id="radicals">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>Radical corner · 部首</div>
+    <h2 class="rad-h2">The secret <em>building blocks</em>.</h2>
+    <p class="lede">
+      Nearly every character above is built from smaller pieces, and the piece that hints at the
+      <strong>meaning</strong> is called the radical — 部首 bùshǒu. Radicals are one of the hardest parts of
+      learning to read, but once you know the couple of dozen below you can make a smart guess at characters
+      you've never met — and find any word in a Chinese dictionary.
+      <span class="zh-note">认识部首，猜字更容易，查字典也离不开它。</span>
+    </p>
+
+    <div class="rad-eq">
+      <span class="t"><span class="zh-eq" lang="zh-Hans">女</span><small>woman — the meaning</small></span>
+      <span class="op" aria-hidden="true">+</span>
+      <span class="t"><span class="zh-eq" lang="zh-Hans">马</span><small>mǎ — the sound</small></span>
+      <span class="op" aria-hidden="true">=</span>
+      <span class="t res"><span class="zh-eq" lang="zh-Hans">妈</span><small>mā — mum!</small></span>
+    </div>
+
+    <div class="rad-facts">
+      <div class="rad-fact"><b>8 in 10 characters</b>Most characters pair a meaning clue (the radical) with a sound clue — spot both and the character almost reads itself.</div>
+      <div class="rad-fact"><b>部首 means "section head"</b>Dictionaries sort every character by its radical, then by stroke count — that's how you look up a word you can't pronounce yet.</div>
+      <div class="rad-fact"><b>24 do the heavy lifting</b>There are about 200 radicals in all, but the couple of dozen below cover most of the 300 characters on this page.</div>
+    </div>
+
+    <div class="rad-card">
+      <div class="rad-figure">
+        <div class="rad-glyph" id="rd-glyph" lang="zh-Hans"></div>
+        <div><span class="rad-variant" id="rd-variant"></span></div>
+        <div class="rad-name" id="rd-name"></div>
+        <p class="rad-nick" id="rd-nick"></p>
+        <span class="rad-pos" id="rd-pos"></span>
+      </div>
+      <div class="rad-info">
+        <div class="ce-block">
+          <span class="ce-lbl">它的意思 · What it signals</span>
+          <p class="ce-origin" id="rd-mean"></p>
+        </div>
+        <div class="ce-block">
+          <span class="ce-lbl">小故事 · The story behind it</span>
+          <p class="ce-origin" id="rd-story"></p>
+        </div>
+        <div class="ce-block" id="rd-tip-block" hidden>
+          <span class="ce-lbl">小提示 · Watch out</span>
+          <p class="ce-origin" id="rd-tip"></p>
+        </div>
+        <div class="ce-block">
+          <span class="ce-lbl">认一认 · Spot it in the library</span><span class="rad-count" id="rd-ex-count"></span>
+          <div class="rad-ex-wrap" id="rd-ex"></div>
+          <p class="rad-ex-hint">Tap a character to watch it drawn stroke by stroke up above.</p>
+        </div>
+        <div class="ce-block" id="rd-xtr-block" hidden>
+          <span class="ce-lbl">还有这些 · More friends</span>
+          <div class="rad-xtr-wrap" id="rd-xtr"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rad-wall" id="rd-wall" role="group" aria-label="Choose a radical"></div>
+  </div>
+</section>
+
 <!-- ───── POEM ───── -->
 <section id="poem">
   <div class="wrap">
@@ -487,5 +604,7 @@
 </script>
 <script src="learn/char-data.js"></script>
 <script src="learn/explorer.js"></script>
+<script src="learn/radical-data.js"></script>
+<script src="learn/radicals.js"></script>
 </body>
 </html>

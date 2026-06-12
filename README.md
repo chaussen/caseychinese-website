@@ -23,6 +23,8 @@ origin to that tag on every page that uses it.
 | `404.html` | Custom not-found page; also catches URLs from the retired old site. |
 | `learn/char-data.js` | **Generated** character content (pinyin, meaning, origin story, a common word **and** an example sentence each, stroke paths) — built by `scripts/build-char-data.py`. |
 | `learn/explorer.js` | The explorer engine: stroke animation, options, keyboard navigation. |
+| `learn/radical-data.js` | Hand-curated info for the 24 most useful radicals (nickname, meaning, story, position, extra examples). |
+| `learn/radicals.js` | Renders the "Radical corner" section; example characters are matched live from `char-data.js` by radical, and clicking one opens it in the explorer. |
 
 ## Common updates
 
