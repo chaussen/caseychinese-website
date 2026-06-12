@@ -34,14 +34,15 @@
 
     $("#rd-glyph").textContent = rd.r;
     $("#rd-variant").innerHTML = rd.v
-      ? 'full form <span class="zh-inline" lang="zh-Hans">' + rd.v + "</span>"
+      ? 'full form · 本字 <span class="zh-inline" lang="zh-Hans">' + rd.v + "</span>"
       : "";
     $("#rd-variant").hidden = !rd.v;
     $("#rd-name").textContent = (rd.py ? rd.py + " · " : "") + rd.en;
     $("#rd-nick").innerHTML = '<span class="zh-inline" lang="zh-Hans">' + rd.nick + "</span> " +
       rd.nickPy + ' — "' + rd.nickEn + '"';
     $("#rd-pos").textContent = rd.pos;
-    $("#rd-mean").innerHTML = markCJK(rd.mean);
+    $("#rd-mean").innerHTML = markCJK(rd.mean) +
+      (rd.zhMean ? '<span class="rad-zh" lang="zh-Hans">' + rd.zhMean + "</span>" : "");
     $("#rd-story").innerHTML = markCJK(rd.story);
 
     var tipBlock = $("#rd-tip-block");

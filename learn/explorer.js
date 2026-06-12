@@ -15,6 +15,8 @@
   try { saved = JSON.parse(localStorage.getItem(LS)) || {}; } catch (e) {}
   var GROUPS = [];
   DATA.forEach(function (d) { if (GROUPS.indexOf(d.group) < 0) GROUPS.push(d.group); });
+  var GROUP_ZH = window.CHAR_GROUPS || {};
+  function zhFor(g) { return GROUP_ZH[g] || ""; }
 
   var startIdx = clamp(saved.idx || 0, 0, DATA.length - 1);
   var state = {
@@ -200,8 +202,8 @@
     $("#ce-py").innerHTML = d.py;
     $("#ce-en").textContent = d.en;
     $("#ce-rad").innerHTML = '<span class="zh-inline" lang="zh-Hans">' + d.radical + "</span> " +
-      '<span class="chip__t">radical · ' + d.radEn + "</span>";
-    $("#ce-strokes").innerHTML = d.s.length + ' <span class="chip__t">stroke' + (d.s.length > 1 ? "s" : "") + "</span>";
+      '<span class="chip__t">radical 部首 · ' + d.radEn + "</span>";
+    $("#ce-strokes").innerHTML = d.s.length + ' <span class="chip__t">stroke' + (d.s.length > 1 ? "s" : "") + " · 笔画</span>";
     $("#ce-origin").innerHTML = markCJK(d.origin);
     $("#ce-word").innerHTML = rubyFor(d.word.seg, d.ch);
     $("#ce-word-en").textContent = d.word.en;
@@ -212,7 +214,8 @@
     var pos = "" + (state.idx + 1);
     while (pos.length < tot.length) pos = "0" + pos;
     $("#ce-pos").innerHTML = pos + ' <span class="sep">/</span> ' + tot;
-    $("#ce-group").textContent = d.group;
+    var gz = zhFor(d.group);
+    $("#ce-group").textContent = d.group + (gz ? " · " + gz : "");
   }
 
   function updateWall() {
@@ -345,9 +348,10 @@
     var box = $("#ce-filter");
     if (!box) return;
     var chips = GROUPS.map(function (g) {
-      return '<button class="fchip" data-g="' + g + '" type="button">' + g + "</button>";
+      return '<button class="fchip" data-g="' + g + '" type="button">' + g +
+        '<span class="fchip__zh" lang="zh-Hans">' + zhFor(g) + "</span></button>";
     });
-    chips.push('<button class="fchip" data-g="all" type="button">All · 全部</button>');
+    chips.push('<button class="fchip" data-g="all" type="button">All<span class="fchip__zh" lang="zh-Hans">全部</span></button>');
     box.innerHTML = chips.join("");
     $all(".fchip", box).forEach(function (b) {
       b.addEventListener("click", function () { setFilter(b.dataset.g, true); });
@@ -374,11 +378,15 @@
       b.classList.toggle("is-on", on);
       b.setAttribute("aria-pressed", on ? "true" : "false");
     });
-    var title = $("#wall-title");
+    var title = $("#wall-title"), titleZh = $("#wall-zh");
     if (title) {
       title.textContent = state.wallGroup === "all"
         ? "All " + DATA.length + " characters"
         : state.wallGroup + " · " + visibleIdxs().length + " characters";
+    }
+    if (titleZh) {
+      titleZh.textContent = state.wallGroup === "all"
+        ? "三百常用字" : (zhFor(state.wallGroup) || "三百常用字");
     }
   }
 

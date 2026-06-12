@@ -204,6 +204,7 @@
     cursor:pointer;transition:all .18s;}
   .fchip:hover{border-color:var(--red-soft);color:var(--red-deep);}
   .fchip.is-on{background:var(--red-deep);border-color:var(--red-deep);color:#fff;}
+  .fchip__zh{font-family:var(--zh-sans);font-size:11px;font-weight:500;margin-left:6px;opacity:.72;}
   .wall-head{display:flex;align-items:baseline;gap:14px;margin:46px 0 16px;}
   .wall-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.6vw,30px);margin:0;letter-spacing:-.01em;}
   .wall-head .zh{font-family:var(--zh);font-size:15px;color:var(--ink-mute);}
@@ -224,8 +225,11 @@
   .rad-h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,44px);line-height:1.08;
     margin:16px 0 0;letter-spacing:-.015em;}
   .rad-h2 em{font-style:italic;color:var(--red-deep);}
+  .rad-zh-sub{font-family:var(--zh);font-size:clamp(17px,2vw,22px);color:var(--ink-soft);letter-spacing:.06em;margin-top:10px;}
   #radicals .lede{font-size:18px;color:var(--ink-soft);max-width:760px;line-height:1.65;margin:14px 0 0;}
   #radicals .zh-note{display:block;font-family:var(--zh);font-size:15px;color:var(--ink-mute);margin-top:8px;}
+  .rad-fact .zh-note{font-size:13.5px;line-height:1.7;}
+  .rad-zh{display:block;font-family:var(--zh);font-size:15px;color:var(--ink-mute);margin-top:8px;line-height:1.85;}
   .rad-eq{display:flex;align-items:center;justify-content:flex-start;gap:clamp(12px,2.4vw,26px);flex-wrap:wrap;
     background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 24px;margin:26px 0 0;}
   .rad-eq .t{font-family:var(--zh);font-size:clamp(34px,4vw,46px);line-height:1;color:var(--ink);text-align:center;}
@@ -396,15 +400,15 @@
       <div class="writer-wrap">
         <div class="writer" id="ce-writer"></div>
         <div class="writer__bar">
-          <button class="ctl primary" id="ce-replay" type="button"><span class="ic">↻</span> Replay</button>
-          <button class="ctl" id="ce-step" type="button">Stroke <span class="ic">›</span></button>
+          <button class="ctl primary" id="ce-replay" type="button"><span class="ic">↻</span> Replay <span lang="zh-Hans">重播</span></button>
+          <button class="ctl" id="ce-step" type="button">Stroke <span lang="zh-Hans">下一笔</span> <span class="ic">›</span></button>
           <span class="bar-spacer"></span>
           <button class="toggle" id="opt-rainbow" type="button" aria-pressed="false" title="Colour each stroke">彩 Colour</button>
-          <button class="toggle" id="opt-numbers" type="button" aria-pressed="false" title="Show stroke order numbers">① Order</button>
+          <button class="toggle" id="opt-numbers" type="button" aria-pressed="false" title="Show stroke order numbers">① Order <span lang="zh-Hans">笔顺</span></button>
           <div class="seg" role="group" aria-label="Speed">
-            <button class="speed-opt" data-speed="0.65" type="button">Slow</button>
-            <button class="speed-opt" data-speed="1" type="button">Med</button>
-            <button class="speed-opt" data-speed="1.5" type="button">Fast</button>
+            <button class="speed-opt" data-speed="0.65" type="button">Slow <span lang="zh-Hans">慢</span></button>
+            <button class="speed-opt" data-speed="1" type="button">Med <span lang="zh-Hans">中</span></button>
+            <button class="speed-opt" data-speed="1.5" type="button">Fast <span lang="zh-Hans">快</span></button>
           </div>
         </div>
       </div>
@@ -467,8 +471,8 @@
     <!-- wall -->
     <div class="wall-head">
       <h2 id="wall-title">All 300 characters</h2>
-      <span class="zh">三百常用字</span>
-      <span class="hint">Tap any character · or use ← →</span>
+      <span class="zh" id="wall-zh" lang="zh-Hans">三百常用字</span>
+      <span class="hint">Tap any character · or use ← → · <span lang="zh-Hans">点一点字卡</span></span>
     </div>
     <div class="wall-filter" id="ce-filter" role="group" aria-label="Filter the wall by theme"></div>
     <div class="wall" id="ce-wall" role="group" aria-label="All 300 characters"></div>
@@ -480,6 +484,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="dot"></span>Radical corner · 部首</div>
     <h2 class="rad-h2">The secret <em>building blocks</em>.</h2>
+    <div class="rad-zh-sub" lang="zh-Hans">汉字的小积木</div>
     <p class="lede">
       Nearly every character above is built from smaller pieces, and the piece that hints at the
       <strong>meaning</strong> is called the radical — 部首 bùshǒu. Radicals are one of the hardest parts of
@@ -489,17 +494,17 @@
     </p>
 
     <div class="rad-eq">
-      <span class="t"><span class="zh-eq" lang="zh-Hans">女</span><small>woman — the meaning</small></span>
+      <span class="t"><span class="zh-eq" lang="zh-Hans">女</span><small>woman — the meaning · <span lang="zh-Hans">管意思</span></small></span>
       <span class="op" aria-hidden="true">+</span>
-      <span class="t"><span class="zh-eq" lang="zh-Hans">马</span><small>mǎ — the sound</small></span>
+      <span class="t"><span class="zh-eq" lang="zh-Hans">马</span><small>mǎ — the sound · <span lang="zh-Hans">管声音</span></small></span>
       <span class="op" aria-hidden="true">=</span>
-      <span class="t res"><span class="zh-eq" lang="zh-Hans">妈</span><small>mā — mum!</small></span>
+      <span class="t res"><span class="zh-eq" lang="zh-Hans">妈</span><small>mā — mum! · <span lang="zh-Hans">合成一个字</span></small></span>
     </div>
 
     <div class="rad-facts">
-      <div class="rad-fact"><b>8 in 10 characters</b>Most characters pair a meaning clue (the radical) with a sound clue — spot both and the character almost reads itself.</div>
-      <div class="rad-fact"><b>部首 means "section head"</b>Dictionaries sort every character by its radical, then by stroke count — that's how you look up a word you can't pronounce yet.</div>
-      <div class="rad-fact"><b>24 do the heavy lifting</b>There are about 200 radicals in all, but the couple of dozen below cover most of the 300 characters on this page.</div>
+      <div class="rad-fact"><b>8 in 10 characters · <span lang="zh-Hans">十有八九</span></b>Most characters pair a meaning clue (the radical) with a sound clue — spot both and the character almost reads itself.<span class="zh-note" lang="zh-Hans">形声字：一半管意思，一半管声音。</span></div>
+      <div class="rad-fact"><b><span lang="zh-Hans">部首</span> means "section head"</b>Dictionaries sort every character by its radical, then by stroke count — that's how you look up a word you can't pronounce yet.<span class="zh-note" lang="zh-Hans">查字典：先找部首，再数笔画。</span></div>
+      <div class="rad-fact"><b>24 do the heavy lifting · <span lang="zh-Hans">小小好帮手</span></b>There are about 200 radicals in all, but the couple of dozen below cover most of the 300 characters on this page.<span class="zh-note" lang="zh-Hans">认熟这二十四个，常用字八九不离十。</span></div>
     </div>
 
     <div class="rad-card">
@@ -526,7 +531,7 @@
         <div class="ce-block">
           <span class="ce-lbl">认一认 · Spot it in the library</span><span class="rad-count" id="rd-ex-count"></span>
           <div class="rad-ex-wrap" id="rd-ex"></div>
-          <p class="rad-ex-hint">Tap a character to watch it drawn stroke by stroke up above.</p>
+          <p class="rad-ex-hint">Tap a character to watch it drawn stroke by stroke up above. <span lang="zh-Hans">点一下，回到上面看笔顺。</span></p>
         </div>
         <div class="ce-block" id="rd-xtr-block" hidden>
           <span class="ce-lbl">还有这些 · More friends</span>

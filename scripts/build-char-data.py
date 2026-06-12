@@ -34,7 +34,7 @@ MMAH = "https://raw.githubusercontent.com/skishore/makemeahanzi/master/"
 # hand-written example sentences (OVERRIDES below) are kept as-is.
 # ---------------------------------------------------------------------------
 GROUPS = [
-("Me & my body", [
+("Me & my body", "我的身体", [
   ("人","rén","person","大人","dà rén","grown-up",None,None,None),
   ("大","dà","big","大家","dà jiā","everyone",None,None,None),
   ("小","xiǎo","small","大小","dà xiǎo","size",None,None,None),
@@ -64,7 +64,7 @@ GROUPS = [
   ("声","shēng","sound, voice","大声","dà shēng","loudly",
    "请大声读课文。","qǐng dà shēng dú kè wén","Please read the text out loud."),
 ]),
-("Family & people", [
+("Family & people", "家人和朋友", [
   ("你","nǐ","you","你们","nǐ men","you all",None,None,None),
   ("我","wǒ","I, me","我们","wǒ men","we, us",
    "我爱我的家。","wǒ ài wǒ de jiā","I love my family."),
@@ -107,7 +107,7 @@ GROUPS = [
   ("王","wáng","king","国王","guó wáng","king",
    "国王住在城堡里。","guó wáng zhù zài chéng bǎo lǐ","The king lives in a castle."),
 ]),
-("Numbers & counting", [
+("Numbers & counting", "数一数", [
   ("一","yī","one","一百","yì bǎi","one hundred",
    "一年有十二个月。","yì nián yǒu shí èr gè yuè","A year has twelve months."),
   ("二","èr","two","二月","èr yuè","February",
@@ -151,7 +151,7 @@ GROUPS = [
   ("少","shǎo","few","多少","duō shǎo","how many?",
    "这本书多少钱？","zhè běn shū duō shǎo qián","How much is this book?"),
 ]),
-("Time & days", [
+("Time & days", "时间", [
   ("天","tiān","sky; day","今天","jīn tiān","today",
    "今天天气真好。","jīn tiān tiān qì zhēn hǎo","The weather is lovely today."),
   ("日","rì","sun; day","生日","shēng rì","birthday",
@@ -187,7 +187,7 @@ GROUPS = [
   ("再","zài","again","再见","zài jiàn","goodbye — see you again",
    "再读一遍吧。","zài dú yí biàn ba","Read it one more time."),
 ]),
-("Nature & weather", [
+("Nature & weather", "大自然", [
   ("水","shuǐ","water","水果","shuǐ guǒ","fruit",None,None,None),
   ("火","huǒ","fire","火车","huǒ chē","train",
    "火车开得真快。","huǒ chē kāi de zhēn kuài","The train goes so fast."),
@@ -228,7 +228,7 @@ GROUPS = [
   ("地","dì","ground, earth","草地","cǎo dì","grassy lawn",
    "别把纸扔在地上。","bié bǎ zhǐ rēng zài dì shàng","Don't throw paper on the ground."),
 ]),
-("Animals", [
+("Animals", "小动物", [
   ("鱼","yú","fish","金鱼","jīn yú","goldfish",None,None,None),
   ("马","mǎ","horse","骑马","qí mǎ","ride a horse",None,None,None),
   ("鸟","niǎo","bird","小鸟","xiǎo niǎo","little bird",
@@ -246,7 +246,7 @@ GROUPS = [
   ("龙","lóng","dragon","恐龙","kǒng lóng","dinosaur",
    "过年舞龙真热闹。","guò nián wǔ lóng zhēn rè nao","Dragon dancing at New Year is such fun."),
 ]),
-("Food & drink", [
+("Food & drink", "吃吃喝喝", [
   ("吃","chī","to eat","好吃","hǎo chī","yummy",None,None,None),
   ("喝","hē","to drink","喝水","hē shuǐ","drink water",
    "渴了就喝水。","kě le jiù hē shuǐ","Drink water when you're thirsty."),
@@ -269,7 +269,7 @@ GROUPS = [
   ("糖","táng","sugar; sweets","糖果","táng guǒ","sweets",
    "糖果甜甜的。","táng guǒ tián tián de","Sweets are so sweet."),
 ]),
-("Colours & describing", [
+("Colours & describing", "颜色和样子", [
   ("红","hóng","red","红色","hóng sè","red",
    "红灯停，绿灯行。","hóng dēng tíng lǜ dēng xíng","Red light stop, green light go."),
   ("黄","huáng","yellow","黄色","huáng sè","yellow",
@@ -305,7 +305,7 @@ GROUPS = [
   ("亮","liàng","bright","月亮","yuè liang","the moon",
    "月亮真亮啊！","yuè liang zhēn liàng a","The moon is so bright!"),
 ]),
-("Come & go", [
+("Come & go", "来来往往", [
   ("来","lái","to come","过来","guò lái","come over",
    "快来看小狗！","kuài lái kàn xiǎo gǒu","Come quick and see the puppy!"),
   ("去","qù","to go","去学校","qù xué xiào","go to school",
@@ -335,7 +335,7 @@ GROUPS = [
   ("到","dào","to arrive","到家","dào jiā","arrive home",
    "火车到站了。","huǒ chē dào zhàn le","The train has arrived."),
 ]),
-("Everyday actions", [
+("Everyday actions", "每天做的事", [
   ("看","kàn","to look, to read","看见","kàn jiàn","to see",None,None,None),
   ("听","tīng","to listen","听见","tīng jiàn","to hear",
    "上课要认真听。","shàng kè yào rèn zhēn tīng","Listen carefully in class."),
@@ -380,7 +380,7 @@ GROUPS = [
   ("洗","xǐ","to wash","洗手","xǐ shǒu","wash your hands",
    "我自己洗脸刷牙。","wǒ zì jǐ xǐ liǎn shuā yá","I wash my face and brush my teeth by myself."),
 ]),
-("Songs, games & stories", [
+("Songs, games & stories", "唱唱跳跳", [
   ("唱","chàng","to sing","唱歌","chàng gē","sing songs",
    "我们一起唱儿歌。","wǒ men yì qǐ chàng ér gē","Let's sing a nursery rhyme together."),
   ("歌","gē","song","儿歌","ér gē","nursery rhyme",
@@ -400,7 +400,7 @@ GROUPS = [
   ("故","gù","old; reason","故事","gù shi","story",
    "我最爱听故事了。","wǒ zuì ài tīng gù shi le","I love stories most of all."),
 ]),
-("Think & feel", [
+("Think & feel", "想法和心情", [
   ("想","xiǎng","to think; to miss","想家","xiǎng jiā","to miss home",
    "我想妈妈了。","wǒ xiǎng mā ma le","I miss Mum."),
   ("知","zhī","to know","知道","zhī dào","to know",
@@ -430,7 +430,7 @@ GROUPS = [
   ("请","qǐng","please; to invite","请坐","qǐng zuò","please sit",
    "请再说一遍。","qǐng zài shuō yí biàn","Please say it again."),
 ]),
-("School & learning", [
+("School & learning", "学校生活", [
   ("学","xué","to learn","上学","shàng xué","go to school",
    "我在学中文。","wǒ zài xué zhōng wén","I'm learning Chinese."),
   ("习","xí","to practise","学习","xué xí","to study",
@@ -464,7 +464,7 @@ GROUPS = [
   ("汉","hàn","Chinese (Han)","汉字","hàn zì","Chinese characters",
    "汉字真有意思。","hàn zì zhēn yǒu yì si","Chinese characters are fascinating."),
 ]),
-("Position & direction", [
+("Position & direction", "上下左右", [
   ("上","shàng","up; on","上面","shàng miàn","on top",
    "书在桌子上。","shū zài zhuō zi shàng","The book is on the table."),
   ("下","xià","down; under","下面","xià miàn","underneath",
@@ -502,7 +502,7 @@ GROUPS = [
   ("近","jìn","near","附近","fù jìn","nearby",
    "我家离公园很近。","wǒ jiā lí gōng yuán hěn jìn","My home is close to the park."),
 ]),
-("Out & about", [
+("Out & about", "出门走走", [
   ("国","guó","country","中国","zhōng guó","China",
    "我爱中国，也爱澳大利亚。","wǒ ài zhōng guó yě ài ào dà lì yà","I love China and Australia."),
   ("城","chéng","city; wall","城市","chéng shì","city",
@@ -536,7 +536,7 @@ GROUPS = [
   ("钱","qián","money","花钱","huā qián","spend money",
    "我把零钱存起来。","wǒ bǎ líng qián cún qǐ lái","I save up my pocket money."),
 ]),
-("Question words", [
+("Question words", "问一问", [
   ("什","shén","what (in 什么)","什么","shén me","what?",
    "这是什么？","zhè shì shén me","What's this?"),
   ("么","me","(in 什么)","什么","shén me","what?",
@@ -568,7 +568,7 @@ GROUPS = [
   ("如","rú","if; like","如果","rú guǒ","if",
    "如果晴天，我们去公园。","rú guǒ qíng tiān wǒ men qù gōng yuán","If it's sunny, we'll go to the park."),
 ]),
-("Little glue words", [
+("Little glue words", "句子小帮手", [
   ("的","de","(links describing words)","我的","wǒ de","my, mine",
    "这是我的书包。","zhè shì wǒ de shū bāo","This is my school bag."),
   ("了","le","(something happened)","下雨了","xià yǔ le","it's raining!",
@@ -612,7 +612,7 @@ GROUPS = [
   ("对","duì","right, correct","对不起","duì bu qǐ","sorry",
    "你答对了！","nǐ dá duì le","You got it right!"),
 ]),
-("This & that", [
+("This & that", "这个那个", [
   ("在","zài","at, in","在家","zài jiā","at home",
    "妈妈在厨房做饭。","mā ma zài chú fáng zuò fàn","Mum's cooking in the kitchen."),
   ("这","zhè","this","这里","zhè lǐ","here",
@@ -632,7 +632,7 @@ GROUPS = [
   ("从","cóng","from","从小","cóng xiǎo","ever since little",
    "我从家走到学校。","wǒ cóng jiā zǒu dào xué xiào","I walk from home to school."),
 ]),
-("Can & must", [
+("Can & must", "会不会", [
   ("会","huì","can (know how to)","会写字","huì xiě zì","can write characters",
    "我会唱这首歌。","wǒ huì chàng zhè shǒu gē","I can sing this song."),
   ("能","néng","can (be able to)","不能","bù néng","can't",
@@ -886,7 +886,9 @@ def main():
     dic = load_jsonl(fetch("dictionary.txt", args.dict_))
 
     flat, seen = [], set()
-    for group, entries in GROUPS:
+    group_zh = {}
+    for group, gzh, entries in GROUPS:
+        group_zh[group] = gzh
         for e in entries:
             assert e[0] not in seen, "duplicate character: " + e[0]
             seen.add(e[0])
@@ -934,8 +936,10 @@ def main():
 "   makemeahanzi (https://github.com/skishore/makemeahanzi, Arphic Public\n"
 "   License), 1024 Y-up space. Self-contained / evergreen. */\n")
     body = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    gmap = json.dumps(group_zh, ensure_ascii=False, separators=(",", ":"))
     with open(OUT, "w", encoding="utf-8") as f:
-        f.write(header + "window.CHAR_DATA = " + body + ";\n")
+        f.write(header + "window.CHAR_DATA = " + body + ";\n" +
+                "window.CHAR_GROUPS = " + gmap + ";   // theme name \u2192 \u4e2d\u6587\n")
     print("wrote %s: %d characters, %d groups, %.0f KB" %
           (os.path.relpath(OUT, ROOT), len(data), len(GROUPS), len(body) / 1024))
 
