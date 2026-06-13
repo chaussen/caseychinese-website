@@ -285,19 +285,40 @@
     });
   }
 
-  // ---- read aloud (Web Speech API; buttons stay hidden when unsupported) ----
-  // Buttons are only revealed once we confirm a real zh-* voice exists.
-  // Without this guard, Firefox/Arch uses espeak-ng without Chinese data
-  // (reads out a technical error string) and Chrome/Arch falls back to an
-  // English voice that mispronounces the characters.
-  var speechReady = false;
+  // ---- read aloud ----
+  // Primary: pre-generated MP3 files in learn/audio/ (XiaoxiaoNeural quality).
+  // Fallback: Web Speech API, only if a real zh-* voice is confirmed available
+  // (guards against Firefox/Arch espeak-ng outputting technical error strings,
+  // and Chrome/Arch falling back to an English voice that mispronounces characters).
+  var AUDIO_BASE = "learn/audio/";
+  var currentAudio = null;
+
+  function stopAudio() {
+    if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; currentAudio = null; }
+    $all(".say.is-speaking").forEach(function (b) { b.classList.remove("is-speaking"); });
+  }
+
+  function playFile(path, btn) {
+    stopAudio();
+    var a = new Audio(path);
+    currentAudio = a;
+    if (btn) btn.classList.add("is-speaking");
+    a.onended = a.onerror = function () {
+      if (currentAudio === a) currentAudio = null;
+      if (btn) btn.classList.remove("is-speaking");
+    };
+    a.play();
+  }
+
+  // Web Speech fallback (used only when audio files are absent)
   function zhVoice() {
+    if (!("speechSynthesis" in window)) return null;
     var vs = speechSynthesis.getVoices().filter(function (v) { return /^zh([-_]|$)/i.test(v.lang); });
     var cn = vs.filter(function (v) { return /CN|cmn|Hans/i.test(v.lang + " " + v.name); });
     return cn[0] || vs[0] || null;
   }
-  function speak(text, btn) {
-    if (!speechReady || !text) return;
+  function speakFallback(text, btn) {
+    if (!text || !("speechSynthesis" in window) || !zhVoice()) return;
     speechSynthesis.cancel();
     $all(".say.is-speaking").forEach(function (b) { b.classList.remove("is-speaking"); });
     var u = new SpeechSynthesisUtterance(text);
@@ -311,35 +332,56 @@
     }
     speechSynthesis.speak(u);
   }
+
+  function speak(path, text, btn) {
+    // Try the MP3 first; if the file is missing (404 or network error) fall back to TTS
+    stopAudio();
+    var a = new Audio(path);
+    currentAudio = a;
+    if (btn) btn.classList.add("is-speaking");
+    a.onended = function () {
+      if (currentAudio === a) currentAudio = null;
+      if (btn) btn.classList.remove("is-speaking");
+    };
+    a.onerror = function () {
+      if (currentAudio === a) currentAudio = null;
+      if (btn) btn.classList.remove("is-speaking");
+      speakFallback(text, btn);
+    };
+    a.play().catch(function () {
+      currentAudio = null;
+      if (btn) btn.classList.remove("is-speaking");
+      speakFallback(text, btn);
+    });
+  }
+
   function initSpeech() {
-    if (!("speechSynthesis" in window && "SpeechSynthesisUtterance" in window)) return;
     var sayBtn = $("#ce-say"), sayWordBtn = $("#ce-say-word"), saySentBtn = $("#ce-say-sent");
     if (!sayBtn) return;
 
-    function tryEnableSpeech() {
-      if (speechReady) return;
-      if (!zhVoice()) return;   // no Chinese voice installed — keep buttons hidden
-      speechReady = true;
-      sayBtn.hidden = false;
-      sayBtn.addEventListener("click", function () { speak(DATA[state.idx].ch, sayBtn); });
-      function sayDSeg(key, btn) {
-        var seg = DATA[state.idx][key].seg;
-        speak(seg.map(function (p) { return p[0]; }).join(""), btn);
-      }
-      if (sayWordBtn) {
-        sayWordBtn.hidden = false;
-        sayWordBtn.addEventListener("click", function () { sayDSeg("word", sayWordBtn); });
-      }
-      if (saySentBtn) {
-        saySentBtn.hidden = false;
-        saySentBtn.addEventListener("click", function () { sayDSeg("ex", saySentBtn); });
-      }
+    // Always show buttons — MP3 files work everywhere, TTS is a silent fallback
+    sayBtn.hidden = false;
+    sayBtn.addEventListener("click", function () {
+      var i = state.idx;
+      speak(AUDIO_BASE + "char-" + i + ".mp3", DATA[i].ch, sayBtn);
+    });
+    if (sayWordBtn) {
+      sayWordBtn.hidden = false;
+      sayWordBtn.addEventListener("click", function () {
+        var i = state.idx, seg = DATA[i].word.seg;
+        speak(AUDIO_BASE + "word-" + i + ".mp3", seg.map(function (p) { return p[0]; }).join(""), sayWordBtn);
+      });
+    }
+    if (saySentBtn) {
+      saySentBtn.hidden = false;
+      saySentBtn.addEventListener("click", function () {
+        var i = state.idx, seg = DATA[i].ex.seg;
+        speak(AUDIO_BASE + "sent-" + i + ".mp3", seg.map(function (p) { return p[0]; }).join(""), saySentBtn);
+      });
     }
 
-    // Voices may already be loaded (Chrome) or arrive asynchronously (Firefox/Safari)
-    speechSynthesis.getVoices();
-    tryEnableSpeech();
-    speechSynthesis.addEventListener("voiceschanged", tryEnableSpeech);
+    // Warm up voice list for fallback path
+    if ("speechSynthesis" in window) speechSynthesis.getVoices();
   }
 
   // ---- build the wall ----
