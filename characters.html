@@ -286,6 +286,13 @@
   .poem-side .pmean{font-family:var(--serif);font-size:20px;font-style:italic;line-height:1.6;
     color:rgba(255,248,245,.92);margin:0 0 18px;}
   .poem-side .pnote{font-size:14.5px;color:rgba(255,248,245,.62);line-height:1.65;margin:0;}
+  .poem-say{margin-top:22px;display:inline-flex;align-items:center;gap:10px;
+    background:transparent;border:1.5px solid rgba(255,248,245,.35);border-radius:999px;
+    padding:8px 18px 8px 14px;color:rgba(255,248,245,.8);font-size:14px;cursor:pointer;
+    font-family:var(--sans);transition:border-color .2s,color .2s;}
+  .poem-say:hover{border-color:var(--red-soft);color:#fff;}
+  .poem-say.is-speaking{border-color:var(--red);color:#fff;background:rgba(200,50,30,.18);}
+  .poem-say .ic{font-size:18px;line-height:1;}
 
   /* ───── ENROL CTA ───── */
   #enrol-nudge{background:var(--bg-warm);padding:74px 0;}
@@ -560,6 +567,9 @@
         <p class="pmeta">Ode to the Goose · 唐 · 骆宾王 Luò Bīnwáng</p>
         <p class="pmean">Goose, goose, goose — neck curved, singing to the sky. White feathers afloat on green water, red feet paddling the clear waves.</p>
         <p class="pnote">By tradition, 骆宾王 wrote this at seven years old — which is why it is so many children's very first poem. You already know <span class="zh-inline" style="color:var(--red-soft)">水</span> from the explorer above.</p>
+        <button class="poem-say" id="poem-say" type="button" aria-label="Hear the poem · 听朗诵">
+          <span class="ic">🔊</span> Hear it read aloud · 听朗诵
+        </button>
       </div>
     </div>
   </div>
@@ -606,6 +616,29 @@
   [].slice.call(l.querySelectorAll('a')).forEach(function(a){a.addEventListener('click',function(){
     l.classList.remove('open');t.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open');});});
   document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+<script>
+  (function () {
+    var btn = document.getElementById('poem-say');
+    if (!btn) return;
+    var audio = null;
+    btn.addEventListener('click', function () {
+      if (audio && !audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+        btn.classList.remove('is-speaking');
+        audio = null;
+        return;
+      }
+      audio = new Audio('learn/audio/poem-yonge.mp3');
+      btn.classList.add('is-speaking');
+      audio.onended = audio.onerror = function () {
+        btn.classList.remove('is-speaking');
+        audio = null;
+      };
+      audio.play();
+    });
+  })();
 </script>
 <script src="learn/char-data.js"></script>
 <script src="learn/explorer.js"></script>
