@@ -17,6 +17,3 @@ Thumbs.db
 
 # makemeahanzi data cache (scripts/build-char-data.py)
 .cache/
-
-# Generated audio files (run scripts/gen-audio.py locally to produce these)
-learn/audio/
