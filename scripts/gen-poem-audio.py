@@ -25,23 +25,25 @@ VOICE = "zh-CN-XiaoxiaoNeural"
 RATE  = "-15%"
 OUT   = os.path.join(os.path.dirname(__file__), "..", "learn", "audio")
 
-# SSML: explicit pauses between each 鹅 and at line breaks for natural recitation
+# SSML: poetry-reading style for proper tonal expression, breaks for pacing
 SSML = """<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
        xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="zh-CN">
   <voice name="zh-CN-XiaoxiaoNeural">
-    <prosody rate="-15%">
-      咏鹅。
-      <break time="600ms"/>
-      骆宾王。
-      <break time="900ms"/>
-      鹅，<break time="450ms"/>鹅，<break time="450ms"/>鹅，
-      <break time="500ms"/>
-      曲项向天歌。
-      <break time="600ms"/>
-      白毛浮绿水，
-      <break time="400ms"/>
-      红掌拨清波。
-    </prosody>
+    <mstts:express-as style="poetry-reading">
+      <prosody rate="-15%">
+        咏鹅。
+        <break time="600ms"/>
+        骆宾王。
+        <break time="900ms"/>
+        鹅，<break time="450ms"/>鹅，<break time="450ms"/>鹅，
+        <break time="500ms"/>
+        曲项向天歌。
+        <break time="600ms"/>
+        白毛浮绿水，
+        <break time="400ms"/>
+        红掌拨清波。
+      </prosody>
+    </mstts:express-as>
   </voice>
 </speak>"""
 
