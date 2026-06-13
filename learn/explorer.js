@@ -286,14 +286,18 @@
   }
 
   // ---- read aloud (Web Speech API; buttons stay hidden when unsupported) ----
-  var canSpeak = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  // Buttons are only revealed once we confirm a real zh-* voice exists.
+  // Without this guard, Firefox/Arch uses espeak-ng without Chinese data
+  // (reads out a technical error string) and Chrome/Arch falls back to an
+  // English voice that mispronounces the characters.
+  var speechReady = false;
   function zhVoice() {
     var vs = speechSynthesis.getVoices().filter(function (v) { return /^zh([-_]|$)/i.test(v.lang); });
     var cn = vs.filter(function (v) { return /CN|cmn|Hans/i.test(v.lang + " " + v.name); });
     return cn[0] || vs[0] || null;
   }
   function speak(text, btn) {
-    if (!canSpeak || !text) return;
+    if (!speechReady || !text) return;
     speechSynthesis.cancel();
     $all(".say.is-speaking").forEach(function (b) { b.classList.remove("is-speaking"); });
     var u = new SpeechSynthesisUtterance(text);
@@ -308,23 +312,34 @@
     speechSynthesis.speak(u);
   }
   function initSpeech() {
+    if (!("speechSynthesis" in window && "SpeechSynthesisUtterance" in window)) return;
     var sayBtn = $("#ce-say"), sayWordBtn = $("#ce-say-word"), saySentBtn = $("#ce-say-sent");
-    if (!canSpeak || !sayBtn) return;
-    speechSynthesis.getVoices();          // warm the voice list (loads async)
-    sayBtn.hidden = false;
-    sayBtn.addEventListener("click", function () { speak(DATA[state.idx].ch, sayBtn); });
-    function sayDSeg(key, btn) {
-      var seg = DATA[state.idx][key].seg;
-      speak(seg.map(function (p) { return p[0]; }).join(""), btn);
+    if (!sayBtn) return;
+
+    function tryEnableSpeech() {
+      if (speechReady) return;
+      if (!zhVoice()) return;   // no Chinese voice installed — keep buttons hidden
+      speechReady = true;
+      sayBtn.hidden = false;
+      sayBtn.addEventListener("click", function () { speak(DATA[state.idx].ch, sayBtn); });
+      function sayDSeg(key, btn) {
+        var seg = DATA[state.idx][key].seg;
+        speak(seg.map(function (p) { return p[0]; }).join(""), btn);
+      }
+      if (sayWordBtn) {
+        sayWordBtn.hidden = false;
+        sayWordBtn.addEventListener("click", function () { sayDSeg("word", sayWordBtn); });
+      }
+      if (saySentBtn) {
+        saySentBtn.hidden = false;
+        saySentBtn.addEventListener("click", function () { sayDSeg("ex", saySentBtn); });
+      }
     }
-    if (sayWordBtn) {
-      sayWordBtn.hidden = false;
-      sayWordBtn.addEventListener("click", function () { sayDSeg("word", sayWordBtn); });
-    }
-    if (saySentBtn) {
-      saySentBtn.hidden = false;
-      saySentBtn.addEventListener("click", function () { sayDSeg("ex", saySentBtn); });
-    }
+
+    // Voices may already be loaded (Chrome) or arrive asynchronously (Firefox/Safari)
+    speechSynthesis.getVoices();
+    tryEnableSpeech();
+    speechSynthesis.addEventListener("voiceschanged", tryEnableSpeech);
   }
 
   // ---- build the wall ----
