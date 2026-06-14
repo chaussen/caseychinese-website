@@ -1,7 +1,7 @@
-# caseychinese.org — Casey Chinese School
+# caseychinese.org — Casey Foundation Chinese School
 
-Static website for Casey Chinese School (Casey 中文学校), a Saturday community
-language school in Narre Warren, Victoria.
+Static website for Casey Foundation Chinese School (Casey 中文学校), a Saturday
+community language school in Narre Warren, Victoria.
 
 ## Hosting
 
@@ -66,7 +66,9 @@ HTML. Run both locally the same way before pushing if you want a head start.
   (the strokes are the lesson content).
 - Images use `loading="lazy"` except the hero, which uses
   `fetchpriority="high"`.
-- The explorer's read-aloud buttons use the browser's built-in Web Speech API
-  (no external service); they stay hidden on browsers without a speech engine.
+- The explorer's read-aloud buttons play pre-generated MP3s from `learn/audio/`
+  (Microsoft Azure Neural voices, built by `scripts/gen-audio.py`). If a file is
+  missing or fails to load, they fall back silently to the browser's Web Speech
+  API. Audio is fetched on demand per click — nothing is preloaded.
 - Old URLs from the retired site (`about/classes/contact/enrolment.html`) are
   kept as tiny redirect stubs pointing at the matching `index.html` section.
