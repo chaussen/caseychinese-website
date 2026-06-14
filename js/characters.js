@@ -6,8 +6,6 @@
   [].slice.call(l.querySelectorAll('a')).forEach(function(a){a.addEventListener('click',function(){
     l.classList.remove('open');t.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open');});});
   document.getElementById('yr').textContent=new Date().getFullYear();
-</script>
-
   (function () {
     var btn = document.getElementById('poem-say');
     if (!btn) return;
