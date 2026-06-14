@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#F08379" />
 <title>Learn Chinese Characters Free · Stroke Order, Audio &amp; Etymology | 识字小馆</title>
@@ -55,12 +55,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;1,400&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLRWEHJX8P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TLRWEHJX8P');
-</script>
+<script src="js/gtag-init.js"></script>
 <style>
   :root{
     --red:#F08379; --red-deep:#C84B3F; --red-soft:#F8C5BF; --red-tint:#FCE6E2;
@@ -640,39 +635,7 @@
   </div>
 </footer>
 
-<script>
-  // nav: scrolled border + mobile toggle
-  var nav=document.getElementById('nav');
-  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8);},{passive:true});
-  var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
-  t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o);document.body.classList.toggle('nav-open',o);});
-  [].slice.call(l.querySelectorAll('a')).forEach(function(a){a.addEventListener('click',function(){
-    l.classList.remove('open');t.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open');});});
-  document.getElementById('yr').textContent=new Date().getFullYear();
-</script>
-<script>
-  (function () {
-    var btn = document.getElementById('poem-say');
-    if (!btn) return;
-    var audio = null;
-    btn.addEventListener('click', function () {
-      if (audio && !audio.paused) {
-        audio.pause();
-        audio.currentTime = 0;
-        btn.classList.remove('is-speaking');
-        audio = null;
-        return;
-      }
-      audio = new Audio('learn/audio/poem-yonge.mp3');
-      btn.classList.add('is-speaking');
-      audio.onended = audio.onerror = function () {
-        btn.classList.remove('is-speaking');
-        audio = null;
-      };
-      audio.play();
-    });
-  })();
-</script>
+<script src="js/characters.js"></script>
 <script src="learn/char-data.js"></script>
 <script src="learn/explorer.js"></script>
 <script src="learn/radical-data.js"></script>
