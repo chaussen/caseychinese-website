@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Regression tests (JS integrity, CSP, ID contract)
+        run: python3 scripts/test.py
       - name: Check internal links and assets
         run: python3 scripts/check-links.py
       - name: Validate HTML
