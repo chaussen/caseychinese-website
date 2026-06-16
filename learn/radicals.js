@@ -95,6 +95,17 @@
     });
   }
 
+  // API for the explorer: open the radical card for the character's radical glyph
+  window.CCS_RADICALS = {
+    openFor: function (radicalGlyph) {
+      for (var i = 0; i < RD.length; i++) {
+        if (RD[i].r === radicalGlyph || RD[i].v === radicalGlyph) {
+          cur = i; render(); return;
+        }
+      }
+    }
+  };
+
   function init() {
     if (!$("#rd-wall")) return;
     buildWall();

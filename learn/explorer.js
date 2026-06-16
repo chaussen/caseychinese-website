@@ -280,9 +280,6 @@
     var r = $("#opt-rainbow"), n = $("#opt-numbers");
     if (r) { r.setAttribute("aria-pressed", state.rainbow); r.classList.toggle("is-on", state.rainbow); }
     if (n) { n.setAttribute("aria-pressed", state.numbers); n.classList.toggle("is-on", state.numbers); }
-    $all(".speed-opt").forEach(function (b) {
-      b.classList.toggle("is-on", parseFloat(b.dataset.speed) === state.speed);
-    });
   }
 
   // ---- read aloud ----
@@ -395,7 +392,10 @@
     }).join("");
     $all(".wall__cell", wall).forEach(function (b) {
       b.addEventListener("click", function () {
-        state.idx = +b.dataset.i; render(true);
+        state.idx = +b.dataset.i;
+        render(true);
+        var explorer = $("#explorer");
+        if (explorer) explorer.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "start" });
       });
     });
   }
@@ -465,8 +465,13 @@
     var r = $("#opt-rainbow"), n = $("#opt-numbers");
     if (r) r.addEventListener("click", function () { setOpt("rainbow", !state.rainbow); });
     if (n) n.addEventListener("click", function () { setOpt("numbers", !state.numbers); });
-    $all(".speed-opt").forEach(function (b) {
-      b.addEventListener("click", function () { setOpt("speed", parseFloat(b.dataset.speed)); });
+
+    var radChip = $("#ce-rad");
+    if (radChip) radChip.addEventListener("click", function () {
+      if (window.CCS_RADICALS) {
+        window.CCS_RADICALS.openFor(DATA[state.idx].radical);
+        $("#radicals").scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
+      }
     });
 
     // keyboard: arrow keys flip characters while the explorer is in view.

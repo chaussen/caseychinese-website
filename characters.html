@@ -158,11 +158,15 @@
   .ctl.primary:hover{background:#9A3027;}
   .ctl .ic{font-size:14px;line-height:1;}
   .bar-spacer{flex:1 1 12px;}
+  .bar-sep{width:1px;height:24px;background:var(--line);flex-shrink:0;margin:0 4px;}
   .toggle{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--paper);
     color:var(--ink-soft);font-size:12px;font-weight:600;padding:7px 12px;border-radius:999px;cursor:pointer;
     transition:all .2s;}
   .toggle:hover{border-color:var(--red-soft);}
   .toggle.is-on{background:var(--red-tint);border-color:var(--red-soft);color:var(--red-deep);}
+  .chip-link{cursor:pointer;transition:border-color .15s,background .15s;}
+  .chip-link:hover{border-color:var(--red-soft);background:var(--red-tint);}
+  .chip-link:hover .chip__t{color:var(--red-deep);}
   .seg{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;}
   .seg .speed-opt{border:none;background:var(--paper);color:var(--ink-mute);font-family:var(--sans);
     font-size:12px;font-weight:600;padding:7px 11px;cursor:pointer;transition:all .2s;}
@@ -438,13 +442,9 @@
           <button class="ctl primary" id="ce-replay" type="button"><span class="ic">↻</span> Replay <span lang="zh-Hans">重播</span></button>
           <button class="ctl" id="ce-step" type="button">Stroke <span lang="zh-Hans">下一笔</span> <span class="ic">›</span></button>
           <span class="bar-spacer"></span>
+          <span class="bar-sep" aria-hidden="true"></span>
           <button class="toggle" id="opt-rainbow" type="button" aria-pressed="false" title="Colour each stroke">彩 Colour</button>
           <button class="toggle" id="opt-numbers" type="button" aria-pressed="false" title="Show stroke order numbers">① Order <span lang="zh-Hans">笔顺</span></button>
-          <div class="seg" role="group" aria-label="Speed">
-            <button class="speed-opt" data-speed="0.65" type="button">Slow <span lang="zh-Hans">慢</span></button>
-            <button class="speed-opt" data-speed="1" type="button">Med <span lang="zh-Hans">中</span></button>
-            <button class="speed-opt" data-speed="1.5" type="button">Fast <span lang="zh-Hans">快</span></button>
-          </div>
         </div>
       </div>
 
@@ -461,7 +461,7 @@
             <div class="ce-en" id="ce-en">—</div>
           </div>
           <div class="ce-chips">
-            <span class="chip" id="ce-rad"></span>
+            <button class="chip chip-link" id="ce-rad" type="button" title="Jump to radical guide · 查部首"></button>
             <span class="chip" id="ce-strokes"></span>
           </div>
         </div>
