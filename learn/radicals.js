@@ -91,7 +91,12 @@
         '<span class="rad-tile__en">' + rd.en.split(/[,—]/)[0].trim() + "</span></button>";
     }).join("");
     $all(".rad-tile").forEach(function (b) {
-      b.addEventListener("click", function () { cur = +b.dataset.i; render(); });
+      b.addEventListener("click", function () {
+        cur = +b.dataset.i;
+        render();
+        var card = document.querySelector("#radicals .rad-card");
+        if (card) card.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
+      });
     });
   }
 

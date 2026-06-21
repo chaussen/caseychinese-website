@@ -202,7 +202,7 @@
     $("#ce-py").innerHTML = d.py;
     $("#ce-en").textContent = d.en;
     $("#ce-rad").innerHTML = '<span class="zh-inline" lang="zh-Hans">' + d.radical + "</span> " +
-      '<span class="chip__t">radical 部首 · ' + d.radEn + "</span>";
+      "radical 部首 · " + d.radEn;
     $("#ce-strokes").innerHTML = d.s.length + ' <span class="chip__t">stroke' + (d.s.length > 1 ? "s" : "") + " · 笔画</span>";
     $("#ce-origin").innerHTML = markCJK(d.origin);
     $("#ce-word").innerHTML = rubyFor(d.word.seg, d.ch);
@@ -470,7 +470,8 @@
     if (radChip) radChip.addEventListener("click", function () {
       if (window.CCS_RADICALS) {
         window.CCS_RADICALS.openFor(DATA[state.idx].radical);
-        $("#radicals").scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
+        var radCard = $(\"#radicals .rad-card\");
+        if (radCard) radCard.scrollIntoView({ behavior: prefersReduced ? \"auto\" : \"smooth\" });
       }
     });
 
