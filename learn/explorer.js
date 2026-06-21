@@ -470,8 +470,8 @@
     if (radChip) radChip.addEventListener("click", function () {
       if (window.CCS_RADICALS) {
         window.CCS_RADICALS.openFor(DATA[state.idx].radical);
-        var radCard = $(\"#radicals .rad-card\");
-        if (radCard) radCard.scrollIntoView({ behavior: prefersReduced ? \"auto\" : \"smooth\" });
+        var radCard = $("#radicals .rad-card");
+        if (radCard) radCard.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
       }
     });
 
