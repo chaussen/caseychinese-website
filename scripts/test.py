@@ -29,12 +29,14 @@ def ok(msg):
 # ---------------------------------------------------------------------------
 def check_local_refs():
     bad = []
-    for f in sorted(glob.glob("*.html")):
+    for f in sorted(glob.glob("*.html") + glob.glob("learn/characters/*.html")):
         html = open(f, encoding="utf-8").read()
+        base = os.path.dirname(f)
         for ref in re.findall(r'(?:src|href)="([^"#]+)"', html):
             if ref.startswith(("http://", "https://", "mailto:", "tel:", "data:", "//")):
                 continue
-            path = ref.split("?")[0].lstrip("/")
+            path = ref.split("?")[0]
+            path = path.lstrip("/") if path.startswith("/") else os.path.normpath(os.path.join(base, path))
             if path and not os.path.exists(path):
                 bad.append(f"  {f}: missing {ref}")
     if bad:

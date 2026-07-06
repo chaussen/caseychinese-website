@@ -19,7 +19,9 @@ origin to that tag on every page that uses it.
 | File | What it is |
 |---|---|
 | `index.html` | The whole main site: about, programs, textbooks, fees, enrolment, FAQ, 2026 schedule, events, gallery, contact. All CSS/JS is inline. |
-| `characters.html` | "Learn a Character · 识字小馆" — interactive stroke-order explorer for 300 common characters in themed groups. |
+| `characters.html` | "Learn a Character · 识字小馆" — interactive stroke-order explorer for 300 common characters in themed groups. Supports deep links: `characters.html?ch=人` opens that character. |
+| `learn/characters/` | **Generated** static SEO pages — one crawlable reference page per character (stroke order, pinyin, meaning, origin, word + sentence with audio) plus an `index.html` hub grouped by theme. Built by `scripts/build-char-pages.py`; don't edit by hand. These exist because the explorer renders everything with JS, which search engines can't index — the static pages are what ranks for "learn Chinese characters" queries. |
+| `llms.txt` | Plain-text site summary for AI assistants / answer engines (generative-engine optimisation). Update it when key facts (address, times, contact) change. |
 | `404.html` | Custom not-found page; also catches URLs from the retired old site. |
 | `learn/char-data.js` | **Generated** character content (pinyin, meaning, origin story, a common word **and** an example sentence each, stroke paths) — built by `scripts/build-char-data.py`. |
 | `learn/explorer.js` | The explorer engine: stroke animation, options, keyboard navigation. |
@@ -48,8 +50,13 @@ origin to that tag on every page that uses it.
   regenerates the file. The wall, counter, theme filter, and navigation pick
   up changes automatically. Hand-written origin stories and example sentences
   live in the `OVERRIDES`/`ORIGIN_FIX` tables in the same script.
-- **New pages** — add the page, link it from the nav, and add it to
-  `sitemap.xml`.
+  **After changing the character set**, also run
+  `python3 scripts/gen-audio.py` (audio files are keyed by array index) and
+  `python3 scripts/build-char-pages.py` (regenerates the static pages under
+  `learn/characters/` and `sitemap.xml`).
+- **New pages** — add the page, link it from the nav, and add it to the
+  `sitemap()` function in `scripts/build-char-pages.py` (that script
+  regenerates `sitemap.xml`, so hand edits to the XML get overwritten).
 
 ## Checks
 

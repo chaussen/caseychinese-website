@@ -7,6 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#F08379" />
+<meta name="geo.region" content="AU-VIC" />
+<meta name="geo.placename" content="Narre Warren, Victoria, Australia" />
+<meta name="ICBM" content="-38.0298, 145.3030" />
 <title>Casey Foundation Chinese School | Berwick Cranbourne Narre Warren | Saturday Chinese Classes</title>
 <meta name="description" content="Casey Foundation Chinese School — Saturday Chinese classes for all year levels in Narre Warren, serving Berwick, Cranbourne, Hallam and Casey families. Free trial lesson for new students. 每周六中文课，新生可免费试课。" />
 <meta name="keywords" content="Casey Foundation Chinese School, Casey Chinese school, Berwick Chinese school, Cranbourne Chinese school, Narre Warren Chinese school, Saturday Chinese school Melbourne, 中文学校, 华文学校" />
@@ -26,14 +29,17 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
+  "@type": ["EducationalOrganization", "LocalBusiness"],
+  "@id": "https://caseychinese.org/#school",
   "name": "Casey Foundation Chinese School",
   "legalName": "Casey Foundation Chinese School Inc",
-  "alternateName": "Casey中文学校",
+  "alternateName": ["Casey中文学校", "Casey Chinese School"],
   "url": "https://caseychinese.org",
   "email": "office@caseychinese.org",
   "telephone": "+61401076448",
-  "description": "Saturday Chinese language school serving families in Berwick, Cranbourne, Narre Warren, Hallam, and the Casey region of Melbourne.",
+  "image": "https://caseychinese.org/images/og-home.jpg",
+  "logo": "https://caseychinese.org/images/logo.png",
+  "description": "Community Saturday Chinese language school in Narre Warren, Victoria — Mandarin classes for children of all year levels, serving families in Berwick, Cranbourne, Hallam, Hampton Park, Endeavour Hills, Officer, Clyde and the City of Casey. Free trial lesson for new students.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "4a Malcolm Court",
@@ -42,8 +48,34 @@
     "postalCode": "3805",
     "addressCountry": "AU"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -38.0298,
+    "longitude": 145.3030
+  },
   "areaServed": ["Berwick","Cranbourne","Narre Warren","Hallam","Hampton Park","Endeavour Hills","Officer","Clyde","Casey"],
-  "openingHours": "Sa 14:15-17:00"
+  "knowsLanguage": ["zh-Hans", "en"],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": "Saturday",
+    "opens": "09:00",
+    "closes": "17:00"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Chinese language classes",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Course",
+          "name": "Saturday Chinese classes for children (all year levels)",
+          "description": "Weekly Mandarin Chinese classes from beginner to advanced, held on Saturdays during Victorian school terms. Free trial lesson for new students.",
+          "provider": { "@id": "https://caseychinese.org/#school" }
+        }
+      }
+    ]
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -73,6 +105,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "We give children an appropriate amount of weekly practice to help reinforce what was covered in class — enough to be useful, not so much that it becomes a burden. There is a summative assessment every two terms. There are no formal report cards — our teachers keep in touch with parents to share how each child is getting on."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Casey Foundation Chinese School located, and which suburbs do you serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Classes are held at 4a Malcolm Court, Narre Warren VIC 3805 — just minutes from the Monash Freeway. Families come to us from across Melbourne's southeast, including Berwick, Cranbourne, Hallam, Hampton Park, Endeavour Hills, Officer, Clyde and the wider City of Casey."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When are Chinese classes held, and how do we try a class?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We run classes on Saturdays between 9.00 AM and 5.00 PM during Victorian school terms. The first lesson is a free trial for all new students — just get in touch and we'll help you find the right level."
       }
     }
   ]
@@ -1718,6 +1766,9 @@
         <div class="feat-actions">
           <a class="feat-btn" href="characters.html">Explore All 300 Chinese Characters <span class="arrow">→</span></a>
         </div>
+        <p style="margin:14px 0 0;font-size:13.5px;color:var(--ink-soft);">
+          Or browse the <a href="learn/characters/index.html">reference pages for all 300 characters</a> — stroke order, meaning and audio for each one.
+        </p>
       </div>
     </div>
   </div>
@@ -1889,6 +1940,27 @@
           is a summative assessment every two terms. There are no formal report cards — our
           teachers keep in touch with parents to share how each child is getting on.
           <span class="faq-a-zh">每周会布置适量的练习，帮孩子把课堂所学记得更牢，分量适中不会造成压力。每两个学期会有一次阶段性评估，但不设正式成绩单——老师会随时跟家长沟通，分享孩子的学习情况。</span>
+        </p>
+      </div>
+      <div class="faq-item">
+        <h4>Where is Casey Foundation Chinese School located, and which suburbs do you serve?</h4>
+        <div class="faq-q-zh">学校在哪里？哪些区的家庭可以来上课？</div>
+        <p class="faq-ans">
+          Classes are held at 4a Malcolm Court, Narre Warren VIC 3805 — just minutes from the
+          Monash Freeway. Families come to us from across Melbourne's southeast, including
+          Berwick, Cranbourne, Hallam, Hampton Park, Endeavour Hills, Officer, Clyde and the
+          wider City of Casey.
+          <span class="faq-a-zh">学校位于 Narre Warren（4a Malcolm Court, VIC 3805），距 Monash 高速公路仅数分钟。我们的家庭来自墨尔本东南区各地，包括 Berwick、Cranbourne、Hallam、Hampton Park、Endeavour Hills、Officer、Clyde 以及整个 Casey 市。</span>
+        </p>
+      </div>
+      <div class="faq-item">
+        <h4>When are Chinese classes held, and how do we try a class?</h4>
+        <div class="faq-q-zh">中文课什么时候上？怎么试课？</div>
+        <p class="faq-ans">
+          We run classes on Saturdays between 9.00 AM and 5.00 PM during Victorian school
+          terms. The first lesson is a free trial for all new students — just
+          <a href="#contact">get in touch</a> and we'll help you find the right level.
+          <span class="faq-a-zh">我们每周六上课（维州学期内），时间在上午九点到下午五点之间。所有新生第一节课免费试听——欢迎<a href="#contact">联系我们</a>，我们会帮孩子找到合适的班级。</span>
         </p>
       </div>
     </div>
@@ -2230,7 +2302,7 @@
   <div class="wrap foot-inner">
     <div>© <span id="footYear">2026</span> Casey Foundation Chinese School · Casey 中文学校</div>
     <div>
-      维多利亚州注册社团法人 · Incorporated Association in Victoria · <a href="#contact">Volunteer with us · 教学志愿</a>
+      维多利亚州注册社团法人 · Incorporated Association in Victoria · <a href="characters.html">Learn Chinese Characters · 识字小馆</a> · <a href="learn/characters/index.html">All 300 characters · 一字一页</a> · <a href="#contact">Volunteer with us · 教学志愿</a>
     </div>
   </div>
 </footer>

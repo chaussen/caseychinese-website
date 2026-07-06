@@ -450,6 +450,22 @@
   // ---- init ----
   function init() {
     writerEl = $("#ce-writer");
+
+    // deep link: characters.html?ch=人 opens straight to that character —
+    // the static reference pages under learn/characters/ link here this way
+    var deepLink = /[?&]ch=([^&]+)/.exec(location.search);
+    if (deepLink) {
+      var want = "";
+      try { want = decodeURIComponent(deepLink[1]); } catch (e) { /* ignore bad escapes */ }
+      for (var di = 0; di < DATA.length; di++) {
+        if (DATA[di].ch === want) {
+          state.idx = di;
+          state.wallGroup = DATA[di].group;
+          break;
+        }
+      }
+    }
+
     buildWall();
     buildFilter();
     applyFilter();
