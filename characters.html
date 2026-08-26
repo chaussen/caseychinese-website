@@ -11,8 +11,6 @@
 <meta name="description" content="Explore 300 Chinese characters free — animated stroke order, Mandarin audio, etymology, and example sentences. Perfect for beginners and heritage learners. 免费认字小工具 — 看笔顺动画，听发音，知字源。" />
 <meta name="keywords" content="learn Chinese characters, Chinese character stroke order, write Chinese characters, Chinese character writing, learn Mandarin characters, 学汉字, 汉字笔顺, 识字小馆" />
 <link rel="canonical" href="https://caseychinese.org/characters.html" />
-<link rel="alternate" hreflang="en" href="https://caseychinese.org/characters.html" />
-<link rel="alternate" hreflang="zh-Hans" href="https://caseychinese.org/characters.html" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Casey Foundation Chinese School" />
 <meta property="og:locale" content="en_AU" />
@@ -78,6 +76,54 @@
       "position": 2,
       "name": "Learn Chinese Characters",
       "item": "https://caseychinese.org/characters.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What order do you write the strokes in a Chinese character?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chinese characters follow a small set of stroke-order rules: top before bottom, left before right, horizontal strokes before vertical ones, and outside strokes before inside ones (closing the \"box\" last). Getting the order right matters more than getting it pretty — it's what makes handwriting fast and legible, and it's exactly what the animated diagrams on this page show for all 300 characters."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many Chinese characters do you actually need to know?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Around 2,000–3,000 characters cover most of a Chinese newspaper, and the 500 or so most common characters make up roughly 75% of everyday written text. The 300 characters in this tool are drawn from that high-frequency core — a solid, practical starting point for beginners and heritage learners rebuilding their reading."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between simplified and traditional Chinese characters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simplified characters (简体字) reduce the stroke count of many common characters and are used in mainland China, Singapore and Malaysia. Traditional characters (繁体字) keep the older, more complex forms and are used in Taiwan, Hong Kong and Macau. This tool teaches simplified characters, the form used in most Mandarin classrooms and by the majority of Chinese speakers worldwide."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the best way to remember Chinese characters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rote memorisation alone doesn't stick for most learners — it helps far more to know why a character looks the way it does. That's why every character on this page comes with a short origin story, a radical that hints at its meaning, and a real example sentence, so the shape, sound and meaning all reinforce each other."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this Chinese character tool really free, and do I need to create an account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — all 300 characters, the stroke animations, audio and the radicals guide are free to use, with no sign-up, account or app download required. It's built and maintained by Casey Foundation Chinese School, a community Chinese school in Melbourne, as a resource for anyone learning Mandarin."
+      }
     }
   ]
 }
@@ -338,6 +384,17 @@
   .rad-tile__r{font-family:var(--zh);font-size:28px;line-height:1;color:var(--ink);}
   .rad-tile.is-active .rad-tile__r{color:var(--red-deep);}
   .rad-tile__en{font-size:10.5px;color:var(--ink-soft);}
+
+  /* ───── FAQ ───── */
+  #char-faq{padding:84px 0;border-top:1px solid var(--line-soft);}
+  #char-faq .lede{font-size:18px;color:var(--ink-soft);max-width:760px;line-height:1.65;margin:14px 0 0;}
+  #char-faq .zh-note{display:block;font-family:var(--zh);font-size:15px;color:var(--ink-mute);margin-top:8px;}
+  .faq-list{margin-top:34px;max-width:760px;}
+  .faq-item{padding:26px 0;border-bottom:1px solid var(--line);}
+  .faq-item:first-child{padding-top:0;}
+  .faq-item h3{font-size:19px;font-weight:600;margin:0 0 10px;color:var(--ink);}
+  .faq-item p{margin:0;font-size:16px;color:var(--ink-soft);line-height:1.65;}
+  .faq-item .zh-note{display:block;font-family:var(--zh);font-size:14.5px;color:var(--ink-mute);margin-top:8px;line-height:1.75;}
 
   /* ───── POEM ───── */
   #poem{background:var(--ink);color:var(--bg);padding:84px 0;}
@@ -616,6 +673,74 @@
     </div>
 
     <div class="rad-wall" id="rd-wall" role="group" aria-label="Choose a radical"></div>
+  </div>
+</section>
+
+<!-- ───── FAQ ───── -->
+<section id="char-faq">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>Questions we hear often · 常见问题</div>
+    <h2 class="rad-h2">Learning Chinese characters — <em>the basics</em>.</h2>
+    <p class="lede">
+      A few things every beginner asks, answered plainly.
+      <span class="zh-note">几个初学者常问的问题，简单说清楚。</span>
+    </p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>What order do you write the strokes in a Chinese character?</h3>
+        <p>
+          Chinese characters follow a small set of stroke-order rules: top before bottom, left before
+          right, horizontal strokes before vertical ones, and outside strokes before inside ones
+          (closing the "box" last). Getting the order right matters more than getting it pretty — it's
+          what makes handwriting fast and legible, and it's exactly what the animated diagrams above
+          show for all 300 characters.
+          <span class="zh-note" lang="zh-Hans">汉字笔顺有几个基本规则：先上后下、先左后右、先横后竖、先外后内（最后封口）。笔顺对不对，比写得美不美更重要——它能让字写得又快又清楚。上面每个字的动画演示的正是标准笔顺。</span>
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>How many Chinese characters do you actually need to know?</h3>
+        <p>
+          Around 2,000–3,000 characters cover most of a Chinese newspaper, and the 500 or so most
+          common characters make up roughly 75% of everyday written text. The 300 characters in this
+          tool are drawn from that high-frequency core — a solid, practical starting point for
+          beginners and heritage learners rebuilding their reading.
+          <span class="zh-note" lang="zh-Hans">掌握约 2000 到 3000 个汉字，就能读懂大部分中文报纸；而最常用的 500 个字，大约覆盖日常书面语的 75%。这个工具收录的 300 个字，正是从这些高频字中精选出来的——很适合初学者和正在重拾中文的孩子。</span>
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>What's the difference between simplified and traditional characters?</h3>
+        <p>
+          Simplified characters (简体字) reduce the stroke count of many common characters and are used
+          in mainland China, Singapore and Malaysia. Traditional characters (繁体字) keep the older,
+          more complex forms and are used in Taiwan, Hong Kong and Macau. This tool teaches simplified
+          characters, the form used in most Mandarin classrooms and by the majority of Chinese
+          speakers worldwide.
+          <span class="zh-note" lang="zh-Hans">简体字笔画较少，通行于中国大陆、新加坡和马来西亚；繁体字保留较为复杂的传统写法，通行于台湾、香港和澳门。这个工具教授的是简体字——目前大多数中文课堂和全球多数中文使用者采用的字体。</span>
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>What's the best way to remember Chinese characters?</h3>
+        <p>
+          Rote memorisation alone doesn't stick for most learners — it helps far more to know why a
+          character looks the way it does. That's why every character here comes with a short origin
+          story (many began as little pictures — 木 really is a tree), a radical that hints at its
+          meaning, and a real example sentence, so the shape, sound and meaning all reinforce each
+          other.
+          <span class="zh-note" lang="zh-Hans">死记硬背对大多数学习者效果不佳——了解一个字为什么长这样，反而更容易记住。所以这里的每个字都配有一个简短的字源小故事（很多字其实就是一幅小图画，比如「木」就是一棵树的样子）、一个提示意思的部首，还有一个真实的例句，让字形、字音、字义互相印证，记得更牢。</span>
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this really free, and do I need to create an account?</h3>
+        <p>
+          Yes — all 300 characters, the stroke animations, audio and the radicals guide are free to
+          use, with no sign-up, account or app download required. It's built and maintained by Casey
+          Foundation Chinese School, a community Chinese school in Melbourne, as a resource for anyone
+          learning Mandarin.
+          <span class="zh-note" lang="zh-Hans">是的——这 300 个字、笔顺动画、发音和部首指南全部免费使用，无需注册账号，也不用下载 App。它由墨尔本的社区中文学校 Casey Foundation Chinese School 制作和维护，希望能帮助所有正在学习中文的人。</span>
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
