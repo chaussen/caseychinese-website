@@ -666,6 +666,17 @@
     font-size: 16px;
     max-width: 540px;
   }
+  .event-partner { margin-top: 10px; font-size: 14px; color: var(--ink-mute); }
+  .event-partner [lang="zh-Hans"] { display: block; font-family: var(--zh); margin-top: 2px; }
+  .event--feature { align-items: start; }
+  .event-media { grid-column: 2; }
+  .event-media img {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    border-radius: 10px;
+  }
   .event-tag {
     font-size: 11px;
     font-weight: 600;
@@ -940,6 +951,7 @@
     .programs { grid-template-columns: 1fr; }
     .event { grid-template-columns: 80px 1fr; gap: 20px; }
     .event-tag { grid-column: 2; justify-self: start; }
+    .event-media { grid-column: 1 / -1; }
     .gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); grid-auto-rows: 110px; }
     .gallery .photo:nth-child(9n+1) { grid-column: span 2; grid-row: span 2; }
     .gallery .photo:nth-child(9n+5) { grid-column: span 2; grid-row: span 1; }
@@ -2065,6 +2077,22 @@
           <p>Evening performance with mooncakes, poetry recitals, and a lantern walk.<span class="zh-note">月饼品尝、诗词朗诵与花灯游行。</span></p>
         </div>
         <span class="event-tag">Community</span>
+      </article>
+      <article class="event event--feature" data-date="2026-10-31">
+        <div class="event-date">
+          <div class="day">31</div>
+          <div class="month">Oct</div>
+        </div>
+        <div class="event-body">
+          <h4>Multicultural Film Festival 2026</h4>
+          <div class="zh-title-sm">多元文化电影节 2026</div>
+          <p>Saturday 31 October 2026 · Bunjil Place Plaza, Narre Warren. Opens 5:00pm, screenings from 7:15pm. Free event, including two short films in Chinese with English subtitles. <a href="https://www.bunjilplace.com.au/events/multicultural-film-festival-2026-screening-event" target="_blank" rel="noopener noreferrer">More info</a><span class="zh-note">免费社区活动，包括两部中文短片（配英文字幕），欢迎携家人参加。</span></p>
+          <div class="event-partner">Promoted in partnership with <a href="https://polaron.org/" target="_blank" rel="noopener noreferrer">Polaron Connect</a>. <span lang="zh-Hans">与 Polaron Connect 合作推广。</span></div>
+        </div>
+        <span class="event-tag">Free</span>
+        <div class="event-media">
+          <img src="images/film-still-1.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="Still from a Chinese-language short film screening at the Multicultural Film Festival 2026, Bunjil Place" />
+        </div>
       </article>
     </div>
     <p class="events-empty" id="eventsEmpty" hidden>
