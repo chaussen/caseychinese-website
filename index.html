@@ -669,11 +669,16 @@
   .event-partner { margin-top: 10px; font-size: 14px; color: var(--ink-mute); }
   .event-partner [lang="zh-Hans"] { display: block; font-family: var(--zh); margin-top: 2px; }
   .event--feature { align-items: start; }
-  .event-media { grid-column: 2; }
+  .event-media {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 640px;
+  }
   .event-media img {
     display: block;
     width: 100%;
-    max-width: 640px;
     height: auto;
     border-radius: 10px;
   }
@@ -2092,6 +2097,7 @@
         <span class="event-tag">Free</span>
         <div class="event-media">
           <img src="images/film-still-1.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="Still from a Chinese-language short film screening at the Multicultural Film Festival 2026, Bunjil Place" />
+          <img src="images/film-still-2.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="Still from a Chinese-language short film screening at the Multicultural Film Festival 2026, Bunjil Place" />
         </div>
       </article>
     </div>
