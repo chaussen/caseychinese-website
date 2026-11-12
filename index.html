@@ -608,17 +608,15 @@
   .events {
     display: grid;
     gap: 0;
-    border-top: 1px solid var(--line);
   }
   .event {
     display: grid;
-    grid-template-columns: 140px 1fr auto;
-    gap: 40px;
+    grid-template-columns: 120px 1fr 220px;
+    gap: 36px;
     align-items: center;
     padding: 32px 0;
     border-bottom: 1px solid var(--line);
-    transition: padding .2s ease;
-    cursor: pointer;
+    transition: padding .2s ease, background .2s ease;
   }
   .event:hover { padding-left: 12px; padding-right: 12px; background: rgba(255,255,255,0.4); }
   .event[hidden] { display: none; }
@@ -635,6 +633,15 @@
     font-family: var(--serif);
     line-height: 1.05;
   }
+  .event-date .dow {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-mute);
+    margin-bottom: 2px;
+  }
   .event-date .day {
     font-size: 42px;
     color: var(--ink);
@@ -649,7 +656,14 @@
     font-weight: 600;
     margin-top: 4px;
   }
-  .event-body h4 {
+  .event-meta {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .event-meta .tbc { color: var(--ink-mute); font-weight: 500; }
+  .event-body h3 {
     font-size: 20px;
     font-weight: 600;
     margin: 0 0 4px;
@@ -665,22 +679,105 @@
     color: var(--ink-soft);
     font-size: 16px;
     max-width: 540px;
+    line-height: 1.65;
   }
-  .event-partner { margin-top: 10px; font-size: 14px; color: var(--ink-mute); }
-  .event-partner [lang="zh-Hans"] { display: block; font-family: var(--zh); margin-top: 2px; }
-  .event--feature { align-items: start; }
-  .event-media {
-    grid-column: 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    max-width: 640px;
+  .event-body .event-tag {
+    display: inline-block;
+    margin-bottom: 10px;
   }
-  .event-media img {
+  .event-thumb {
+    margin: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--red-tint);
+  }
+  .event-thumb img {
     display: block;
     width: 100%;
-    height: auto;
-    border-radius: 10px;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+  .event--feature {
+    grid-template-columns: 120px 1fr 300px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid var(--red-soft);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 26px 0;
+  }
+  .event--feature:hover {
+    padding-left: 28px;
+    padding-right: 28px;
+    background: rgba(255,255,255,0.75);
+  }
+  .event--feature .event-body p { max-width: 520px; }
+  .event-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 11px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    background: var(--red-deep);
+    color: #fff;
+    transition: background .2s ease;
+  }
+  .event-cta:hover { background: var(--ink); }
+  .events-term {
+    grid-column: 1 / -1;
+    padding: 40px 0 2px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--red-deep);
+  }
+  .events-past { margin-top: 44px; }
+  .events-past-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-mute);
+    margin: 0 0 4px;
+  }
+  .events-past-list { list-style: none; margin: 0; padding: 0; }
+  .events-past-list li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14.5px;
+    color: var(--ink-mute);
+  }
+  .events-past-list .ep-date {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .events-past-list .ep-zh { font-family: var(--zh); font-size: 13.5px; }
+  .events-past-list a { color: var(--ink-soft); }
+  .events-past-list a:hover { color: var(--red-deep); }
+  .event-credits {
+    margin: 18px 0 0;
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    max-width: 720px;
+  }
+  .event-credits a { color: inherit; }
+  #events a:focus-visible {
+    outline: 2px solid var(--red-deep);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
   .event-tag {
     font-size: 11px;
@@ -954,9 +1051,12 @@
     .section-head { grid-template-columns: 1fr; gap: 20px; margin-bottom: 36px; }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
     .programs { grid-template-columns: 1fr; }
-    .event { grid-template-columns: 80px 1fr; gap: 20px; }
-    .event-tag { grid-column: 2; justify-self: start; }
-    .event-media { grid-column: 1 / -1; }
+    .event, .event--feature { grid-template-columns: 84px 1fr; gap: 20px; align-items: start; }
+    .event--feature { padding: 22px 20px; margin: 20px 0; }
+    .event:hover, .event--feature:hover { padding-left: 20px; padding-right: 20px; }
+    .event-thumb { grid-column: 1 / -1; }
+    .event-thumb img { aspect-ratio: 16 / 9; }
+    .events-term { padding-top: 32px; }
     .gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); grid-auto-rows: 110px; }
     .gallery .photo:nth-child(9n+1) { grid-column: span 2; grid-row: span 2; }
     .gallery .photo:nth-child(9n+5) { grid-column: span 2; grid-row: span 1; }
@@ -1054,6 +1154,11 @@
   @media (max-width: 500px) {
     .term-grid { grid-template-columns: 1fr; }
     .fee-options { grid-template-columns: 1fr; }
+    .event { padding: 24px 0; }
+    .event-date .day { font-size: 34px; }
+    .event--feature { padding: 18px 16px; }
+    .event--feature:hover { padding-left: 16px; padding-right: 16px; }
+    .event-meta { display: block; }
   }
 
   /* ───── TEXTBOOKS ───── */
@@ -2058,52 +2163,217 @@
       </p>
     </div>
 
+    <!-- Next event (featured) -->
     <div class="events">
-      <article class="event" data-date="2026-06-14">
+      <article class="event event--feature" data-date="2026-12-05">
         <div class="event-date">
-          <div class="day">14</div>
+          <div class="dow">Sat</div>
+          <div class="day">5</div>
+          <div class="month">Dec</div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">All families</span>
+          <div class="event-meta">Sat 5 Dec 2026 · 2:00 pm <span class="tbc">· time to be confirmed</span></div>
+          <h3>End-of-Year Ceremony</h3>
+          <div class="zh-title-sm">结业典礼</div>
+          <p>Magic show and Sichuan opera face-changing, followed by a small shared meal. Parents are warmly invited — please bring one dish to share and list its ingredients, as many of our children have food allergies.</p>
+        </div>
+        <figure class="event-thumb">
+          <img src="images/events/ceremony-stage.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Red theatre stage curtain" />
+        </figure>
+      </article>
+
+      <div class="events-term">2027 · Term 1</div>
+
+      <article class="event" data-date="2027-02-06">
+        <div class="event-date">
+          <div class="dow">Sat</div>
+          <div class="day">6</div>
+          <div class="month">Feb</div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Term 1 begins</span>
+          <div class="event-meta">Sat 6 Feb 2027 · 2:15–5:00 pm</div>
+          <h3>Lunar New Year Welcome</h3>
+          <div class="zh-title-sm">春节迎新</div>
+          <p>Term 1 begins on Lunar New Year's Day — the Year of the Goat. Students learn New Year greetings and make a New Year craft, and families are welcome at pick-up for greetings and a photo.</p>
+        </div>
+        <figure class="event-thumb">
+          <img src="images/events/lunar-new-year.webp" width="1200" height="797" loading="lazy" decoding="async" alt="Red Chinese lanterns hanging outdoors against a blue sky" />
+        </figure>
+      </article>
+
+      <article class="event" data-date="2027-02-20">
+        <div class="event-date">
+          <div class="dow">Sat</div>
+          <div class="day">20</div>
+          <div class="month">Feb</div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Families welcome</span>
+          <div class="event-meta">Sat 20 Feb 2027 · 2:15–5:00 pm</div>
+          <h3>Lantern Festival</h3>
+          <div class="zh-title-sm">元宵节</div>
+          <p>Paper lanterns and lantern riddles (猜灯谜). Parents are welcome at the end of class.</p>
+        </div>
+        <figure class="event-thumb">
+          <img src="images/events/lantern-festival.webp" width="1024" height="768" loading="lazy" decoding="async" alt="A glowing red paper lantern with dragon artwork at night" />
+        </figure>
+      </article>
+
+      <div class="events-term">2027 · Term 2</div>
+
+      <article class="event" data-date="2027-06-05">
+        <div class="event-date">
+          <div class="dow">Sat</div>
+          <div class="day">5</div>
           <div class="month">Jun</div>
         </div>
         <div class="event-body">
-          <h4>Dragon Boat Festival Celebration</h4>
-          <div class="zh-title-sm">端午节庆祝活动</div>
-          <p>Family zongzi-making, storytelling, and a community potluck after class.<span class="zh-note">家庭包粽子、故事分享及课后社区聚餐。</span></p>
+          <span class="event-tag">Term 2</span>
+          <div class="event-meta">Sat 5 Jun 2027 · 2:15–5:00 pm</div>
+          <h3>Dragon Boat Festival</h3>
+          <div class="zh-title-sm">端午节</div>
+          <p>The story of Qu Yuan, and a dragon-boat craft.</p>
         </div>
-        <span class="event-tag">All ages</span>
+        <figure class="event-thumb">
+          <img src="images/events/dragon-boat.webp" width="1200" height="679" loading="lazy" decoding="async" alt="Two dragon boats racing on the water" />
+        </figure>
       </article>
-      <article class="event" data-date="2026-10-04">
+
+      <article class="event" data-date="2027-06-12">
         <div class="event-date">
-          <div class="day">04</div>
+          <div class="dow">Sat</div>
+          <div class="day">12</div>
+          <div class="month">Jun</div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Reports home</span>
+          <div class="event-meta">Sat 12 Jun 2027 · 2:15–5:00 pm</div>
+          <h3>Semester 1 Wrap</h3>
+          <div class="zh-title-sm">学期总结</div>
+          <p>Progress reports go home, and families can chat with teachers at pick-up.</p>
+        </div>
+        <figure class="event-thumb">
+          <img src="images/events/semester-wrap.webp" width="674" height="1200" loading="lazy" decoding="async" alt="A traditional Chinese calligraphy set with brushes, inkstone and seal" />
+        </figure>
+      </article>
+
+      <div class="events-term">2027 · Term 3</div>
+
+      <article class="event event--feature" data-date="2027-07-17">
+        <div class="event-date">
+          <div class="dow">Sat</div>
+          <div class="day">17</div>
+          <div class="month">Jul</div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Open to the public</span>
+          <div class="event-meta">Sat 17 Jul 2027 · 2:15–5:00 pm</div>
+          <h3>Semester 2 Free Trial Day</h3>
+          <p>New families can try a class for free on the first Saturday of Semester 2. Enquire to book your place.</p>
+          <a class="event-cta" href="#contact">Enquire to book <span aria-hidden="true">→</span></a>
+        </div>
+        <figure class="event-thumb">
+          <img src="images/events/trial-day.webp" width="1024" height="683" loading="lazy" decoding="async" alt="Colourful chairs around a wooden classroom table" />
+        </figure>
+      </article>
+
+      <!-- PENDING APPROVAL: Cultural Workshop Day not yet confirmed by the school -->
+      <article class="event" data-date="2027-08-14" data-pending="true">
+        <div class="event-date">
+          <div class="dow">Sat</div>
+          <div class="day">14</div>
+          <div class="month">Aug</div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Families welcome</span>
+          <div class="event-meta">Sat 14 Aug 2027 · 2:15–5:00 pm</div>
+          <h3>Cultural Workshop Day</h3>
+          <div class="zh-title-sm">文化体验日</div>
+          <p>Calligraphy, paper-cutting and Chinese knots for students and families.</p>
+        </div>
+        <figure class="event-thumb">
+          <img src="images/events/workshop-day.webp" width="1024" height="836" loading="lazy" decoding="async" alt="A Chinese calligraphy scroll in flowing cursive brushwork" />
+        </figure>
+      </article>
+
+      <article class="event" data-date="2027-09-11">
+        <div class="event-date">
+          <div class="dow">Sat</div>
+          <div class="day">11</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Performance</span>
+          <div class="event-meta">Sat 11 Sep 2027 · 2:15–5:00 pm</div>
+          <h3>Mid-Autumn and Poetry Recital Showcase</h3>
+          <div class="zh-title-sm">中秋诵读会</div>
+          <p>Each class recites the poem it has learned this term for parents, then we celebrate Mid-Autumn together.</p>
+        </div>
+        <figure class="event-thumb">
+          <img src="images/events/mid-autumn.webp" width="1200" height="962" loading="lazy" decoding="async" alt="A freshly baked mooncake close up" />
+        </figure>
+      </article>
+
+      <div class="events-term">2027 · Term 4</div>
+
+      <!-- PENDING APPROVAL: Grandparents' Day not yet confirmed by the school -->
+      <article class="event" data-date="2027-10-09" data-pending="true">
+        <div class="event-date">
+          <div class="dow">Sat</div>
+          <div class="day">9</div>
           <div class="month">Oct</div>
         </div>
         <div class="event-body">
-          <h4>Mid-Autumn Festival Night</h4>
-          <div class="zh-title-sm">中秋活动</div>
-          <p>Evening performance with mooncakes, poetry recitals, and a lantern walk.<span class="zh-note">月饼品尝、诗词朗诵与花灯游行。</span></p>
+          <span class="event-tag">Grandparents</span>
+          <div class="event-meta">Sat 9 Oct 2027 · 2:15–5:00 pm</div>
+          <h3>Grandparents' Day</h3>
+          <div class="zh-title-sm">重阳敬老</div>
+          <p>The Double Ninth Festival honours elders. Grandparents are invited to join class and hear students read and recite.</p>
         </div>
-        <span class="event-tag">Community</span>
+        <figure class="event-thumb">
+          <img src="images/events/grandparents.webp" width="1200" height="675" loading="lazy" decoding="async" alt="Bright yellow chrysanthemum flowers in bloom" />
+        </figure>
       </article>
-      <article class="event event--feature" data-date="2026-10-31">
+
+      <article class="event event--feature" data-date="2027-12-04">
         <div class="event-date">
-          <div class="day">31</div>
-          <div class="month">Oct</div>
+          <div class="dow">Sat</div>
+          <div class="day">4</div>
+          <div class="month">Dec</div>
         </div>
         <div class="event-body">
-          <h4>Multicultural Film Festival 2026</h4>
-          <div class="zh-title-sm">多元文化电影节 2026</div>
-          <p>Saturday 31 October 2026 · Bunjil Place Plaza, Narre Warren. Opens 5:00pm, screenings from 7:15pm. Free event, including two short films in Chinese with English subtitles. <a href="https://www.bunjilplace.com.au/events/multicultural-film-festival-2026-screening-event" target="_blank" rel="noopener noreferrer">More info</a><span class="zh-note">免费社区活动，包括两部中文短片（配英文字幕），欢迎携家人参加。</span></p>
-          <div class="event-partner">Promoted in partnership with <a href="https://polaron.org/" target="_blank" rel="noopener noreferrer">Polaron Connect</a>. <span lang="zh-Hans">与 Polaron Connect 合作推广。</span></div>
+          <span class="event-tag">All families</span>
+          <div class="event-meta">Sat 4 Dec 2027 · 2:00 pm <span class="tbc">· time to be confirmed</span></div>
+          <h3>End-of-Year Ceremony</h3>
+          <div class="zh-title-sm">结业典礼</div>
+          <p>Student performances, guest acts, certificates and a shared meal. All families are warmly invited — bring a dish to share and label the ingredients.</p>
         </div>
-        <span class="event-tag">Free</span>
-        <div class="event-media">
-          <img src="images/film-still-1.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="Still from a Chinese-language short film screening at the Multicultural Film Festival 2026, Bunjil Place" />
-          <img src="images/film-still-2.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="Still from a Chinese-language short film screening at the Multicultural Film Festival 2026, Bunjil Place" />
-        </div>
+        <figure class="event-thumb">
+          <img src="images/events/year-end-2027.webp" width="1200" height="493" loading="lazy" decoding="async" alt="A traditional Chinese opera stage with upturned eaves and red lanterns" />
+        </figure>
       </article>
     </div>
+
     <p class="events-empty" id="eventsEmpty" hidden>
       New events are announced each term — check back soon, or ask us on a Saturday.
       <span class="zh-note" lang="zh-Hans">新活动将在每学期公布，欢迎随时回来看看，或周六当面询问。</span>
+    </p>
+
+    <!-- Archived: past events kept for community history -->
+    <div class="events-past">
+      <h3 class="events-past-label">Looking back · 2026</h3>
+      <ul class="events-past-list">
+        <li><span class="ep-date">Sat 14 Jun 2026</span> Dragon Boat Festival Celebration <span class="ep-zh">端午节庆祝活动</span></li>
+        <li><span class="ep-date">Sat 4 Oct 2026</span> Mid-Autumn Festival Night <span class="ep-zh">中秋活动</span></li>
+        <li><span class="ep-date">Sat 31 Oct 2026</span> <a href="https://www.bunjilplace.com.au/events/multicultural-film-festival-2026-screening-event" target="_blank" rel="noopener noreferrer">Multicultural Film Festival 2026</a> <span class="ep-zh">多元文化电影节 2026</span> · with Polaron Connect</li>
+      </ul>
+    </div>
+
+    <p class="event-credits">
+      Photos: tommybuddy, Dcubillas, Tara Haze, Hannes Grobe, Tarunpant, rawpixel, The Metropolitan Museum of Art, Lybil BER, Sridhar Rao, shankar s. — CC0 / CC BY / CC BY-SA.
+      <a href="images/events/CREDITS.md">Full credits and licences</a>
     </p>
   </div>
 </section>
