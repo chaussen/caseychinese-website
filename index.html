@@ -1060,6 +1060,15 @@
 
   /* ───── SCHEDULE ───── */
   #schedule { background: var(--paper); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .schedule-year { font-size: 12px; margin: 56px 0 18px; }
+  .schedule-year .zh {
+    text-transform: none;
+    letter-spacing: 0.06em;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-left: 4px;
+  }
+  .schedule-year--first { margin-top: 6px; }
   .term-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -2079,9 +2088,9 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="eyebrow"><span class="dot"></span>2026 Schedule</div>
+        <div class="eyebrow"><span class="dot"></span>Schedule</div>
         <h2>When we <em>meet</em>.</h2>
-        <div class="zh-title">2026年上课日期</div>
+        <div class="zh-title">上课日期</div>
       </div>
       <p class="lede">
         Every Saturday during the school term. Check the dates below to plan your year ahead.
@@ -2089,6 +2098,7 @@
       </p>
     </div>
 
+    <h3 class="eyebrow schedule-year schedule-year--first"><span class="dot"></span>2026 Schedule <span class="zh">2026年上课日期</span></h3>
     <div class="term-grid">
       <div class="term-card">
         <div class="term-label">Term 1 · 第一学期</div>
@@ -2126,6 +2136,48 @@
           <span class="d">10 Oct</span><span class="d">17 Oct</span><span class="d">24 Oct</span><span class="d">31 Oct</span>
           <span class="d">7 Nov</span><span class="d">14 Nov</span><span class="d">21 Nov</span><span class="d">28 Nov</span>
           <span class="d">5 Dec</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="eyebrow schedule-year"><span class="dot"></span>2027 Schedule <span class="zh">2027年上课日期</span></h3>
+    <div class="term-grid">
+      <div class="term-card">
+        <div class="term-label">Term 1 · 第一学期</div>
+        <div class="term-range">6 Feb – 20 Mar</div>
+        <div class="term-count">7 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">6 Feb</span><span class="d">13 Feb</span><span class="d">20 Feb</span><span class="d">27 Feb</span>
+          <span class="d">6 Mar</span><span class="d">13 Mar</span><span class="d">20 Mar</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 2 · 第二学期</div>
+        <div class="term-range">17 Apr – 12 Jun</div>
+        <div class="term-count">8 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">17 Apr</span><span class="d">1 May</span><span class="d">8 May</span><span class="d">15 May</span>
+          <span class="d">22 May</span><span class="d">29 May</span><span class="d">5 Jun</span><span class="d">12 Jun</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 3 · 第三学期</div>
+        <div class="term-range">17 Jul – 11 Sep</div>
+        <div class="term-count">9 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">17 Jul</span><span class="d">24 Jul</span><span class="d">31 Jul</span><span class="d">7 Aug</span>
+          <span class="d">14 Aug</span><span class="d">21 Aug</span><span class="d">28 Aug</span><span class="d">4 Sep</span>
+          <span class="d">11 Sep</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 4 · 第四学期</div>
+        <div class="term-range">9 Oct – 4 Dec</div>
+        <div class="term-count">9 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">9 Oct</span><span class="d">16 Oct</span><span class="d">23 Oct</span><span class="d">30 Oct</span>
+          <span class="d">6 Nov</span><span class="d">13 Nov</span><span class="d">20 Nov</span><span class="d">27 Nov</span>
+          <span class="d">4 Dec</span>
         </div>
       </div>
     </div>
