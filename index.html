@@ -608,17 +608,15 @@
   .events {
     display: grid;
     gap: 0;
-    border-top: 1px solid var(--line);
   }
   .event {
     display: grid;
-    grid-template-columns: 140px 1fr auto;
-    gap: 40px;
+    grid-template-columns: 120px 1fr 220px;
+    gap: 36px;
     align-items: center;
     padding: 32px 0;
     border-bottom: 1px solid var(--line);
-    transition: padding .2s ease;
-    cursor: pointer;
+    transition: padding .2s ease, background .2s ease;
   }
   .event:hover { padding-left: 12px; padding-right: 12px; background: rgba(255,255,255,0.4); }
   .event[hidden] { display: none; }
@@ -635,6 +633,15 @@
     font-family: var(--serif);
     line-height: 1.05;
   }
+  .event-date .dow {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-mute);
+    margin-bottom: 2px;
+  }
   .event-date .day {
     font-size: 42px;
     color: var(--ink);
@@ -649,7 +656,13 @@
     font-weight: 600;
     margin-top: 4px;
   }
-  .event-body h4 {
+  .event-meta {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .event-body h3 {
     font-size: 20px;
     font-weight: 600;
     margin: 0 0 4px;
@@ -665,22 +678,90 @@
     color: var(--ink-soft);
     font-size: 16px;
     max-width: 540px;
+    line-height: 1.65;
   }
-  .event-partner { margin-top: 10px; font-size: 14px; color: var(--ink-mute); }
-  .event-partner [lang="zh-Hans"] { display: block; font-family: var(--zh); margin-top: 2px; }
-  .event--feature { align-items: start; }
-  .event-media {
-    grid-column: 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    max-width: 640px;
+  .event-body .event-tag {
+    display: inline-block;
+    margin-bottom: 10px;
   }
-  .event-media img {
+  .event-thumb {
+    margin: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--red-tint);
+  }
+  .event-thumb img {
     display: block;
     width: 100%;
-    height: auto;
-    border-radius: 10px;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+  .event--feature {
+    grid-template-columns: 120px 1fr 300px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid var(--red-soft);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 26px 0;
+  }
+  .event--feature:hover {
+    padding-left: 28px;
+    padding-right: 28px;
+    background: rgba(255,255,255,0.75);
+  }
+  .event--feature .event-body p { max-width: 520px; }
+  .events-term {
+    grid-column: 1 / -1;
+    padding: 40px 0 2px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--red-deep);
+  }
+  .events-past { margin-top: 44px; }
+  .events-past-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-mute);
+    margin: 0 0 4px;
+  }
+  .events-past-list { list-style: none; margin: 0; padding: 0; }
+  .events-past-list li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14.5px;
+    color: var(--ink-mute);
+  }
+  .events-past-list .ep-date {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .events-past-list .ep-zh { font-family: var(--zh); font-size: 13.5px; }
+  .events-past-list a { color: var(--ink-soft); }
+  .events-past-list a:hover { color: var(--red-deep); }
+  .event-credits {
+    margin: 18px 0 0;
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    max-width: 720px;
+  }
+  .event-credits a { color: inherit; }
+  #events a:focus-visible {
+    outline: 2px solid var(--red-deep);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
   .event-tag {
     font-size: 11px;
@@ -954,9 +1035,12 @@
     .section-head { grid-template-columns: 1fr; gap: 20px; margin-bottom: 36px; }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
     .programs { grid-template-columns: 1fr; }
-    .event { grid-template-columns: 80px 1fr; gap: 20px; }
-    .event-tag { grid-column: 2; justify-self: start; }
-    .event-media { grid-column: 1 / -1; }
+    .event, .event--feature { grid-template-columns: 84px 1fr; gap: 20px; align-items: start; }
+    .event--feature { padding: 22px 20px; margin: 20px 0; }
+    .event:hover, .event--feature:hover { padding-left: 20px; padding-right: 20px; }
+    .event-thumb { grid-column: 1 / -1; }
+    .event-thumb img { aspect-ratio: 16 / 9; }
+    .events-term { padding-top: 32px; }
     .gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); grid-auto-rows: 110px; }
     .gallery .photo:nth-child(9n+1) { grid-column: span 2; grid-row: span 2; }
     .gallery .photo:nth-child(9n+5) { grid-column: span 2; grid-row: span 1; }
@@ -975,6 +1059,15 @@
 
   /* ───── SCHEDULE ───── */
   #schedule { background: var(--paper); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .schedule-year { font-size: 12px; margin: 56px 0 18px; }
+  .schedule-year .zh {
+    text-transform: none;
+    letter-spacing: 0.06em;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-left: 4px;
+  }
+  .schedule-year--first { margin-top: 6px; }
   .term-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1054,6 +1147,11 @@
   @media (max-width: 500px) {
     .term-grid { grid-template-columns: 1fr; }
     .fee-options { grid-template-columns: 1fr; }
+    .event { padding: 24px 0; }
+    .event-date .day { font-size: 34px; }
+    .event--feature { padding: 18px 16px; }
+    .event--feature:hover { padding-left: 16px; padding-right: 16px; }
+    .event-meta { display: block; }
   }
 
   /* ───── TEXTBOOKS ───── */
@@ -1989,9 +2087,9 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="eyebrow"><span class="dot"></span>2026 Schedule</div>
+        <div class="eyebrow"><span class="dot"></span>Schedule</div>
         <h2>When we <em>meet</em>.</h2>
-        <div class="zh-title">2026年上课日期</div>
+        <div class="zh-title">上课日期</div>
       </div>
       <p class="lede">
         Every Saturday during the school term. Check the dates below to plan your year ahead.
@@ -1999,6 +2097,7 @@
       </p>
     </div>
 
+    <h3 class="eyebrow schedule-year schedule-year--first"><span class="dot"></span>2026 Schedule <span class="zh">2026年上课日期</span></h3>
     <div class="term-grid">
       <div class="term-card">
         <div class="term-label">Term 1 · 第一学期</div>
@@ -2039,6 +2138,48 @@
         </div>
       </div>
     </div>
+
+    <h3 class="eyebrow schedule-year"><span class="dot"></span>2027 Schedule <span class="zh">2027年上课日期</span></h3>
+    <div class="term-grid">
+      <div class="term-card">
+        <div class="term-label">Term 1 · 第一学期</div>
+        <div class="term-range">6 Feb – 20 Mar</div>
+        <div class="term-count">7 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">6 Feb</span><span class="d">13 Feb</span><span class="d">20 Feb</span><span class="d">27 Feb</span>
+          <span class="d">6 Mar</span><span class="d">13 Mar</span><span class="d">20 Mar</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 2 · 第二学期</div>
+        <div class="term-range">17 Apr – 12 Jun</div>
+        <div class="term-count">8 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">17 Apr</span><span class="d">1 May</span><span class="d">8 May</span><span class="d">15 May</span>
+          <span class="d">22 May</span><span class="d">29 May</span><span class="d">5 Jun</span><span class="d">12 Jun</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 3 · 第三学期</div>
+        <div class="term-range">17 Jul – 11 Sep</div>
+        <div class="term-count">9 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">17 Jul</span><span class="d">24 Jul</span><span class="d">31 Jul</span><span class="d">7 Aug</span>
+          <span class="d">14 Aug</span><span class="d">21 Aug</span><span class="d">28 Aug</span><span class="d">4 Sep</span>
+          <span class="d">11 Sep</span>
+        </div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Term 4 · 第四学期</div>
+        <div class="term-range">9 Oct – 4 Dec</div>
+        <div class="term-count">9 Saturdays</div>
+        <div class="term-dates">
+          <span class="d">9 Oct</span><span class="d">16 Oct</span><span class="d">23 Oct</span><span class="d">30 Oct</span>
+          <span class="d">6 Nov</span><span class="d">13 Nov</span><span class="d">20 Nov</span><span class="d">27 Nov</span>
+          <span class="d">4 Dec</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2052,58 +2193,92 @@
         <div class="zh-title">近期活动</div>
       </div>
       <p class="lede">
-        Our calendar is shaped by the rhythm of the Chinese year — festivals,
-        performances, and family gatherings that bring our community together.
-        <span class="zh-note">本校活动以中国传统节日为主轴，融合节庆演出与家庭聚会，凝聚社区情谊。</span>
+        Key dates for the school year.
+        <span class="zh-note">一学年重要日期。</span>
       </p>
     </div>
 
+    <!-- Next event (featured) -->
     <div class="events">
-      <article class="event" data-date="2026-06-14">
+      <article class="event event--feature" data-date="2026-12-05">
         <div class="event-date">
-          <div class="day">14</div>
-          <div class="month">Jun</div>
+          <div class="dow">Sat</div>
+          <div class="day">5</div>
+          <div class="month">Dec</div>
         </div>
         <div class="event-body">
-          <h4>Dragon Boat Festival Celebration</h4>
-          <div class="zh-title-sm">端午节庆祝活动</div>
-          <p>Family zongzi-making, storytelling, and a community potluck after class.<span class="zh-note">家庭包粽子、故事分享及课后社区聚餐。</span></p>
+          <span class="event-tag">All families</span>
+          <div class="event-meta">Sat 5 Dec 2026</div>
+          <h3>End-of-Year Ceremony</h3>
+          <div class="zh-title-sm">结业典礼</div>
+          <p>Student performances and graduation.
+            <span class="zh-note" lang="zh-Hans">学生表演与毕业典礼。</span></p>
         </div>
-        <span class="event-tag">All ages</span>
+        <figure class="event-thumb">
+          <img src="images/events/ceremony-stage.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Red theatre stage curtain" />
+        </figure>
       </article>
-      <article class="event" data-date="2026-10-04">
+
+      <div class="events-term">2027 · Term 1</div>
+
+      <article class="event" data-date="2027-02-06">
         <div class="event-date">
-          <div class="day">04</div>
-          <div class="month">Oct</div>
+          <div class="dow">Sat</div>
+          <div class="day">6</div>
+          <div class="month">Feb</div>
         </div>
         <div class="event-body">
-          <h4>Mid-Autumn Festival Night</h4>
-          <div class="zh-title-sm">中秋活动</div>
-          <p>Evening performance with mooncakes, poetry recitals, and a lantern walk.<span class="zh-note">月饼品尝、诗词朗诵与花灯游行。</span></p>
+          <span class="event-tag">Term 1 begins</span>
+          <div class="event-meta">Sat 6 Feb 2027</div>
+          <h3>New School Year Begins</h3>
+          <div class="zh-title-sm">新学年开学</div>
+          <p>First day of Term 1, and Lunar New Year — Year of the Goat.
+            <span class="zh-note" lang="zh-Hans">第一学期开学，适逢农历羊年。</span></p>
         </div>
-        <span class="event-tag">Community</span>
+        <figure class="event-thumb">
+          <img src="images/events/lunar-new-year.webp" width="1200" height="797" loading="lazy" decoding="async" alt="Red Chinese lanterns hanging outdoors against a blue sky" />
+        </figure>
       </article>
-      <article class="event event--feature" data-date="2026-10-31">
+
+      <article class="event" data-date="2027-02-20">
         <div class="event-date">
-          <div class="day">31</div>
-          <div class="month">Oct</div>
+          <div class="dow">Sat</div>
+          <div class="day">20</div>
+          <div class="month">Feb</div>
         </div>
         <div class="event-body">
-          <h4>Multicultural Film Festival 2026</h4>
-          <div class="zh-title-sm">多元文化电影节 2026</div>
-          <p>Saturday 31 October 2026 · Bunjil Place Plaza, Narre Warren. Opens 5:00pm, screenings from 7:15pm. Free event, including two short films in Chinese with English subtitles. <a href="https://www.bunjilplace.com.au/events/multicultural-film-festival-2026-screening-event" target="_blank" rel="noopener noreferrer">More info</a><span class="zh-note">免费社区活动，包括两部中文短片（配英文字幕），欢迎携家人参加。</span></p>
-          <div class="event-partner">Promoted in partnership with <a href="https://polaron.org/" target="_blank" rel="noopener noreferrer">Polaron Connect</a>. <span lang="zh-Hans">与 Polaron Connect 合作推广。</span></div>
+          <span class="event-tag">Term 1</span>
+          <div class="event-meta">Sat 20 Feb 2027</div>
+          <h3>Lantern Festival</h3>
+          <div class="zh-title-sm">元宵节</div>
+          <p>Lantern making and tangyuan in class.
+            <span class="zh-note" lang="zh-Hans">做花灯，品汤圆。</span></p>
         </div>
-        <span class="event-tag">Free</span>
-        <div class="event-media">
-          <img src="images/film-still-1.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="Still from a Chinese-language short film screening at the Multicultural Film Festival 2026, Bunjil Place" />
-          <img src="images/film-still-2.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="Still from a Chinese-language short film screening at the Multicultural Film Festival 2026, Bunjil Place" />
-        </div>
+        <figure class="event-thumb">
+          <img src="images/events/lantern-festival.webp" width="1024" height="768" loading="lazy" decoding="async" alt="A glowing red paper lantern with dragon artwork at night" />
+        </figure>
       </article>
+
     </div>
+
     <p class="events-empty" id="eventsEmpty" hidden>
       New events are announced each term — check back soon, or ask us on a Saturday.
       <span class="zh-note" lang="zh-Hans">新活动将在每学期公布，欢迎随时回来看看，或周六当面询问。</span>
+    </p>
+
+    <!-- Archived: past events kept for community history -->
+    <div class="events-past">
+      <h3 class="events-past-label">Looking back · 2026</h3>
+      <ul class="events-past-list">
+        <li><span class="ep-date">Sat 14 Jun 2026</span> Dragon Boat Festival Celebration <span class="ep-zh">端午节庆祝活动</span></li>
+        <li><span class="ep-date">Sat 4 Oct 2026</span> Mid-Autumn Festival Night <span class="ep-zh">中秋活动</span></li>
+        <li><span class="ep-date">Sat 31 Oct 2026</span> <a href="https://www.bunjilplace.com.au/events/multicultural-film-festival-2026-screening-event" target="_blank" rel="noopener noreferrer">Multicultural Film Festival 2026</a> <span class="ep-zh">多元文化电影节 2026</span> · with Polaron Connect</li>
+      </ul>
+    </div>
+
+    <p class="event-credits">
+      Photos: tommybuddy, Dcubillas, Tara Haze — CC0 / CC BY-SA / CC BY.
+      <a href="images/events/CREDITS.md">Full credits and licences</a>
     </p>
   </div>
 </section>

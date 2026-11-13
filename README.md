@@ -39,6 +39,15 @@ origin to that tag on every page that uses it.
   the `#events` section. Past events hide themselves automatically, and a
   "check back soon" note appears when none are upcoming — so old entries never
   need deleting, just add new ones.
+  Upcoming events are grouped by term with a `<div class="events-term">`
+  label; featured events (ceremonies, the Free Trial Day) add
+  `event--feature` and a thumbnail `<figure class="event-thumb">`.
+  Once an event has passed, move it into the "Looking back" archive list
+  (`<ul class="events-past-list">` — that markup has no `data-date`, so the
+  auto-hide script never touches it).
+  Event images live in `images/events/` as WebP under 200 KB, with sources
+  and licences recorded in `images/events/CREDITS.md`; CC BY / CC BY-SA
+  images must also keep their visible credit line in the Events section.
 - **Enrolment form** — replace `enrolment-form-2026.pdf` and update the link
   text in the `#enrolment` section for the new year.
 - **Characters** — don't edit `learn/char-data.js` by hand. Add or change an
