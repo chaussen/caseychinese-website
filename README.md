@@ -48,8 +48,21 @@ origin to that tag on every page that uses it.
   Event images live in `images/events/` as WebP under 200 KB, with sources
   and licences recorded in `images/events/CREDITS.md`; CC BY / CC BY-SA
   images must also keep their visible credit line in the Events section.
-- **Enrolment form** — replace `enrolment-form-2026.pdf` and update the link
-  text in the `#enrolment` section for the new year.
+- **Enrolment form** — the 2026 form is a Google Form, opened in a new tab
+  from the "Open the enrolment form" button in the `#enrolment` section of
+  `index.html` (deliberately **not** an iframe: it has five pages and collects
+  sensitive data, and an embedded scroll area is poor on mobile and for
+  keyboard / screen-reader users; the page CSP therefore has no `frame-src`).
+  Edit the form in Google Forms as usual — no site change needed. To point the
+  site at a different form, replace the `href` on that button. The privacy
+  notice under the button lists the data the form collects; update it if you
+  add or remove questions. The "copy of your answers is emailed to you" and
+  "edit later" claims depend on the Form's *Send responders a copy* and
+  *Allow response editing* settings, and "no Google account needed" requires
+  file-upload questions and "Limit to 1 response" to stay off. Keep the
+  response spreadsheet in a school-owned account, shared with at least two
+  people. `enrolment-form-2026.pdf` stays as the printable fallback — replace
+  it and its link text for a new year.
 - **Characters** — don't edit `learn/char-data.js` by hand. Add or change an
   entry in the curated table at the top of `scripts/build-char-data.py`
   (character, pinyin, gloss, theme group, example word) and run
