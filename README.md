@@ -48,8 +48,16 @@ origin to that tag on every page that uses it.
   Event images live in `images/events/` as WebP under 200 KB, with sources
   and licences recorded in `images/events/CREDITS.md`; CC BY / CC BY-SA
   images must also keep their visible credit line in the Events section.
-- **Enrolment form** — replace `enrolment-form-2026.pdf` and update the link
-  text in the `#enrolment` section for the new year.
+- **Enrolment form** — the 2026 form is a Google Form embedded as an
+  `<iframe>` in the `#enrolment` section of `index.html` (the
+  `…/viewform?embedded=true` URL, loaded with `loading="lazy"`). Edit the form
+  in Google Forms as usual — no site change needed. To point the site at a
+  different form, replace the `src` on that iframe **and** the two
+  "open in a new tab" links to the same form (card footer). The embed only
+  works because the page CSP allows `frame-src https://docs.google.com`;
+  keep that directive (or add the new origin) or GitHub Pages will show an
+  empty card. `enrolment-form-2026.pdf` stays as the printable fallback —
+  replace it and its link text for a new year.
 - **Characters** — don't edit `learn/char-data.js` by hand. Add or change an
   entry in the curated table at the top of `scripts/build-char-data.py`
   (character, pinyin, gloss, theme group, example word) and run

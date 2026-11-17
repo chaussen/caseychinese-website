@@ -4,7 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
+<!-- frame-src allows the enrolment Google Form iframe in #enrolment. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; frame-src https://docs.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#F08379" />
 <meta name="geo.region" content="AU-VIC" />
@@ -1133,6 +1134,86 @@
 
   /* ───── ENROLMENT ───── */
   #enrolment { background: var(--paper); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .enrol-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(270px, 1fr);
+    gap: clamp(32px, 4vw, 56px);
+    align-items: start;
+  }
+  .enrol-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .enrol-card-head {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 6px 20px;
+    padding: 13px 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .enrol-tag {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--red-deep);
+  }
+  .enrol-tag .sep { margin: 0 2px; color: var(--red-soft); }
+  .enrol-tag .zh { letter-spacing: 0.04em; }
+  .enrol-meta {
+    display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none;
+    font-size: 12.5px; color: var(--ink-mute);
+  }
+  .enrol-meta li { display: flex; align-items: center; }
+  .enrol-meta .zh { margin-left: 4px; font-size: 12px; }
+  .enrol-meta li + li::before {
+    content: "·"; margin: 0 9px; color: var(--line); font-weight: 700;
+  }
+  .enrol-frame { background: #fff; }
+  .enrol-frame iframe {
+    display: block; width: 100%; border: 0;
+    height: clamp(600px, 78vh, 980px);
+    height: clamp(600px, 78svh, 980px);
+    background: #fff;
+  }
+  .enrol-card-foot {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+    gap: 6px 24px;
+    padding: 12px 20px;
+    background: var(--bg);
+    border-top: 1px solid var(--line-soft);
+    font-size: 13.5px; color: var(--ink-soft);
+  }
+  .enrol-card-foot a { color: var(--red-deep); text-decoration: underline; text-underline-offset: 2px; }
+  .enrol-foot-link { margin-left: auto; text-align: right; }
+  .enrol-card-foot a:hover { text-decoration-thickness: 2px; }
+  .enrol-card-foot .zh { font-family: var(--zh); font-size: 13px; color: var(--ink-mute); }
+
+  .enrol-aside { display: grid; gap: 30px; }
+  .enrol-aside .vsn-callout { margin-top: 0; padding: 20px 22px; max-width: none; }
+  .enrol-side-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--red-deep); margin-bottom: 18px;
+  }
+  .enrol-steps {
+    display: grid; gap: 18px; margin: 0; padding: 0; list-style: none;
+  }
+  .enrol-steps li {
+    display: grid; grid-template-columns: 22px 1fr; gap: 12px;
+    padding-top: 18px; border-top: 1px solid var(--line-soft);
+    font-size: 14.5px; line-height: 1.55; color: var(--ink-soft);
+  }
+  .enrol-steps li:first-child { padding-top: 0; border-top: 0; }
+  .enrol-steps .num {
+    font-family: var(--serif); font-size: 15px; line-height: 1.4;
+    color: var(--red-deep); font-variant-numeric: tabular-nums;
+  }
+  .enrol-steps strong { display: block; font-weight: 600; color: var(--ink); }
+  .enrol-steps .zh { display: block; font-family: var(--zh); font-size: 13.5px; color: var(--ink-mute); margin-top: 3px; }
+  .enrol-paper { border-top: 1px solid var(--line); padding-top: 22px; }
+  .enrol-paper p { margin: 0 0 14px; font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); }
+  .enrol-paper .zh-note { display: block; font-family: var(--zh); font-size: 13.5px; color: var(--ink-mute); margin-top: 4px; }
+  .enrol-paper .btn { padding: 11px 20px; font-size: 13px; }
+
   .vsn-callout {
     margin-top: 32px; padding: 22px 26px;
     background: var(--red-tint); border: 1px solid var(--red-soft);
@@ -1144,9 +1225,16 @@
   }
   .vsn-callout p { margin: 0; font-size: 15.5px; color: var(--ink); line-height: 1.65; }
   .vsn-callout .zh-note { display: block; font-family: var(--zh); font-size: 14px; color: var(--ink-soft); margin-top: 10px; line-height: 1.75; }
+  @media (max-width: 920px) {
+    .enrol-grid { grid-template-columns: 1fr; gap: 40px; }
+    .enrol-frame iframe { height: min(76svh, 720px); }
+  }
   @media (max-width: 500px) {
     .term-grid { grid-template-columns: 1fr; }
     .fee-options { grid-template-columns: 1fr; }
+    .enrol-card-head, .enrol-card-foot { padding: 12px 16px; }
+    .enrol-meta { font-size: 12px; }
+    .enrol-foot-link { margin-left: 0; text-align: left; }
     .event { padding: 24px 0; }
     .event-date .day { font-size: 34px; }
     .event--feature { padding: 18px 16px; }
@@ -1988,24 +2076,84 @@
         <div class="zh-title">报名</div>
       </div>
       <p class="lede">
-        Download the 2026 enrolment form, fill it in, and return it by email or in person on a Saturday.
-        <span class="zh-note">下载2026年报名表，填写后通过电子邮件或周六当面提交。</span>
+        Fill in the 2026 enrolment form here — about 10 minutes for each child. Typing your
+        full name is your signature, and your answers are emailed to you straight away.
+        <span class="zh-note">请在线填写2026年报名表，每名学生约需10分钟。键入全名即为电子签名，提交后答案副本会发送到您的邮箱。</span>
       </p>
     </div>
 
-    <a href="enrolment-form-2026.pdf" download="Casey-Chinese-School-Enrolment-Form-2026.pdf" class="btn btn-primary">
-      Download Form · 下载报名表 <span class="arrow">↓</span>
-    </a>
+    <div class="enrol-grid">
+      <div class="enrol-card">
+        <div class="enrol-card-head">
+          <div class="enrol-tag">Enrolment form 2026 <span class="sep">·</span> <span class="zh">2026年报名表</span></div>
+          <ul class="enrol-meta">
+            <li>About 10 min <span class="zh">约10分钟</span></li>
+            <li>One per student <span class="zh">每名学生一份</span></li>
+            <li>Signed online <span class="zh">在线签名</span></li>
+          </ul>
+        </div>
+        <div class="enrol-frame">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSc4h9NOCLBLf8G6lmnj0pzDVODr76V0cF7ongSGhw8dcCBpgw/viewform?embedded=true"
+            title="Casey Foundation Chinese School — 2026 enrolment form · 2026年报名表"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin">Loading the enrolment form… · 报名表加载中…</iframe>
+        </div>
+        <div class="enrol-card-foot">
+          <span>No Google account needed <span class="zh">无需 Google 账号</span></span>
+          <a class="enrol-foot-link" href="https://docs.google.com/forms/d/e/1FAIpQLSc4h9NOCLBLf8G6lmnj0pzDVODr76V0cF7ongSGhw8dcCBpgw/viewform" target="_blank" rel="noopener">Form not loading? Open in a new tab ↗ · 表格没有显示？在新标签页中打开</a>
+        </div>
+      </div>
 
-    <div class="vsn-callout">
-      <div class="vsn-label">VSN · Victorian Student Number · 维州学生编号</div>
-      <p>
-        The form asks for your child's <strong>VSN</strong> — a 9-digit number assigned to every
-        student enrolled in a Victorian school (required for Years 1–12). You can find it on
-        <strong>Compass</strong>, your day school's parent portal, or ask the school office to
-        provide it directly.
-      </p>
-      <span class="zh-note">报名表需填写孩子的维州学生编号（VSN），即每位维州在校学生的9位专属编号，1至12年级学生必须填写。可在日校Compass家长平台上查找，或直接向日校办公室索取。</span>
+      <aside class="enrol-aside">
+        <div class="vsn-callout">
+          <div class="vsn-label">VSN · Victorian Student Number · 维州学生编号</div>
+          <p>
+            The form asks for your child's <strong>VSN</strong> — the 9-digit number held by their
+            day school. Find it on <strong>Compass</strong> or ask the school office. No VSN yet?
+            Leave it blank and add it later using the link in your confirmation email.
+          </p>
+          <span class="zh-note">报名表需填写孩子的维州学生编号（VSN），即日校持有的9位编号，可在 Compass 家长平台查找或向学校办公室索取。暂时没有？可先留空，之后通过确认邮件中的链接补充。</span>
+        </div>
+
+        <div class="enrol-next">
+          <div class="enrol-side-label">After you submit <span class="zh">提交之后</span></div>
+          <ol class="enrol-steps">
+            <li>
+              <span class="num">01</span>
+              <div>
+                <strong>A copy for your records</strong>
+                Your answers are emailed to you, with a link to edit them later.
+                <span class="zh">答案会以邮件发送给您，并附有修改链接。</span>
+              </div>
+            </li>
+            <li>
+              <span class="num">02</span>
+              <div>
+                <strong>We confirm your child's class</strong>
+                Our office checks the details and gets back to you, usually within two business days.
+                <span class="zh">校方核实资料并确认班级，通常两个工作日内回复。</span>
+              </div>
+            </li>
+            <li>
+              <span class="num">03</span>
+              <div>
+                <strong>First lesson is a free trial</strong>
+                Come along on a Saturday — the first class is free for all new students.
+                <span class="zh">周六来上课，新生第一节课免费试听。</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="enrol-paper">
+          <p>
+            Prefer a printed copy? The same form is available as a PDF to print and bring along.
+            <span class="zh-note">也可下载 PDF 打印版，填写后于周六交给学校。</span>
+          </p>
+          <a href="enrolment-form-2026.pdf" download="Casey-Chinese-School-Enrolment-Form-2026.pdf" class="btn btn-ghost">Print the form · 打印报名表 <span class="arrow">↓</span></a>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
