@@ -4,8 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<!-- frame-src allows the enrolment Google Form iframe in #enrolment. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; frame-src https://docs.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#F08379" />
 <meta name="geo.region" content="AU-VIC" />
@@ -134,7 +133,7 @@
 <style>
   :root {
     --red: #F08379;
-    --red-deep: #C84B3F;
+    --red-deep: #B33F35;
     --red-soft: #F8C5BF;
     --red-tint: #FCE6E2;
     --bg: #FFF8F5;
@@ -142,7 +141,7 @@
     --paper: #FFFFFF;
     --ink: #26201E;
     --ink-soft: #5C504B;
-    --ink-mute: #8E7F79;
+    --ink-mute: #6B5E59;
     --line: #EFDDD5;
     --line-soft: #F4E5DE;
     --ghost: #EFE2DC;
@@ -214,12 +213,12 @@
     display: block;
   }
   .nav-links {
-    display: flex; gap: clamp(12px, 1.6vw, 28px); align-items: center;
+    display: flex; gap: clamp(10px, 1.05vw, 20px); align-items: center;
     margin-left: clamp(16px, 2vw, 32px);
   }
   .nav-links a {
     text-decoration: none;
-    font-size: clamp(12px, 1.1vw, 14px);
+    font-size: clamp(12px, 0.95vw, 13.5px);
     font-weight: 500;
     color: var(--ink);
     position: relative;
@@ -1016,8 +1015,9 @@
   .nav-toggle:focus-visible { outline: 2px solid var(--red-deep); outline-offset: 4px; border-radius: 4px; }
 
   /* ───── RESPONSIVE ───── */
-  @media (max-width: 920px) {
-    .wrap { padding: 0 22px; }
+  /* Collapse the nav to the hamburger before the 12 links + CTA overflow the header. */
+  @media (max-width: 1099px) {
+    .nav-inner { padding: 0 32px; }
     .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
       background: var(--bg); flex-direction: column; align-items: stretch;
       gap: 0; padding: 12px 22px 22px; border-bottom: 1px solid var(--line);
@@ -1029,6 +1029,9 @@
     .nav-links a:last-child { border-bottom: none; }
     .nav-cta { margin-top: 12px; text-align: center; }
     .nav-toggle { display: block; }
+  }
+  @media (max-width: 920px) {
+    .wrap { padding: 0 22px; }
     .hero { padding: 48px 0 64px; }
     .hero-grid { grid-template-columns: 1fr; gap: 56px; }
     .hero-visual { max-width: 420px; }
@@ -1168,25 +1171,41 @@
   .enrol-meta li + li::before {
     content: "·"; margin: 0 9px; color: var(--line); font-weight: 700;
   }
-  .enrol-frame { background: #fff; }
-  .enrol-frame iframe {
-    display: block; width: 100%; border: 0;
-    height: clamp(600px, 78vh, 980px);
-    height: clamp(600px, 78svh, 980px);
-    background: #fff;
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
   }
-  .enrol-card-foot {
-    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
-    gap: 6px 24px;
-    padding: 12px 20px;
-    background: var(--bg);
-    border-top: 1px solid var(--line-soft);
-    font-size: 13.5px; color: var(--ink-soft);
+  .enrol-body { padding: clamp(22px, 3vw, 34px) clamp(18px, 3vw, 34px) clamp(24px, 3vw, 34px); }
+  .enrol-body h3 {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.6vw, 30px);
+    line-height: 1.2; margin: 0 0 16px; color: var(--ink);
   }
-  .enrol-card-foot a { color: var(--red-deep); text-decoration: underline; text-underline-offset: 2px; }
-  .enrol-foot-link { margin-left: auto; text-align: right; }
-  .enrol-card-foot a:hover { text-decoration-thickness: 2px; }
-  .enrol-card-foot .zh { font-family: var(--zh); font-size: 13px; color: var(--ink-mute); }
+  .enrol-body h3 .zh { display: block; font-family: var(--zh); font-size: 15px; color: var(--ink-mute); margin-top: 4px; }
+  .enrol-have { margin: 0 0 8px; font-size: 15px; color: var(--ink); font-weight: 600; }
+  .enrol-have .zh, .enrol-ready .zh, .enrol-note .zh { font-family: var(--zh); font-weight: 400; color: var(--ink-mute); }
+  .enrol-ready { margin: 0 0 26px; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .enrol-ready li {
+    position: relative; padding-left: 22px; font-size: 15px; line-height: 1.55; color: var(--ink-soft);
+  }
+  .enrol-ready li::before {
+    content: ""; position: absolute; left: 2px; top: 0.62em; width: 7px; height: 7px;
+    border-radius: 50%; background: var(--red-soft);
+  }
+  .enrol-ready .zh { display: block; font-size: 13.5px; }
+  .enrol-cta { width: 100%; justify-content: center; text-align: center; padding: 16px 24px; font-size: 15px; }
+  .enrol-cta:focus-visible, .enrol-privacy a:focus-visible, .enrol-paper .btn:focus-visible {
+    outline: 3px solid var(--ink); outline-offset: 3px;
+  }
+  .enrol-note { margin: 12px 0 0; text-align: center; font-size: 13.5px; color: var(--ink-soft); }
+  .enrol-privacy { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line-soft); }
+  .enrol-privacy h4 {
+    margin: 0 0 8px; font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--red-deep);
+  }
+  .enrol-privacy h4 .zh { font-family: var(--zh); letter-spacing: 0.04em; }
+  .enrol-privacy p { margin: 0; font-size: 13.5px; line-height: 1.65; color: var(--ink-soft); }
+  .enrol-privacy a { color: var(--red-deep); text-decoration: underline; text-underline-offset: 2px; }
+  .enrol-privacy .zh-note { display: block; font-family: var(--zh); font-size: 13px; line-height: 1.75; color: var(--ink-mute); margin-top: 8px; }
 
   .enrol-aside { display: grid; gap: 30px; }
   .enrol-aside .vsn-callout { margin-top: 0; padding: 20px 22px; max-width: none; }
@@ -1227,14 +1246,12 @@
   .vsn-callout .zh-note { display: block; font-family: var(--zh); font-size: 14px; color: var(--ink-soft); margin-top: 10px; line-height: 1.75; }
   @media (max-width: 920px) {
     .enrol-grid { grid-template-columns: 1fr; gap: 40px; }
-    .enrol-frame iframe { height: min(76svh, 720px); }
   }
   @media (max-width: 500px) {
     .term-grid { grid-template-columns: 1fr; }
     .fee-options { grid-template-columns: 1fr; }
-    .enrol-card-head, .enrol-card-foot { padding: 12px 16px; }
+    .enrol-card-head { padding: 12px 16px; }
     .enrol-meta { font-size: 12px; }
-    .enrol-foot-link { margin-left: 0; text-align: left; }
     .event { padding: 24px 0; }
     .event-date .day { font-size: 34px; }
     .event--feature { padding: 18px 16px; }
@@ -2076,8 +2093,8 @@
         <div class="zh-title">报名</div>
       </div>
       <p class="lede">
-        Fill in the 2026 enrolment form here — about 10 minutes for each child. Typing your
-        full name is your signature, and your answers are emailed to you straight away.
+        Complete the 2026 enrolment form online — about 10 minutes for each child. Typing your
+        full name is your signature, and a copy of your answers is emailed to you.
         <span class="zh-note">请在线填写2026年报名表，每名学生约需10分钟。键入全名即为电子签名，提交后答案副本会发送到您的邮箱。</span>
       </p>
     </div>
@@ -2085,23 +2102,45 @@
     <div class="enrol-grid">
       <div class="enrol-card">
         <div class="enrol-card-head">
-          <div class="enrol-tag">Enrolment form 2026 <span class="sep">·</span> <span class="zh">2026年报名表</span></div>
+          <div class="enrol-tag">Enrolment form 2026 <span class="sep" aria-hidden="true">·</span> <span class="zh">2026年报名表</span></div>
           <ul class="enrol-meta">
             <li>About 10 min <span class="zh">约10分钟</span></li>
             <li>One per student <span class="zh">每名学生一份</span></li>
             <li>Signed online <span class="zh">在线签名</span></li>
           </ul>
         </div>
-        <div class="enrol-frame">
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSc4h9NOCLBLf8G6lmnj0pzDVODr76V0cF7ongSGhw8dcCBpgw/viewform?embedded=true"
-            title="Casey Foundation Chinese School — 2026 enrolment form · 2026年报名表"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin">Loading the enrolment form… · 报名表加载中…</iframe>
-        </div>
-        <div class="enrol-card-foot">
-          <span>No Google account needed <span class="zh">无需 Google 账号</span></span>
-          <a class="enrol-foot-link" href="https://docs.google.com/forms/d/e/1FAIpQLSc4h9NOCLBLf8G6lmnj0pzDVODr76V0cF7ongSGhw8dcCBpgw/viewform" target="_blank" rel="noopener">Form not loading? Open in a new tab ↗ · 表格没有显示？在新标签页中打开</a>
+        <div class="enrol-body">
+          <h3>Start the enrolment form <span class="zh">开始填写报名表</span></h3>
+          <p class="enrol-have">Please have these ready: <span class="zh">请准备好：</span></p>
+          <ul class="enrol-ready">
+            <li>Your child's details, as given to their day school <span class="zh">孩子在日校登记的资料</span></li>
+            <li>Their VSN, if you have it (optional) <span class="zh">维州学生编号（可选）</span></li>
+            <li>Your contact details and email address <span class="zh">您的联系方式和邮箱</span></li>
+          </ul>
+          <!-- The form is a Google Form opened in a new tab, not an iframe: it has 5 pages
+               and collects sensitive data, and a nested scroll area is poor on mobile and
+               for keyboard / screen-reader users. Keep this URL in sync with the README. -->
+          <a class="btn btn-primary enrol-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSc4h9NOCLBLf8G6lmnj0pzDVODr76V0cF7ongSGhw8dcCBpgw/viewform" target="_blank" rel="noopener noreferrer">
+            Open the enrolment form · 打开报名表
+            <span class="arrow" aria-hidden="true">↗</span>
+            <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+          <p class="enrol-note">5 short pages · no Google account needed <span class="zh">共5页 · 无需 Google 账号</span></p>
+
+          <div class="enrol-privacy" role="note" aria-labelledby="enrol-privacy-h">
+            <h4 id="enrol-privacy-h">How we use your information <span class="zh">个人信息使用说明</span></h4>
+            <p>
+              The form asks for your child's name, date of birth, gender, day school and year level,
+              VSN and residency status, plus your contact details. We use them only to enrol your
+              child, place them in the right class and contact you. Responses are collected through
+              Google Forms and handled under
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy<span class="visually-hidden"> (opens in a new tab)</span></a>.
+              To see, correct or delete your family's details, email
+              <a href="mailto:office@caseychinese.org">office@caseychinese.org</a>.
+              This website uses Google Analytics to count visits; it never sees what you enter in the form.
+            </p>
+            <span class="zh-note">报名表会收集孩子的姓名、出生日期、性别、日校及年级、VSN、居留身份和您的联系方式，仅用于报名、分班和与您联系。数据通过 Google 表单收集，并按 Google 隐私政策处理。如需查看、更正或删除资料，请发邮件至 office@caseychinese.org。本网站使用 Google Analytics 统计访问量，但无法看到您在表单中填写的内容。</span>
+          </div>
         </div>
       </div>
 
