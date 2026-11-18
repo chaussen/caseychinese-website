@@ -37,17 +37,18 @@ OUT_DIR = os.path.join("learn", "characters")
 SITE = "https://caseychinese.org"
 TODAY = datetime.date.today().isoformat()
 
+# Must stay in step with the group names in build-char-data.py (window.CHAR_GROUPS).
 GROUP_ZH = {
-    "Me & my body": "我和我的身体", "Family & people": "家人和人们",
-    "Numbers & counting": "数字和数数", "Nature & weather": "自然和天气",
-    "Animals": "动物", "Food & drink": "吃的喝的",
-    "Colours & describing": "颜色和形容", "Everyday actions": "每天做的事",
-    "School & learning": "学校和学习", "Out & about": "出门走走",
-    "Time & days": "时间和日子", "Position & direction": "位置和方向",
-    "Come & go": "来来去去", "Think & feel": "想和感觉",
-    "Question words": "问问题", "Little glue words": "小小连接词",
-    "Can & must": "能与要", "This & that": "这个那个",
-    "Songs, games & stories": "唱歌游戏讲故事",
+    "Me & my body": "我的身体", "Family & people": "家人和朋友",
+    "Numbers & counting": "数一数", "Nature & weather": "大自然",
+    "Animals": "小动物", "Food & drink": "吃吃喝喝",
+    "Colours & describing": "颜色和样子", "Everyday actions": "每天做的事",
+    "School & learning": "学校生活", "Out & about": "出门走走",
+    "Time & days": "时间和日子", "Position & direction": "上下左右",
+    "Come & go": "来来往往", "Think & feel": "想法和心情",
+    "Question words": "问一问", "Little glue words": "句子小帮手",
+    "Can & must": "能、会、要", "This & that": "这个那个",
+    "Songs, games & stories": "唱歌、游戏和故事",
 }
 
 
