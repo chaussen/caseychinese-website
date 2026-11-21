@@ -1208,7 +1208,12 @@
   .enrol-privacy .zh-note { display: block; font-family: var(--zh); font-size: 13px; line-height: 1.75; color: var(--ink-mute); margin-top: 8px; }
 
   .enrol-aside { display: grid; gap: 30px; }
-  .enrol-aside .vsn-callout { margin-top: 0; padding: 20px 22px; max-width: none; }
+  .enrol-ready .ready-vsn { background: var(--red-tint); border: 1px solid var(--red-soft); border-radius: 6px; padding: 10px 14px 10px 32px; color: var(--ink); }
+  .enrol-ready .ready-vsn::before { left: 14px; top: 1.1em; }
+  .ready-vsn em { font-style: normal; font-weight: 600; color: var(--red-deep); }
+  .vsn-jump { display: inline-block; margin-left: 4px; color: var(--red-deep); text-decoration: underline; text-underline-offset: 2px; font-weight: 600; }
+  .enrol-body .vsn-callout { margin: -10px 0 26px; max-width: none; padding: 18px 20px; border-left: 4px solid var(--red-deep); }
+  .vsn-badge { display: inline-grid; place-items: center; width: 18px; height: 18px; margin-right: 8px; border-radius: 50%; background: var(--red-deep); color: #fff; font: italic 700 12px var(--serif); letter-spacing: 0; vertical-align: 1px; }
   .enrol-side-label {
     font-size: 11px; font-weight: 600; text-transform: uppercase;
     letter-spacing: 0.16em; color: var(--red-deep); margin-bottom: 18px;
@@ -2057,7 +2062,7 @@
       <div>
         <div class="eyebrow"><span class="dot"></span>Tuition</div>
         <h2>Simple, <em>clear</em> pricing.</h2>
-        <div class="zh-title">2026年学费</div>
+        <div class="zh-title">2027年学费</div>
       </div>
       <p class="lede">
         One fee covers all your child's classes for the term — no hidden charges or extras.
@@ -2067,18 +2072,18 @@
     <div class="fee-options">
       <div class="fee-option">
         <div class="fee-period">Half-Year · 半年</div>
-        <div class="fee-amount">A$580</div>
+        <div class="fee-amount">A$600</div>
         <p class="fee-sub">Per student · two terms<br /><span class="zh" style="font-size:13px;font-weight:400;color:var(--ink-mute);">每位学生 · 两个学期</span></p>
       </div>
       <div class="fee-option featured">
         <div class="fee-period">Full Year · 全年</div>
-        <div class="fee-amount">A$880</div>
+        <div class="fee-amount">A$900</div>
         <p class="fee-sub">Per student · all four terms<br /><span class="zh" style="font-size:13px;font-weight:400;color:var(--ink-mute);">每位学生 · 全年四个学期</span></p>
       </div>
     </div>
     <p class="fee-note">
-      Families enrolling multiple children are welcome to get in touch.
-      <span class="zh-note">家有多名子女就读的，欢迎联系我们咨询。</span>
+      2027 fees shown. Families enrolling multiple children are welcome to get in touch.
+      <span class="zh-note">以上为2027年学费。家有多名子女就读的，欢迎联系我们咨询。</span>
     </p>
   </div>
 </section>
@@ -2114,9 +2119,18 @@
           <p class="enrol-have">Please have these ready: <span class="zh">请准备好：</span></p>
           <ul class="enrol-ready">
             <li>Your child's details, as given to their day school <span class="zh">孩子的基本资料（与日校登记的一致）</span></li>
-            <li>Their VSN, if you have it (optional) <span class="zh">维州学生编号（如有，可选填）</span></li>
+            <li class="ready-vsn">Their <strong>VSN</strong> (Victorian Student Number), if you have it — <em>optional</em> <a class="vsn-jump" href="#vsn-help">Where do I find it? ↓</a> <span class="zh">维州学生编号（如有，可选填）· 在哪里查看？</span></li>
             <li>Your contact details and email address <span class="zh">您的联系方式和邮箱</span></li>
           </ul>
+          <div class="vsn-callout" id="vsn-help">
+            <div class="vsn-label"><span class="vsn-badge" aria-hidden="true">i</span>Where to find the VSN · Victorian Student Number · 维州学生编号</div>
+            <p>
+              The form asks for your child's <strong>VSN</strong> — the 9-digit number held by their
+              day school. Find it on <strong>Compass</strong> or ask the school office. No VSN yet?
+              Leave it blank and add it later using the link in your confirmation email.
+            </p>
+            <span class="zh-note">报名表需填写孩子的维州学生编号（VSN），也就是日校登记的9位编号，可在 Compass 家长平台查看，或向日校办公室询问。暂时没有也没关系，可以先留空，之后再通过确认邮件里的链接补上。</span>
+          </div>
           <!-- The form is a Google Form opened in a new tab, not an iframe: it has 5 pages
                and collects sensitive data, and a nested scroll area is poor on mobile and
                for keyboard / screen-reader users. Keep this URL in sync with the README. -->
@@ -2145,16 +2159,6 @@
       </div>
 
       <aside class="enrol-aside">
-        <div class="vsn-callout">
-          <div class="vsn-label">VSN · Victorian Student Number · 维州学生编号</div>
-          <p>
-            The form asks for your child's <strong>VSN</strong> — the 9-digit number held by their
-            day school. Find it on <strong>Compass</strong> or ask the school office. No VSN yet?
-            Leave it blank and add it later using the link in your confirmation email.
-          </p>
-          <span class="zh-note">报名表需填写孩子的维州学生编号（VSN），也就是日校登记的9位编号，可在 Compass 家长平台查看，或向日校办公室询问。暂时没有也没关系，可以先留空，之后再通过确认邮件里的链接补上。</span>
-        </div>
-
         <div class="enrol-next">
           <div class="enrol-side-label">After you submit <span class="zh">提交之后</span></div>
           <ol class="enrol-steps">
@@ -2444,6 +2448,22 @@
         <figure class="event-thumb">
           <img src="images/events/lantern-festival.webp" width="1024" height="768" loading="lazy" decoding="async" alt="A glowing red paper lantern with dragon artwork at night" />
         </figure>
+      </article>
+
+      <article class="event" data-date="2027-02-20">
+        <div class="event-date">
+          <div class="dow">Sat</div>
+          <div class="day">20</div>
+          <div class="month">Feb</div>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Term 1 · 3pm</span>
+          <div class="event-meta">Sat 20 Feb 2027 · 3pm</div>
+          <h3>RSPCA Casey School Incursion</h3>
+          <div class="zh-title-sm">RSPCA 凯西社区校园活动</div>
+          <p>The RSPCA Casey program visits our school for a pet-themed session. More details to come.
+            <span class="zh-note" lang="zh-Hans">RSPCA Casey 项目将到校举办以宠物为主题的活动，详情稍后公布。</span></p>
+        </div>
       </article>
 
     </div>
